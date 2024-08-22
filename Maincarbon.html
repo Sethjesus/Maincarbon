@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專業低碳管理方案互動幻燈片</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        header, footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f2f2f2;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-image: url('https://github.com/Sethjesus/Photo/blob/main/woods.jpg?raw=true');
+            background-size: cover;
+            background-position: center;
+            padding: 10px;
+        }
+        nav a img {
+            width: 150px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        nav a img:hover {
+            transform: scale(1.1);
+        }
+        .content-container {
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .content-container p {
+            margin-right: 20px;
+        }
+        .content-container img {
+            width: 120px;
+        }
+        footer {
+            background-color: #444;
+            color: white;
+            padding: 20px 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            nav a img {
+                width: 100px; /* Smaller images for smaller screens */
+            }
+            .content-container {
+                flex-direction: column; /* Stack logo and text vertically on small screens */
+            }
+            .content-container p {
+                margin-right: 0;
+                margin-bottom: 10px; /* Space between text and logo */
+            }
+            .content-container img {
+                width: 80px;
+            }
+            header h1, header h2 {
+                font-size: 16px; /* Smaller font size for headers */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>專業低碳管理方案</h1>
+        <h2>景沛提供完整的一站式永續及淨零碳排方案</h2>
+    </header>
+    <nav>
+        <a href="https://sethjesus.github.io/Carbon/Carbon.html"><img src="https://github.com/Sethjesus/Photo/blob/main/Carbon8.jpg?raw=true" alt="碳盤查"></a>
+        <a href="https://sethjesus.github.io/3elements/3elements.html"><img src="https://github.com/Sethjesus/Photo/blob/main/Carbon9.jpg?raw=true" alt="低碳化/減碳"></a>
+        <a href="https://sethjesus.github.io/Partner/Partner.html"><img src="https://github.com/Sethjesus/Photo/blob/main/Carbon10.jpg?raw=true" alt="輔導"></a>
+        <a href="https://sethjesus.github.io/ISO/ISO.html"><img src="https://github.com/Sethjesus/Photo/blob/main/Carbon11.jpg?raw=true" alt="ISO查驗證"></a>
+    </nav>
+    <div class="content-container">
+        <p>JP ESG International Bussiness Unit</p>
+        <a href="https://sethjesus.github.io/JPESG/JP%20ESG.html"><img src="https://github.com/Sethjesus/Photo/blob/main/UDM%20New%20Logo.jpg?raw=true" alt="公司Logo"></a>
+    </div>
+    <footer>
+        © 2024 由景沛低碳管理方案團隊製作
+    </footer>
+</body>
+</html>
