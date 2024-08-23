@@ -8,11 +8,13 @@
         body, html {
             height: 100%;
             margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* 頁面背景色 */
         }
         header, footer {
             text-align: center;
             padding: 10px;
-            background-color: #f2f2f2;
+            background-color: #f2f2f2; /* 與頁面背景色一致的灰色 */
         }
         nav {
             display: flex;
@@ -31,42 +33,82 @@
             transform: scale(1.1);
         }
         .content-container {
-            padding: 20px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
             text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: rgba(242, 242, 242, 0.8); /* 與header底色一致的半透明背景 */
+            border-radius: 5px;
         }
         .content-container p {
-            margin-right: 20px;
+            margin: 0;
         }
         .content-container img {
-            width: 120px;
+            width: 80px; /* 縮小圖片尺寸 */
+            opacity: 0.8; /* 半透明效果 */
+            transition: opacity 0.2s; /* 添加過渡效果 */
+        }
+        .content-container img:hover {
+            opacity: 1; /* 鼠標懸停時顯示完全不透明 */
+        }
+        main {
+            margin-top: 70px; /* 確保內容不會被header遮擋 */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            background-color: #ffffff; /* 表格背景色 */
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* 動感效果 */
+        }
+        th {
+            background-color: #f2f2f2; /* 與header底色一致的灰色 */
+            color: #007bff; /* 可以根據需要調整文字顏色 */
+        }
+        th:hover, td:hover {
+            background-color: #e0e0e0; /* 鼠標懸停時的背景顏色 */
+            transform: scale(1.05); /* 鼠標懸停時的縮放效果 */
+        }
+        tr:hover {
+            background-color: #ffa500; /* 橘色背景 */
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 5px;
+            }
+            nav a img {
+                width: 100px; /* Smaller images for smaller screens */
+                margin: 5px 0;
+            }
+            .content-container img {
+                width: 60px; /* 更小的圖片尺寸 */
+            }
+            header h1, header h2 {
+                font-size: 18px; /* Smaller font size for headers */
+                margin: 10px 0;
+            }
+            table {
+                font-size: 14px; /* Smaller font size for tables */
+            }
+            th, td {
+                padding: 6px; /* Reduced padding for smaller screens */
+            }
         }
         footer {
             background-color: #444;
             color: white;
             padding: 20px 0;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            nav a img {
-                width: 100px; /* Smaller images for smaller screens */
-            }
-            .content-container {
-                flex-direction: column; /* Stack logo and text vertically on small screens */
-            }
-            .content-container p {
-                margin-right: 0;
-                margin-bottom: 10px; /* Space between text and logo */
-            }
-            .content-container img {
-                width: 80px;
-            }
-            header h1, header h2 {
-                font-size: 16px; /* Smaller font size for headers */
-            }
         }
     </style>
 </head>
@@ -81,12 +123,96 @@
         <a href="https://sethjesus.github.io/Partner/Partner.html"><img src="https://github.com/Sethjesus/Photo/blob/main/Carbon10.jpg?raw=true" alt="輔導"></a>
         <a href="https://sethjesus.github.io/ISO/ISO.html"><img src="https://github.com/Sethjesus/Photo/blob/main/Carbon11.jpg?raw=true" alt="ISO查驗證"></a>
     </nav>
-    <div class="content-container">
-        <p>JP ESG International Bussiness Unit</p>
-        <a href="https://sethjesus.github.io/JPESG/JP%20ESG.html"><img src="https://github.com/Sethjesus/Photo/blob/main/UDM%20New%20Logo.jpg?raw=true" alt="公司Logo"></a>
-    </div>
+    <main>
+        <div class="content-container">
+            <p>JP ESG International Bussiness Unit</p>
+            <a href="https://sethjesus.github.io/JPESG/JP%20ESG.html"><img src="https://github.com/Sethjesus/Photo/blob/main/UDM%20New%20Logo.jpg?raw=true" alt="公司Logo"></a>
+        </div>
+
+        <h1>低碳化/減碳</h1>
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th class="item-col">項目</th>
+                    <th class="content-col">內容</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2.1 陽光空氣水減碳方案</td>
+                    <td>
+                        <ul>
+                            <li>A. 無線能耗足跡管理</li>
+                            <li>B. 有線能耗足跡管理</li>
+                            <li>C. 冰水主機節能管理(變頻)</li>
+                            <li>D. 冰水主機節能管理(類變頻)</li>
+                            <li>E. 空氣偵測與改善管理</li>
+                            <li>F. 智慧水表</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2.2 減碳效益30% (3年)</td>
+                    <td>
+                        <ul>
+                            <li><a href="https://example.com">A. 政策文件</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2.3 減碳方法 - 智慧化應用</td>
+                    <td>
+                        <ul>
+                            <li><a href="https://example.com">A. 直流風扇節能管理</a></li>
+                            <li><a href="https://example.com">B. 智慧照明管理</a></li>
+                            <li><a href="https://example.com">C. 智慧變頻管理</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2.4 減碳效益50% (3年)</td>
+                    <td>
+                        <ul>
+                            <li><a href="https://example.com">A. 政策文件</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2.5 低碳化顯著效益</td>
+                    <td>
+                        <ul>
+                            <li><a href="https://example.com">A. 減少電力消耗</a></li>
+                            <li><a href="https://example.com">B. 降低碳排放</a></li>
+                            <li><a href="https://example.com">C. 增強環保意識</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2.6 政府低碳化補助申請</td>
+                    <td>
+                        <ul>
+                            <li>A. 產發署低碳化補助</li>
+                            <li>B. 商業發展署</li>
+                            <li>C. 環境部</li>
+                            <li>D. 教育部</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2.7 合作夥伴</td>
+                    <td>
+                        <ul>
+                            <li>A. 低碳化方案合作夥伴</li>
+                            <li>B. 其他周邊設備服務(P-Trade)</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
     <footer>
-        © 2024 由景沛低碳管理方案團隊製作
+        © 2024 由景沛低碳管理方案團隊製作 <sub>地址: 235 新北市中和區中正路872號12樓之1</sub><BR>
+     &ensp;&ensp;&ensp;&ensp; &ensp;&ensp; &ensp;&ensp; &ensp;&ensp; &ensp;&ensp; <sub>電話: 02-66202388</sub>
     </footer>
 </body>
 </html>
