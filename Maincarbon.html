@@ -9,51 +9,51 @@
             height: 100%;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #ffffff;
+            background-color: #ffffff; /* 頁面背景色 */
         }
         header, footer {
             text-align: center;
             padding: 10px;
-            background-color: #f2f2f2;
+            background-color: #f2f2f2; /* 與頁面背景色一致的灰色 */
         }
         nav {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap; /* 允許按鈕在小螢幕上換行 */
             background-image: url('https://github.com/Sethjesus/Photo/blob/main/woods.jpg?raw=true');
             background-size: cover;
             background-position: center;
             padding: 10px;
         }
         nav a img {
-            width: 150px;
+            width: 120px;
             cursor: pointer;
             transition: transform 0.2s;
+            margin: 5px;
         }
         nav a img:hover {
             transform: scale(1.1);
         }
         .content-container {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 10px;
             text-align: center;
-            background-color: rgba(242, 242, 242, 0.8);
+            background-color: rgba(242, 242, 242, 0.8); /* 與header底色一致的半透明背景 */
             border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
         }
         .content-container p {
             margin: 0;
         }
         .content-container img {
-            width: 80px;
-            opacity: 0.8;
-            transition: opacity 0.2s;
+            width: 80px; /* 縮小圖片尺寸 */
+            opacity: 0.8; /* 半透明效果 */
+            transition: opacity 0.2s; /* 添加過渡效果 */
         }
         .content-container img:hover {
-            opacity: 1;
+            opacity: 1; /* 鼠標懸停時顯示完全不透明 */
         }
         main {
-            margin-top: 70px;
+            margin-top: 70px; /* 確保內容不會被header遮擋 */
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
@@ -62,75 +62,56 @@
             width: 100%;
             margin: 20px 0;
             border-collapse: collapse;
-            background-color: #ffffff;
+            background-color: #ffffff; /* 表格背景色 */
         }
         th, td {
             border: 1px solid #ccc;
             padding: 8px;
             text-align: left;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* 動感效果 */
         }
         th {
-            background-color: #87CEEB;
-            color: #FFFFFF;
+            background-color: #87CEEB; /* 稍深的淺藍色 */
+            color: #FFFFFF; /* 字體顏色白色 */
         }
         th:hover, td:hover {
             background-color: #FFA500;
-            transform: scale(1.05);
+            transform: scale(1.05); /* 鼠標懸停時的縮放效果 */
         }
         tr:hover {
-            background-color: #ffa500;
+            background-color: #ffa500; /* 橘色背景 */
         }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column; /* 小螢幕時按鈕垂直排列 */
+            }
+            nav a img {
+                width: 100px; /* 縮小圖片 */
+                margin: 5px 0;
+            }
+            .content-container img {
+                width: 60px; /* 更小的圖片尺寸 */
+            }
+            header h1, header h2 {
+                font-size: 18px; /* 小螢幕時縮小字體大小 */
+            }
+            table {
+                font-size: 14px; /* 小螢幕時縮小表格字體 */
+            }
+            th, td {
+                padding: 6px; /* 減少內邊距 */
+            }
+            footer {
+                font-size: 12px; /* 小螢幕時縮小 footer 字體 */
+            }
+        }
+
         footer {
             background-color: #444;
             color: white;
             padding: 20px 0;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                padding: 5px;
-            }
-            nav a img {
-                width: 100px;
-                margin: 5px 0;
-            }
-            .content-container img {
-                width: 60px;
-            }
-            header h1, header h2 {
-                font-size: 18px;
-                margin: 10px 0;
-            }
-            table {
-                font-size: 14px;
-            }
-            th, td {
-                padding: 6px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav a img {
-                width: 80px;
-            }
-            main {
-                padding: 10px;
-            }
-            header h1 {
-                font-size: 16px;
-            }
-            header h2 {
-                font-size: 14px;
-            }
-            table {
-                font-size: 12px;
-            }
-            th, td {
-                padding: 4px;
-            }
         }
     </style>
 </head>
@@ -148,7 +129,7 @@
     </nav>
     <main>
         <div class="content-container">
-            <p>JP ESG International Bussiness Unit</p>
+            <p>JP ESG International Business Unit</p>
             <a href="https://sethjesus.github.io/JPESG/JP%20ESG.html"><img src="https://github.com/Sethjesus/Photo/blob/main/UDM%20New%20Logo.jpg?raw=true" alt="公司Logo"></a>
         </div>
 
@@ -196,7 +177,7 @@
                     <td>應用方案EDM</td>
                     <td>
                         <ul>
-                            A. 製造業/學校/飯店…<br>
+                            A. 製造業/學校/飯店…
                         </ul>
                     </td>
                 </tr>
@@ -205,7 +186,7 @@
                     <td>
                         <ul>
                             A. EMS電力能耗/水量/空氣品質數據管理平台服務<br>
-                            B. 大數據整合平台客製化<br>
+                            B. 大數據整合平台客製化
                         </ul>
                     </td>
                 </tr>
@@ -216,7 +197,7 @@
                             A. 產發署低碳化補助<br>
                             B. 商業發展署<br>
                             C. 環境部<br>
-                            D. 教育部<br>
+                            D. 教育部
                         </ul>
                     </td>
                 </tr>
@@ -234,7 +215,7 @@
     </main>
     <footer>
         © 2024 由景沛低碳管理方案團隊製作 <sub>地址: 235 新北市中和區中正路872號12樓之1</sub><br>
-        &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; <sub>電話: 02-66202388</sub>
+        <sub>電話: 02-66202388</sub>
     </footer>
 </body>
 </html>
