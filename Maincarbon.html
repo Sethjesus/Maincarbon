@@ -14,7 +14,7 @@
         header, footer {
             text-align: center;
             padding: 10px;
-            background-color: #f2f2f2; /* 與頁面背景色一致的灰色 */
+            background-color: #f2f2f2;
         }
         nav {
             display: flex;
@@ -36,78 +36,65 @@
         }
         .content-container {
             text-align: center;
-            background-color: rgba(242, 242, 242, 0.8); /* 與header底色一致的半透明背景 */
+            background-color: rgba(242, 242, 242, 0.8);
             border-radius: 5px;
             padding: 10px;
             margin: 10px 0;
         }
-        .content-container p {
-            margin: 0;
-        }
-        .content-container img {
-            width: 80px; /* 縮小圖片尺寸 */
-            opacity: 0.8; /* 半透明效果 */
-            transition: opacity 0.2s; /* 添加過渡效果 */
-        }
-        .content-container img:hover {
-            opacity: 1; /* 鼠標懸停時顯示完全不透明 */
-        }
         main {
-            margin-top: 70px; /* 確保內容不會被header遮擋 */
+            margin-top: 70px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #333;
         }
         table {
             width: 100%;
             margin: 20px 0;
             border-collapse: collapse;
-            background-color: #ffffff; /* 表格背景色 */
+            background-color: #ffffff;
         }
         th, td {
             border: 1px solid #ccc;
             padding: 8px;
             text-align: left;
-            transition: background-color 0.3s ease, transform 0.3s ease; /* 動感效果 */
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
         th {
-            background-color: #87CEEB; /* 稍深的淺藍色 */
-            color: #FFFFFF; /* 字體顏色白色 */
+            background-color: #87CEEB;
+            color: #FFFFFF;
         }
         th:hover, td:hover {
             background-color: #FFA500;
-            transform: scale(1.05); /* 鼠標懸停時的縮放效果 */
+            transform: scale(1.05);
         }
         tr:hover {
-            background-color: #ffa500; /* 橘色背景 */
+            background-color: #ffa500;
         }
-
-        /* 響應式設計 */
         @media (max-width: 768px) {
             nav {
-                flex-direction: column; /* 小螢幕時按鈕垂直排列 */
+                flex-direction: column;
             }
             nav a img {
-                width: 100px; /* 縮小圖片 */
+                width: 100px;
                 margin: 5px 0;
             }
-            .content-container img {
-                width: 60px; /* 更小的圖片尺寸 */
-            }
             header h1, header h2 {
-                font-size: 18px; /* 小螢幕時縮小字體大小 */
+                font-size: 18px;
             }
             table {
-                font-size: 14px; /* 小螢幕時縮小表格字體 */
+                font-size: 14px;
             }
             th, td {
-                padding: 6px; /* 減少內邊距 */
+                padding: 6px;
             }
             footer {
-                font-size: 12px; /* 小螢幕時縮小 footer 字體 */
+                font-size: 12px;
             }
         }
-
         footer {
             background-color: #444;
             color: white;
@@ -120,6 +107,7 @@
         <h1>專業低碳管理方案</h1>
         <h2>景沛提供完整的一站式永續及淨零碳排方案</h2>
     </header>
+
     <nav>
         <a href="https://sethjesus.github.io/Consult/Consult.html"><img src="https://github.com/Sethjesus/Photo/blob/main/Carbon12.jpg?raw=true" alt="碳盤查"></a>
         <a href="https://sethjesus.github.io/Carbon/Carbon.html"><img src="https://github.com/Sethjesus/Photo/blob/main/Carbon8.jpg?raw=true" alt="碳盤查"></a>
@@ -127,95 +115,178 @@
         <a href="https://sethjesus.github.io/Partner/Partner.html"><img src="https://github.com/Sethjesus/Photo/blob/main/Carbon10.jpg?raw=true" alt="輔導"></a>
         <a href="https://sethjesus.github.io/ISO/ISO.html"><img src="https://github.com/Sethjesus/Photo/blob/main/Carbon11.jpg?raw=true" alt="ISO查驗證"></a>
     </nav>
-    <main>
-        <div class="content-container">
-            <p>JP ESG International Business Unit</p>
-            <a href="https://sethjesus.github.io/JPESG/JP%20ESG.html"><img src="https://github.com/Sethjesus/Photo/blob/main/UDM%20New%20Logo.jpg?raw=true" alt="公司Logo"></a>
-        </div>
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo with Text</title>
+    <style>
+        /* 將內容容器設置為 inline-block 或使用 flex */
+        .content-container {
+            display: flex;
+            align-items: center; /* 垂直居中對齊 */
+            gap: 10px; /* 控制 Logo 和文字之間的距離 */
+        }
 
-        <h1>低碳化/減碳</h1>
-        <table id="data-table">
-            <thead>
-                <tr>
-                    <th class="item-col">項目</th>
-                    <th class="content-col">內容</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td> 陽光空氣水減碳方案</td>
-                    <td>
-                        <ul>
-                            A. 無線能耗足跡管理<br>
-                            B. 有線能耗足跡管理<br>
-                            C. 冰水主機節能管理(變頻)<br>
-                            D. 冰水主機節能管理(類變頻)<br>
-                            E. 空氣偵測與改善管理<br>
-                            F. 智慧水表
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>減碳效益30% (3年)</td>
-                    <td>
-                        <ul>
-                            <li><a href="https://example.com">A. 政策文件</a></li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>減碳方法 - 智慧化應用</td>
-                    <td>
-                        <ul>
-                            A. EMS<br>
-                            B. AI 大數據應用<br>
-                            C. 3+3 減碳
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>應用方案EDM</td>
-                    <td>
-                        <ul>
-                            A. 製造業/學校/飯店…
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>低碳化顯著效益/客製化整合</td>
-                    <td>
-                        <ul>
-                            A. EMS電力能耗/水量/空氣品質數據管理平台服務<br>
-                            B. 大數據整合平台客製化
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>政府低碳化補助申請</td>
-                    <td>
-                        <ul>
-                            A. 產發署低碳化補助<br>
-                            B. 商業發展署<br>
-                            C. 環境部<br>
-                            D. 教育部
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>合作夥伴</td>
-                    <td>
-                        <ul>
-                            A. 低碳化方案合作夥伴<br>
-                            B. 其他周邊設備服務(P-Trade)
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        .text-content {
+            font-size: 14px;
+            color: rgb(12, 12, 12);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Centered Logo and Text</title>
+        <style>
+            /* 使用 flex 布局來讓內容居中 */
+            .content-container {
+                display: flex;
+                justify-content: center; /* 水平居中 */
+                align-items: center;     /* 垂直居中 */
+                gap: 10px;               /* 控制圖片和文字之間的距離 */
+                text-align: center;
+            }
+    
+            .text-content {
+                font-size: 14px;
+                color: rgb(12, 12, 12);
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+    
+    <!-- 居中的 Logo 和文字 -->
+    <div class="content-container">
+        <a href="https://sethjesus.github.io/JPESG/JP%20ESG.html">
+            <img src="https://github.com/Sethjesus/Photo/blob/main/UDM%20New%20Logo.jpg?raw=true" alt="公司Logo" style="width: 60px;">
+        </a>
+        <div class="text-content">Access English content</div>
+    </div>
+    
+    </body>
+    </html>
+    
+
+</body>
+</html>
+
+    <main>
+        <section>
+            <h1>關於UDM 景沛ESG 低碳淨能事業群</h1>
+            <p>
+                「UDM 景沛ESG 低碳淨能事業群」為『 ESG 減碳/低碳管理方案提供商』，致力於解決中小企業碳排放、碳減量、碳費/碳稅/碳邊境稅 （CBAM、CCA)問題。專注於低碳化創新方案產品開發、系統整合及國際市場行銷。
+            </p>
+            <p>
+                此「低碳管理方案」結合人工智慧物聯網 AIOT 感測器及大數據碳足跡能耗管理系統 EMS，包含有線/無線的智慧鉤錶、閘道器 gateway、雲端 cloud 及軟體工程。鏈結溫室氣體盤查及減碳/低碳方案，搭配電力能耗(陽光）、空氣品質（空氣）及水資源（水）管理系統，協助、輔導中小企業通過國際查驗證 : ISO-14064/14067/50001 及碳盤查/碳足跡/能源管理之專業系統服務。
+            </p>
+            <p>
+                主要產業應用於：半導體產業、製造業、資通產業、飯店業、餐飲業、醫院及校園。市場主要佈局在亞洲、美洲、歐洲等。公司秉持 ESG 淨零碳排/低碳化的原則，歡迎有經驗的專家及積極主動的青年人才參與，成為我們國際合作夥伴。
+            </p>
+        </section>
+
+        <section>
+            <h2>企業識別與核心理念</h2>
+            <ol>
+                <li>企業識別 : UDM ESG Low Carbon, EMS and Net Zero。</li>
+                <li>企業理念 : 『ESG 永續發展，淨零碳排，創新發展，淨化地球』。</li>
+                <li>企業定位 : 『ESG 減碳/低碳管理方案提供商』。</li>
+                <li>產品定位 : 『ESG 低碳管理方案』。</li>
+                <li>企業核心 : 『PSM 專業團隊及 ESG創新系統整合』。</li>
+            </ol>
+        </section>
+
+
+
+        <section>
+            <h2>低碳化/減碳方案</h2>
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th class="item-col">項目</th>
+                        <th class="content-col">內容</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>陽光空氣水減碳方案</td>
+                        <td>
+                            <ul>
+                                <li>無線能耗足跡管理</li>
+                                <li>有線能耗足跡管理</li>
+                                <li>冰水主機節能管理(變頻)</li>
+                                <li>冰水主機節能管理(類變頻)</li>
+                                <li>空氣偵測與改善管理</li>
+                                <li>智慧水表</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>減碳效益 30% (3年)</td>
+                        <td><a href="https://example.com">A. 政策文件</a></td>
+                    </tr>
+                    <tr>
+                        <td>減碳方法 - 智慧化應用</td>
+                        <td>
+                            <ul>
+                                <li>EMS</li>
+                                <li>AI 大數據應用</li>
+                                <li>3+3 減碳</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>應用方案EDM</td>
+                        <td>
+                            <ul>
+                                <li>製造業/學校/飯店…</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>低碳化顯著效益/客製化整合</td>
+                        <td>
+                            <ul>
+                                <li>EMS 電力能耗/水量/空氣品質數據管理平台服務</li>
+                                <li>大數據整合平台客製化</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>政府低碳化補助申請</td>
+                        <td>
+                            <ul>
+                                <li>產發署低碳化補助</li>
+                                <li>商業發展署</li>
+                                <li>環境部</li>
+                                <li>教育部</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>合作夥伴</td>
+                        <td>
+                            <ul>
+                                <li>低碳化方案合作夥伴</li>
+                                <li>其他周邊設備服務(P-Trade)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </main>
+
     <footer>
-        © 2024 由景沛低碳管理方案團隊製作 <sub>地址: 235 新北市中和區中正路872號12樓之1</sub><br>
-        <sub>電話: 02-66202388</sub>
+        © 2024 由景沛低碳管理方案團隊製作 <br>
+        <sub>地址: 235 新北市中和區中正路872號12樓之1 | 電話: 02-66202388</sub>
     </footer>
 </body>
 </html>
