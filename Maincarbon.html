@@ -70,12 +70,40 @@
             background-color: #87CEEB;
             color: #FFFFFF;
         }
-        th:hover, td:hover {
-            background-color: #FFA500;
-            transform: scale(1.05);
+        /* 讓表格內的連結看起來像普通文本 */
+        table a {
+            color: inherit; /* 繼承父元素的顏色 */
+            text-decoration: none; /* 移除下劃線 */
         }
-        tr:hover {
-            background-color: #ffa500;
+
+        /* 當表格行被 hover 時，仍然應用相同的效果 */
+        tr:hover a {
+            color: inherit;
+        }
+
+        /* 1. 輔導行 hover 灰色 */
+        .consulting-row:hover {
+            background-color: #d3d3d3; /* 灰色 */
+        }
+
+        /* 2. 企業自主碳盤查行，政府補助碳盤查行，企業諮詢輔導行，免費可行性評估行 hover 橘色 */
+        .self-audit-row:hover, .government-row:hover, .business-consulting-row:hover, .free-eval-row:hover {
+            background-color: #FFA500; /* 橘色 */
+        }
+
+        /* 3. 陽光空氣水減碳方案行，減碳效益 30% (3年)，減碳方法 - 智慧化應用，應用方案EDM，低碳化顯著效益/客製化整合，政府低碳化補助申請 hover 粉紅色 */
+        .solar-water-row:hover, .carbon-benefit-row:hover, .carbon-method-row:hover, .edm-row:hover, .custom-integrated-row:hover, .govt-subsidy-row:hover {
+            background-color: #FFC0CB; /* 粉紅色 */
+        }
+
+        /* 4. 合作夥伴，溫室氣體盤查輔導，溫室氣體盤查流程文件產出 hover 綠色 */
+        .partner-row:hover, .ghg-guidance-row:hover, .process-doc-row:hover {
+            background-color: #32CD32; /* 綠色 */
+        }
+
+        /* 5. 粉綠 hover */
+        .light-green-row:hover {
+            background-color: #00008B; /* 藍色 */
         }
         @media (max-width: 768px) {
             nav {
@@ -210,79 +238,232 @@
 
         <section>
             <h2>低碳化/減碳方案</h2>
-            <table id="data-table">
-                <thead>
-                    <tr>
-                        <th class="item-col">項目</th>
-                        <th class="content-col">內容</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>陽光空氣水減碳方案</td>
-                        <td>
-                            <ul>
-                                <li>無線能耗足跡管理</li>
-                                <li>有線能耗足跡管理</li>
-                                <li>冰水主機節能管理(變頻)</li>
-                                <li>冰水主機節能管理(類變頻)</li>
-                                <li>空氣偵測與改善管理</li>
-                                <li>智慧水表</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>減碳效益 30% (3年)</td>
-                        <td><a href="https://example.com">A. 政策文件</a></td>
-                    </tr>
-                    <tr>
-                        <td>減碳方法 - 智慧化應用</td>
-                        <td>
-                            <ul>
-                                <li>EMS</li>
-                                <li>AI 大數據應用</li>
-                                <li>3+3 減碳</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>應用方案EDM</td>
-                        <td>
-                            <ul>
-                                <li>製造業/學校/飯店…</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>低碳化顯著效益/客製化整合</td>
-                        <td>
-                            <ul>
-                                <li>EMS 電力能耗/水量/空氣品質數據管理平台服務</li>
-                                <li>大數據整合平台客製化</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>政府低碳化補助申請</td>
-                        <td>
-                            <ul>
-                                <li>產發署低碳化補助</li>
-                                <li>商業發展署</li>
-                                <li>環境部</li>
-                                <li>教育部</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>合作夥伴</td>
-                        <td>
-                            <ul>
-                                <li>低碳化方案合作夥伴</li>
-                                <li>其他周邊設備服務(P-Trade)</li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
+            <!DOCTYPE html>
+            <html lang="zh-TW">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>專業低碳管理方案</title>
+                <style>
+                    /* 讓表格內的連結看起來像普通文本 */
+                    table a {
+                        color: inherit; /* 繼承父元素的顏色 */
+                        text-decoration: none; /* 移除下劃線 */
+                    }
+            
+                    /* 當表格行被 hover 時，仍然應用相同的效果 */
+                    tr:hover a {
+                        color: inherit;
+                    }
+            
+                    /* 1. 輔導行 hover 灰色 */
+                    .consulting-row:hover {
+                        background-color: #d3d3d3; /* 灰色 */
+                    }
+            
+                    /* 2. 企業自主碳盤查行，政府補助碳盤查行，企業諮詢輔導行，免費可行性評估行 hover 橘色 */
+                    .self-audit-row:hover, .government-row:hover, .business-consulting-row:hover, .free-eval-row:hover {
+                        background-color: #FFA500; /* 橘色 */
+                    }
+            
+                    /* 3. 陽光空氣水減碳方案行，減碳效益 30% (3年)，減碳方法 - 智慧化應用，應用方案EDM，低碳化顯著效益/客製化整合，政府低碳化補助申請 hover 粉紅色 */
+                    .solar-water-row:hover, .carbon-benefit-row:hover, .carbon-method-row:hover, .edm-row:hover, .custom-integrated-row:hover, .govt-subsidy-row:hover {
+                        background-color: #FFC0CB; /* 粉紅色 */
+                    }
+            
+                    /* 4. 合作夥伴，溫室氣體盤查輔導，溫室氣體盤查流程文件產出 hover 綠色 */
+                    .partner-row:hover, .ghg-guidance-row:hover {
+                        background-color: #32CD32; /* 綠色 */
+                    }
+            
+                    /* 5. 粉藍 hover */
+                    .light-blue-row:hover {
+                        background-color: #9b9be7; /* 粉綠 */
+                    }
+                    :root {
+    --gray-color: #d3d3d3;
+    --orange-color: #FFA500;
+    --pink-color: #FFC0CB;
+    --green-color: #32CD32;
+    --blue-color: #00008B;
+}
+
+                </style>
+            </head>
+            <body>
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th class="item-col">項目</th>
+                            <th class="content-col">內容</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 1. 輔導行，背景色為灰色，且可點擊跳轉 -->
+                        <tr class="consulting-row">
+                            <td><a href="https://sethjesus.github.io/Consult/Consult.html">諮詢輔導</a></td>
+                            <td>
+                                <ul>
+                                    <li>企業ESG永續發展先期輔導諮詢</li>
+                                    <li>低碳化輔導評估</li>
+                                </ul>
+                            </td>
+                        </tr>
+            
+                        <!-- 2. 企業自主碳盤查行，背景色為橘色，且可點擊跳轉 -->
+                        <tr class="self-audit-row">
+                            <td><a href="https://sethjesus.github.io/Carbon/Carbon.html">企業自主碳盤查</a></td>
+                            <td>
+                                <ul>
+                                    <li>線上免費碳估算工具</li>
+                                    <li>AI碳盤查管理平台</li>
+                                    <li>AI碳盤查管理平台+輔導</li><br><sup>以上方案均提供一套無線能耗足跡管理工具</sup>
+                                
+                                </ul>
+                            </td>
+                        </tr>
+            
+                        <!-- 政府補助碳盤查行 -->
+                        <tr class="government-row">
+                            <td><a href="https://sethjesus.github.io/Carbon/Carbon.html">政府補助碳盤查(16+4)</a></td>
+                            <td>
+                                <ul>
+                                    <li>113年經濟部製造業低碳化及智慧化升級轉型診斷輔導</li><br><sup>(含政府補助16萬元，廠商自籌款四萬元。)</sup><br><sup>(可作為產發署低碳化補助申請計畫使用。)</sup>
+
+                                </ul>
+                            </td>
+                        </tr>
+            
+                        <!-- 企業諮詢輔導行 -->
+                        <tr class="business-consulting-row">
+                            <td><a href="https://sethjesus.github.io/Carbon/Carbon.html">企業諮詢輔導</a></td>
+                            <td>
+                                <ul>
+                                    <li>企業自主碳盤查諮詢輔導</li>
+                                    <li>低碳化/減碳方案規劃建議</li>
+                                </ul>
+                            </td>
+                        </tr>
+            
+                        <!-- 免費可行性評估行 -->
+                        <tr class="free-eval-row">
+                            <td><a href="https://sethjesus.github.io/Carbon/Carbon.html">免費可行性評估</a></td>
+                            <td>
+                                <ul>
+                                    <li>企業低碳化可行性評估<sub>google表單</sub></li>
+                                    <li>產發署低碳化補助申請可行性評估</li>
+                                </ul>
+                            </td>
+                        </tr>
+            
+                        <!-- 3. 陽光空氣水減碳方案行，背景色為粉紅色 -->
+                        <tr class="solar-water-row">
+                            <td><a href="https://sethjesus.github.io/3elements/3elements.html">陽光空氣水減碳方案</a></td>
+                            <td>
+                                <ul>
+                                    <li>無線能耗足跡管理</li>
+                                    <li>有線能耗足跡管理</li>
+                                    <li>冰水主機節能管理(變頻)</li>
+                                    <li>冰水主機節能管理(類變頻)</li>
+                                    <li>空氣偵測與改善管理</li>
+                                    <li>智慧水表</li>
+
+                                </ul>
+                            </td>
+                        </tr>
+            
+                        <!-- 減碳效益 30% (3年) 行 -->
+                        <tr class="carbon-benefit-row">
+                            <td><a href="https://sethjesus.github.io/3elements/3elements.html">減碳效益 30% (3年)</a></td>
+                            <td>
+                                <ul>
+                                    <li>政策文件</li>
+                                </ul>
+                            </td>
+                        </tr>
+            
+                        <!-- 減碳方法 - 智慧化應用行 -->
+                        <tr class="carbon-method-row">
+                            <td><a href="https://sethjesus.github.io/3elements/3elements.html">減碳方法 - 智慧化應用</a></td>
+                            <td>
+                                <ul>
+                                    <li>EMS</li>
+                                    <li>AI 大數據應用</li>
+                                    <li>3+3減碳</li>
+                                </ul>
+                            </td>
+                        </tr>
+            
+                        <!-- 應用方案EDM行 -->
+                        <tr class="edm-row">
+                            <td><a href="https://sethjesus.github.io/3elements/3elements.html">應用方案EDM</a></td>
+                            <td>
+                                <ul>
+                                    <li>製造業/學校/飯店等</li>
+                                </ul>
+                            </td>
+                        </tr>
+            
+                        <!-- 低碳化顯著效益/客製化整合行 -->
+                        <tr class="custom-integrated-row">
+                            <td><a href="https://sethjesus.github.io/3elements/3elements.html">低碳化管理工具/客製化整合</a></td>
+                            <td>
+                                <ul>
+                                    <li>EMS 電力能耗/水量/空氣品質數據管理平台</li>
+                                    <li>大數據整合平台客製化</li>
+                                 </ul>
+                            </td>
+                        </tr>
+            
+                        <!-- 政府低碳化補助申請行 -->
+                        <tr class="govt-subsidy-row">
+                            <td><a href="https://sethjesus.github.io/3elements/3elements.html">政府低碳化補助申請</a></td>
+                            <td>
+                                <ul>
+                                    <li>產發署低碳化補助</li>
+                                    <li>商業發展署商業服務業智慧減碳補助</li>
+                                    <li>環境部</li> 
+                                    <li>教育部智慧化氣候友善校園</li>
+                                </ul>
+                            </td>
+                        </tr>
+            
+                        <!-- 4. 合作夥伴行，背景色為綠色 -->
+                        <tr class="partner-row">
+                            <td><a href="https://sethjesus.github.io/ISO/ISO.html">合作夥伴</a></td>
+                            <td>
+                                <ul>
+                                    <li>低碳化方案合作夥伴</li>
+                                    <li>其他周邊設備服務(P-Trde)</li>
+            
+                                </ul>
+                            </td>
+                        </tr>
+            
+                        <!-- 溫室氣體盤查輔導行，背景色為綠色 -->
+                        <tr class="ghg-guidance-row">
+                            <td><a href="https://sethjesus.github.io/Partner/Partner.html">溫室氣體盤查輔導<br>溫室氣體盤查流程文件產出</a></td>
+                            <td>
+                                <ul>
+                                    <li>TUV <sub>德國萊茵</sub>&ensp;SGS<sub>台灣檢驗科技</sub>&ensp; Afnor<sub>法國標準協會集團</sub></li>
+                                    <li>bsi <sub>英國標準協會</sub>&ensp; ARES<sub>亞瑞士國際驗證</sub>; Deloitte <sub>勤業會計師事務所</sub></li>
+                                </ul>
+                            </td>
+                        </tr>
+            
+                        
+                        <!-- 5. 粉綠色行 -->
+                        <tr class="light-blue-row">
+                            <td><a href="https://sethjesus.github.io/ISO/ISO.html">ISO&ensp;14064-1<br>ISO&ensp;14067<br>ISO&ensp;50001 </a></td>
+                            <td>
+                                <ul>
+                                    <li>TUV <sub>德國萊茵</sub>&ensp;SGS<sub>台灣檢驗科技</sub>&ensp; Afnor<sub>法國標準協會集團</sub></li>
+                                    <li>bsi <sub>英國標準協會</sub>&ensp; ARES<sub>亞瑞士國際驗證</sub></li>
+                                </ul>
+                            </td>
+                        </tr>
+            
+                       </tbody>
             </table>
         </section>
     </main>
