@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>景沛消息</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f8f9fa;
+            max-width: 90%;
+            margin: auto;
+            box-shadow: none; /* 移除陰影 */
+            border: none; /* 移除外圍邊框 */
+        }
+        h1 {
+            color: #333;
+        }
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 18px;
+            padding: 10px 0;
+        }
+        .marquee-text {
+            display: inline-block;
+            animation: marquee 15s linear infinite;
+            white-space: nowrap;
+        }
+        @keyframes marquee {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+        .media-container {
+            display: flex;
+            flex-direction: column; /* 讓圖片與影片上下排列 */
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* 控制上下間距 */
+            margin-top: 20px;
+        }
+        .media-container a,
+        .media-container iframe {
+            width: 600px; /* 放大圖片與影片的寬度 */
+            height: 340px;
+            border-radius: 10px;
+            border: 2px solid #333;
+            display: block;
+            margin: 0 auto;
+        }
+        .media-container a img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .news-container {
+            margin-top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .news-content {
+            max-width: 800px; /* 限制寬度，讓段落不會太長 */
+            text-align: left; /* 讓文字左對齊 */
+            line-height: 1.8; /* 增加行距，提高可讀性 */
+        }
+        .news-content p {
+            margin: 10px 0; /* 增加段落間距 */
+        }
+        .image-container p {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .image-container .hint {
+            font-size: 14px;
+            color: #ff0000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>景沛消息</h1>
+
+    <div class="marquee-container">
+        <span class="marquee-text">🌍 基隆市工策會召開年度委員會，聚焦招商引資與ESG策略落實！🌱</span>
+    </div>
+
+    <!-- 圖片與影片上下排列 -->
+    <div class="media-container">
+        <div class="image-container">
+            <p>基隆市工策會114年度第一次委員會</p>
+            <a href="https://www.idipckeelung.org.tw/portfolio/%e5%9f%ba%e9%9a%86%e5%b8%82%e5%b7%a5%e7%ad%96%e6%9c%83114%e5%b9%b4%e5%ba%a6%e7%ac%ac%e4%b8%80%e6%ac%a1%e5%a7%94%e5%93%a1%e6%9c%83/" target="_blank">
+                <img src="https://raw.githubusercontent.com/Sethjesus/Photo/main/Keelung.jpg" alt="基隆新聞圖片">
+            </a>
+            <p class="hint">👉 按下圖片查看新聞</p>
+        </div>
+
+        <iframe src="https://www.youtube.com/embed/fTCKND7Pbxc" allowfullscreen></iframe>
+    </div>
+
+    <div class="news-container">
+        <div class="news-content">
+            <p>基隆市工商發展投資策進會（工策會）於 2 月 17 日召開年度委員會，由市長謝國樑主持，討論招商引資與 ESG 策略。會中通過年度計畫，將重點推動投資環境優化、企業輔導、國際交流與工業區發展，以加速基隆產業升級，提升城市競爭力。</p>
+            <p><b>該小組聘請 UDM 景沛楊教授、執行長吳沛緹 擔任諮詢顧問，ESG諮詢小組成立：助力企業綠色轉型。</b></p>
+            <p>為響應全球永續發展趨勢，工策會提案成立ESG淨零低碳諮詢小組，協助基隆市企業適應中央碳費與減量政策。</p>
+            <p>該小組將由來自產、官、學界的6名專家組成，擔任無薪榮譽職務，並針對工業區與中小企業進行實務指導。此提案獲得全體委員一致通過，並隨即介紹諮詢小組的專家成員。</p>
+        </div>
+    </div>
+
+</body>
+</html>
