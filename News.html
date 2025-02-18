@@ -34,17 +34,23 @@
             from { transform: translateX(100%); }
             to { transform: translateX(-100%); }
         }
+        /* 設定媒體區塊的排版 */
         .media-container {
             display: flex;
-            flex-direction: column; /* 讓圖片與影片上下排列 */
             justify-content: center;
             align-items: center;
-            gap: 10px; /* 控制上下間距 */
+            gap: 10px; /* 控制左右間距 */
             margin-top: 20px;
+            flex-wrap: wrap; /* 允許自動換行 */
+        }
+        .media-container .image-container,
+        .media-container iframe {
+            flex: 1; /* 讓圖片和影片有相同的寬度 */
+            max-width: 600px; /* 限制最大寬度 */
         }
         .media-container a,
         .media-container iframe {
-            width: 600px; /* 放大圖片與影片的寬度 */
+            width: 100%;
             height: 340px;
             border-radius: 10px;
             border: 2px solid #333;
@@ -56,6 +62,18 @@
             height: 100%;
             object-fit: cover;
             border-radius: 10px;
+        }
+        /* 手機版（小螢幕）調整：強制上下排列 */
+        @media (max-width: 768px) {
+            .media-container {
+                flex-direction: column;
+                gap: 20px; /* 增加垂直間距，避免擁擠 */
+            }
+            .media-container .image-container,
+            .media-container iframe {
+                width: 100%; /* 滿版寬度 */
+                max-width: 100%; /* 確保不超過螢幕 */
+            }
         }
         .news-container {
             margin-top: 20px;
@@ -91,7 +109,7 @@
         <span class="marquee-text">🌍 基隆市工策會召開年度委員會，聚焦招商引資與ESG策略落實！🌱</span>
     </div>
 
-    <!-- 圖片與影片上下排列 -->
+    <!-- 圖片與影片自適應排列 -->
     <div class="media-container">
         <div class="image-container">
             <p>基隆市工策會114年度第一次委員會</p>
