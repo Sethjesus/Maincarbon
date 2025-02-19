@@ -2,45 +2,132 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>電費與碳排放計算器 (營業用電)</title>
+
     <style>
-        body { font-family: Arial, sans-serif; }
-        .container { display: flex; justify-content: space-between; align-items: flex-start; }
-        .inputs, .results { width: 48%; padding: 20px; border-radius: 8px; }
-        .results { background: #f9f9f9; }
-        .input-container { margin-bottom: 15px; }
-        input[type="text"] { width: 120px; text-align: right; }
-        button {
-            padding: 10px 20px; font-size: 16px; background-color: #4CAF50;
-            color: white; border: none; cursor: pointer; border-radius: 5px;
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4CAF50, #007BFF);
+            color: #333;
+            text-align: center;
+            padding: 20px;
         }
-        button:hover { background-color: #45a049; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        table, th, td { border: 1px solid black; text-align: center; padding: 8px; }
+
+        h2 {
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 45%;
+            min-width: 350px;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        input[type="text"] {
+            width: 120px;
+            text-align: right;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background: #ff9800;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #e68900;
+            transform: translateY(-2px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #007BFF;
+            color: white;
+        }
+
+        .results h3 {
+            background: #eee;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                flex-direction: column;
+            }
+            .card {
+                width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
     <h2>電費與碳排放計算器 (營業用電)</h2>
+    <H3>電費單電費應採累進級距計算  但碳盤查只針對用電大戶  所以對此累進級距數字忽略不計</H3>
     <div class="container">
-        <div class="inputs">
-            <p>請輸入每兩個月的帳單金額 (NTD)：</p>
+        <!-- 左側：輸入區 -->
+        <div class="card">
+            <h3>📌 請輸入每兩個月的帳單金額 (NTD)：</h3>
             <div id="input-fields"></div>
             <button onclick="calculateElectricity()">計算</button>
         </div>
 
-        <div class="results">
-            <h3>📊 每兩個月電費計算細節：</h3>
+        <!-- 右側：結果區 -->
+        <div class="card results">
+            <h3>📊 每兩個月電費估算：</h3>
             <table id="carbon-table">
                 <tr>
-                    <th>月份</th><th>總用電量 (kWh)</th><th>適用級距</th><th>適用費率</th>
-                    <th>電費</th><th>基本費</th><th>燃料費</th><th>總碳排量 (噸)</th><th>總計</th>
+                    <th>月份</th><th>總用電量 (kWh)</th><th>適用費率</th><th>電費 (NTD)</th><th>總碳排量 (噸)</th>
                 </tr>
             </table>
             <h3>🟢 **總電力消耗**: <span id="total_electricity">0</span> kWh</h3>
             <h3>🔴 **總碳排量**: <span id="carbon_emission">0</span> 噸</h3>
             <h3>⚠️ **總電費**: <span id="carbon_fee">0</span> NTD</h3>
-            <h3>🔥 **總燃料費**: <span id="fuel_fee">0</span> NTD</h3>
-            <h3>💰 **總基本費**: <span id="base_fee">0</span> NTD</h3>
+            <h3>🏢 **預估公司總碳排量**: <span id="company_carbon">0</span> 噸</h3>
         </div>
     </div>
 
@@ -56,86 +143,63 @@
 
         function initInputs() {
             const inputFields = document.getElementById("input-fields");
+            inputFields.innerHTML = ""; 
+
             month_pairs.forEach(pair => {
                 inputFields.innerHTML += `<div class="input-container">
-                    <label>${pair.label}: <input type="text" id="bill_${pair.id}" value="0"></label>
+                    <label>${pair.label}</label>
+                    <input type="text" id="bill_${pair.id}" value="1,000" oninput="formatNumber(this)">
                 </div>`;
             });
         }
 
-        function estimateElectricity(bill_amount, season) {
-            const rate = season === "summer" ? 7.43 : 5.83;  // 夏季 7.43，非夏季 5.83
-            const base_fee = 15;
-            const fuel_rate = 0.08;
-            const carbon_factor = 0.495;  // 碳排放係數 kg/kWh
-
-            let estimated_energy = (bill_amount - base_fee) / (rate + fuel_rate);
-            estimated_energy = Math.round(estimated_energy);
-
-            let fee = estimated_energy * rate;
-            let fuel = estimated_energy * fuel_rate;
-            let total_cost = fee + base_fee + fuel;
-
-            let adjustment = bill_amount - total_cost;
-            fee += adjustment;
-            total_cost = fee + base_fee + fuel;
-
-            let carbon_emission = estimated_energy * carbon_factor / 1000;
-
-            return {
-                energy_used: estimated_energy,
-                rate: rate.toFixed(2),
-                fee: fee.toFixed(2),
-                fuel: fuel.toFixed(2),
-                carbon_emission: carbon_emission.toFixed(4),
-                total_cost: total_cost.toFixed(2)
-            };
+        function formatNumber(input) {
+            let value = input.value.replace(/,/g, '');
+            if (!isNaN(value) && value !== "") {
+                input.value = parseFloat(value).toLocaleString('zh-TW');
+            } else {
+                input.value = "";
+            }
         }
 
         function calculateElectricity() {
             let total_electricity = 0;
             let total_fee = 0;
-            let total_fuel = 0;
-            let total_base = 0;
             let total_carbon = 0;
 
             const table = document.getElementById("carbon-table");
             table.innerHTML = `<tr>
-                <th>月份</th><th>總用電量 (kWh)</th><th>適用級距</th><th>適用費率</th>
-                <th>電費</th><th>基本費</th><th>燃料費</th><th>總碳排量 (噸)</th><th>總計</th>
+                <th>月份</th><th>總用電量 (kWh)</th><th>適用費率</th><th>電費 (NTD)</th><th>總碳排量 (噸)</th>
             </tr>`;
 
             month_pairs.forEach(pair => {
-                let bill_amount = parseFloat(document.getElementById(`bill_${pair.id}`).value) || 0;
-                let result = estimateElectricity(bill_amount, pair.season);
+                let bill_input = document.getElementById(`bill_${pair.id}`).value.replace(/,/g, '');
+                let bill_amount = parseFloat(bill_input) || 0;
+                let rate = pair.season === "summer" ? 7.43 : 5.83;
+                let estimated_energy = bill_amount / rate;
+                let carbon_emission = estimated_energy * 0.495 / 1000;
+                let fee = estimated_energy * rate;
 
-                total_electricity += parseFloat(result.energy_used);
-                total_fee += parseFloat(result.fee);
-                total_fuel += parseFloat(result.fuel);
-                total_carbon += parseFloat(result.carbon_emission);
-                total_base += 15;
+                total_electricity += estimated_energy;
+                total_fee += fee;
+                total_carbon += carbon_emission;
 
                 table.innerHTML += `<tr>
                     <td>${pair.label}</td>
-                    <td>${result.energy_used}</td>
-                    <td>1000~Infinity kWh</td>
-                    <td>${result.rate} 元/kWh</td>
-                    <td>${result.fee}</td>
-                    <td>15</td>
-                    <td>${result.fuel}</td>
-                    <td>${result.carbon_emission}</td>
-                    <td>${bill_amount}</td>
+                    <td>${estimated_energy.toFixed(2).toLocaleString('zh-TW')}</td>
+                    <td>${rate.toFixed(2)}</td>
+                    <td>${fee.toFixed(2).toLocaleString('zh-TW')}</td>
+                    <td>${carbon_emission.toFixed(4).toLocaleString('zh-TW')}</td>
                 </tr>`;
             });
 
-            document.getElementById("total_electricity").innerText = `${total_electricity.toFixed(2)} `;
-            document.getElementById("carbon_emission").innerText = `${total_carbon.toFixed(4)} `;
-            document.getElementById("carbon_fee").innerText = `${total_fee.toFixed(2)} `;
-            document.getElementById("fuel_fee").innerText = `${total_fuel.toFixed(2)} `;
-            document.getElementById("base_fee").innerText = `${total_base.toFixed(2)} `;
+            document.getElementById("total_electricity").innerText = total_electricity.toFixed(2).toLocaleString('zh-TW');
+            document.getElementById("carbon_emission").innerText = total_carbon.toFixed(4).toLocaleString('zh-TW');
+            document.getElementById("carbon_fee").innerText = total_fee.toFixed(2).toLocaleString('zh-TW');
+            document.getElementById("company_carbon").innerText = (total_carbon / 0.7).toFixed(4).toLocaleString('zh-TW');
         }
 
-        window.onload = initInputs;
+        document.addEventListener("DOMContentLoaded", initInputs);
     </script>
 </body>
 </html>
