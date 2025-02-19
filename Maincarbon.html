@@ -239,50 +239,133 @@ section ol li {
     <body>
     
     <!-- 居中的 Logo 和文字 -->
-    <!-- 居中的 Logo、文字和按鈕 -->
-<div class="content-container">
-    <a href="https://sethjesus.github.io/JPESG/JP%20ESG.html">
-        <img src="https://github.com/Sethjesus/Photo/blob/main/UDM%20New%20Logo.jpg?raw=true" alt="公司Logo" style="width: 60px;">
-    </a>
-    <div class="text-content">Access English content</div>
+    <div class="content-container">
+        <!-- 公司 Logo -->
+        <a href="https://sethjesus.github.io/JPESG/JP%20ESG.html">
+            <img src="https://github.com/Sethjesus/Photo/blob/main/UDM%20New%20Logo.jpg?raw=true" alt="公司Logo" style="width: 60px;">
+        </a>
     
-    <!-- 新增 "景沛新聞" 按鈕 -->
-    <a href="https://sethjesus.github.io/Maincarbon/News.html" class="news-button">景沛新聞發佈</a>
-</div>
-
-<style>
-    /* 內容容器 (讓 Logo、文字、按鈕並排) */
-    .content-container {
-        display: flex;
-        justify-content: center; /* 水平居中 */
-        align-items: center; /* 垂直居中 */
-        gap: 15px; /* 控制圖片、文字和按鈕之間的距離 */
-        text-align: center;
-    }
-
-    .text-content {
-        font-size: 14px;
-        color: rgb(12, 12, 12);
-        font-weight: bold;
-    }
-
-    /* 景沛新聞 按鈕樣式 */
-    .news-button {
-        background-color: #007BFF; /* 藍色背景 */
-        color: white;
-        padding: 8px 15px;
-        text-decoration: none;
-        border-radius: 5px;
-        font-size: 14px;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-    }
-
-    /* 按鈕滑鼠懸停效果 */
-    .news-button:hover {
-        background-color: #0056b3; /* 深藍色 */
-    }
-</style>
+        <div class="text-content">Access English content</div>
+    
+        <!-- 景沛新聞發佈按鈕 -->
+        <a href="https://sethjesus.github.io/Maincarbon/News.html" class="news-button">
+            景沛新聞發佈
+            <div class="click-animation">
+                <svg class="click-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="black" stroke-width="2" fill="yellow"/>
+                    <path d="M12 7V13" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M9 10L12 13L15 10" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span class="click-text">請按下</span>
+            </div>
+        </a>
+    
+        <!-- 估算碳排放按鈕 -->
+        <a href="https://sethjesus.github.io/Maincarbon/Charge.html" class="calculator-button">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                <rect width="24" height="24" rx="4" fill="#007BFF"/>
+                <rect x="5" y="5" width="14" height="4" fill="white"/>
+                <rect x="5" y="11" width="4" height="4" fill="white"/>
+                <rect x="10" y="11" width="4" height="4" fill="white"/>
+                <rect x="15" y="11" width="4" height="4" fill="white"/>
+                <rect x="5" y="16" width="4" height="4" fill="white"/>
+                <rect x="10" y="16" width="4" height="4" fill="white"/>
+                <rect x="15" y="16" width="4" height="4" fill="white"/>
+            </svg>
+            <span>估算碳排放</span>
+            <div class="click-animation">
+                <svg class="click-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="black" stroke-width="2" fill="yellow"/>
+                    <path d="M12 7V13" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M9 10L12 13L15 10" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span class="click-text">請按下</span>
+            </div>
+        </a>
+    </div>
+    
+    <style>
+        /* 內容容器 */
+        .content-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-align: center;
+        }
+    
+        .text-content {
+            font-size: 14px;
+            color: rgb(25, 2, 2);
+            font-weight: bold;
+        }
+    
+        /* 按鈕通用樣式 */
+        .news-button, .calculator-button {
+            background-color: rgba(242, 242, 242, 0.8);
+            color: rgb(12, 12, 12);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+    
+        /* 按鈕滑鼠懸停效果 */
+        .news-button:hover, .calculator-button:hover {
+            background-color: #ff9800; /* 明顯的橘色 */
+            transform: translateY(-3px);
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+        }
+    
+        /* 手指點擊圖示 */
+        .click-animation {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            position: absolute;
+            top: -30px; /* 讓圖示顯示在按鈕上方 */
+            right: -10px;
+            animation: bounce 1s infinite alternate;
+        }
+    
+        .click-icon {
+            width: 30px;
+            height: 30px;
+            fill: yellow;
+            border: 2px solid black;
+            border-radius: 50%;
+            box-shadow: 0px 0px 10px rgba(255, 255, 0, 0.8);
+        }
+    
+        .click-text {
+            font-size: 14px;
+            font-weight: bold;
+            color: red;
+            animation: blink 1s infinite;
+        }
+    
+        /* 閃爍動畫 */
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    
+        /* 彈跳動畫 */
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
+        }
+    
+    
+    
 
     
     </body>
