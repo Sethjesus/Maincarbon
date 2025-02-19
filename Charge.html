@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>電費與碳排放計算器</title>
+    <title>電費與碳排放計算器 (營業用電)</title>
     <style>
         body { font-family: Arial, sans-serif; }
         .container { display: flex; justify-content: space-between; align-items: flex-start; }
@@ -20,7 +20,7 @@
     </style>
 </head>
 <body>
-    <h2>電費與碳排放計算器</h2>
+    <h2>電費與碳排放計算器 (營業用電)</h2>
     <div class="container">
         <div class="inputs">
             <p>請輸入每兩個月的帳單金額 (NTD)：</p>
@@ -64,23 +64,23 @@
         }
 
         function estimateElectricity(bill_amount, season) {
-            const rate = season === "summer" ? 8.46 : 6.63;  // 夏季 8.46，非夏季 6.63
+            const rate = season === "summer" ? 7.43 : 5.83;  // 夏季 7.43，非夏季 5.83
             const base_fee = 15;
             const fuel_rate = 0.08;
             const carbon_factor = 0.495;  // 碳排放係數 kg/kWh
 
             let estimated_energy = (bill_amount - base_fee) / (rate + fuel_rate);
-            estimated_energy = Math.round(estimated_energy); // 四捨五入確保整數
+            estimated_energy = Math.round(estimated_energy);
 
             let fee = estimated_energy * rate;
             let fuel = estimated_energy * fuel_rate;
             let total_cost = fee + base_fee + fuel;
 
             let adjustment = bill_amount - total_cost;
-            fee += adjustment; // 修正誤差
-            total_cost = fee + base_fee + fuel; 
+            fee += adjustment;
+            total_cost = fee + base_fee + fuel;
 
-            let carbon_emission = estimated_energy * carbon_factor / 1000; // 轉換為噸
+            let carbon_emission = estimated_energy * carbon_factor / 1000;
 
             return {
                 energy_used: estimated_energy,
