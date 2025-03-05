@@ -12,8 +12,8 @@
             background-color: #f8f9fa;
             max-width: 90%;
             margin: auto;
-            box-shadow: none; /* 移除陰影 */
-            border: none; /* 移除外圍邊框 */
+            box-shadow: none;
+            border: none;
         }
         h1 {
             color: #333;
@@ -34,45 +34,37 @@
             from { transform: translateX(100%); }
             to { transform: translateX(-100%); }
         }
-
-        /* 圖片與影片的佈局 */
         .media-container {
             display: flex;
-            flex-direction: column; /* 預設手機版：上下排列 */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 15px; /* 控制間距 */
+            gap: 15px;
             margin-top: 20px;
         }
-
         .media-container iframe,
         .media-container .image-container {
             width: 100%;
-            max-width: 600px; /* 限制最大寬度 */
+            max-width: 600px;
             height: auto;
-            aspect-ratio: 16 / 9; /* 確保影片與圖片比例一致 */
+            aspect-ratio: 16 / 9;
         }
-
         .media-container iframe {
             border-radius: 10px;
             border: 2px solid #333;
         }
-
         .media-container a img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 10px;
         }
-
-        /* 電腦版：YouTube 影片與圖片左右並排 */
         @media (min-width: 768px) {
             .media-container {
-                flex-direction: row; /* 改為橫向排列 */
-                gap: 20px; /* 保持適當距離 */
+                flex-direction: row;
+                gap: 20px;
             }
         }
-
         .news-container {
             margin-top: 20px;
             width: 100%;
@@ -80,12 +72,12 @@
             justify-content: center;
         }
         .news-content {
-            max-width: 800px; /* 限制寬度，讓段落不會太長 */
-            text-align: left; /* 讓文字左對齊 */
-            line-height: 1.8; /* 增加行距，提高可讀性 */
+            max-width: 800px;
+            text-align: left;
+            line-height: 1.8;
         }
         .news-content p {
-            margin: 10px 0; /* 增加段落間距 */
+            margin: 10px 0;
         }
         .image-container p {
             font-size: 18px;
@@ -100,14 +92,44 @@
     </style>
 </head>
 <body>
-
     <h1>🌱最新消息🔋</h1>
+    <h2>中華民國114年2月19日</h2>
+    
 
     <div class="marquee-container">
-        <span class="marquee-text">🌍 基隆市工策會召開年度委員會，聚焦招商引資與ESG策略落實！🌱</span>
+        <span class="marquee-text">🌍 UDM景沛與TUV簽訂ISO-14064合作協議，深化ESG培訓與技術交流！🌱</span>
     </div>
 
-    <!-- 影片在上，圖片在下 -->
+    <div class="news-container">
+        <div class="news-content">
+            <p><b>2月19日 UDM景沛與TUV 簽訂 ISO-14064 合作協議，深化 ESG 培訓與技術交流！</b></p>
+            <p>UDM 景沛與 TUV 於 2 月 19 日正式簽署 ISO-14064 合作協議，雙方將攜手推動 ESG 碳盤查標準化與培訓課程，並強化企業碳排放管理與永續發展能力。</p>
+            <p>合作內容包括：
+                <ul>
+                    <li>提供企業 ISO-14064 碳盤查輔導與驗證服務</li>
+                    <li>開設 ESG 永續發展與碳管理課程</li>
+                    <li>推動產業低碳轉型與國際認證標準接軌</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <div class="media-container">
+        <div class="image-container">
+            <p>UDM景沛辦公室會談</p>
+            <a href="https://github.com/Sethjesus/Maincarbon/blob/main/TUV1.jpg" target="_blank">
+                <img src="https://github.com/Sethjesus/Maincarbon/blob/main/TUV1.jpg?raw=true" alt="UDM景沛辦公室">
+            </a>
+        </div>
+        <div class="image-container">
+            <p>簽署合作協議現場</p>
+            <a href="https://github.com/Sethjesus/Maincarbon/blob/main/TUVa.jpg" target="_blank">
+                <img src="https://github.com/Sethjesus/Maincarbon/blob/main/TUVa.jpg?raw=true" alt="TUV辦公室">
+            </a>
+        </div>
+    </div>
+    <br><BR>
+    <h2>中華民國114年2月19日</h2>
     <div class="media-container">
         <iframe src="https://www.youtube.com/embed/fTCKND7Pbxc" allowfullscreen></iframe>
 
@@ -128,6 +150,5 @@
             <p>該小組將由來自產、官、學界的6名專家組成，擔任無薪榮譽職務，並針對工業區與中小企業進行實務指導。此提案獲得全體委員一致通過，並隨即介紹諮詢小組的專家成員。</p>
         </div>
     </div>
-
 </body>
 </html>
