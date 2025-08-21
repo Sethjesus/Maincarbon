@@ -89,9 +89,27 @@
             color: #ff0000;
             font-weight: bold;
         }
+        /* 左上角 logo */
+.logo {
+    position: absolute;   /* 固定在頁面左上角 */
+    top: 15px;
+    left: 15px;
+    width: 60px;
+    animation: floatLogo 3s ease-in-out infinite; /* 動態效果 */
+}
+
+@keyframes floatLogo {
+    0% { transform: scale(1) translateY(0px); }
+    50% { transform: scale(1.1) translateY(-5px); }
+    100% { transform: scale(1) translateY(0px); }
+}
+
     </style>
 </head>
 <body>
+<h1><img src="https://github.com/Sethjesus/Photo/blob/main/UDM%20New%20Logo.jpg?raw=true" 
+     alt="公司Logo" class="logo">
+</h1>    
 <h1>🌱最新消息🔋</h1>
 <h2>中華民國114年8月8日</h2>
 
