@@ -1,233 +1,214 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌱UDM景煬ESG🌍</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background-color: #f8f9fa;
-            max-width: 90%;
-            margin: auto;
-            box-shadow: none;
-            border: none;
-        }
-        h1 {
-            color: #333;
-        }
-        .marquee-container {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-            font-size: 18px;
-            padding: 10px 0;
-        }
-        .marquee-text {
-            display: inline-block;
-            animation: marquee 15s linear infinite;
-            white-space: nowrap;
-        }
-        @keyframes marquee {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
-        }
-        .media-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .media-container iframe,
-        .media-container .image-container {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            aspect-ratio: 16 / 9;
-        }
-        .media-container iframe {
-            border-radius: 10px;
-            border: 2px solid #333;
-        }
-        .media-container a img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        @media (min-width: 768px) {
-            .media-container {
-                flex-direction: row;
-                gap: 20px;
-            }
-        }
-        .news-container {
-            margin-top: 20px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-        .news-content {
-            max-width: 800px;
-            text-align: left;
-            line-height: 1.8;
-        }
-        .news-content p {
-            margin: 10px 0;
-        }
-        .image-container p {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .image-container .hint {
-            font-size: 16px;
-            color: #ff0000;
-            font-weight: bold;
-        }
-        /* 左上角 logo */
-.logo {
-    position: absolute;   /* 固定在頁面左上角 */
-    top: 15px;
-    left: 15px;
-    width: 60px;
-    animation: floatLogo 3s ease-in-out infinite; /* 動態效果 */
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌱UDM景煬ESG🌍</title>
 
-@keyframes floatLogo {
-    0% { transform: scale(1) translateY(0px); }
-    50% { transform: scale(1.1) translateY(-5px); }
-    100% { transform: scale(1) translateY(0px); }
-}
+  <style>
+    /* 全站字型與版面 */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;               /* 已預留與左上角 LOGO 的間距 */
+      background-color: #f8f9fa;
+      max-width: 90%;
+      margin: auto;
+      box-shadow: none;
+      border: none;
+    }
+    h1 { color: #333; }
 
-    </style>
+    /* 連結與圖片統一用手指游標、移除底線 */
+    a, a img, .logo { cursor: pointer; }
+    a { text-decoration: none; }
+    h1 a { display: inline-block; }
+
+    /* 左上角 LOGO（固定位置＋浮動動畫） */
+    .logo {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      height: 60px;          /* 如需改寬度，改成 width:60px;height:auto; */
+      width: auto;
+      animation: floatLogo 3s ease-in-out infinite;
+    }
+    @keyframes floatLogo {
+      0%   { transform: scale(1) translateY(0px); }
+      50%  { transform: scale(1.1) translateY(-5px); }
+      100% { transform: scale(1) translateY(0px); }
+    }
+    /* LOGO 點按的微縮放回饋 */
+    .logo:active { animation: none; transform: scale(.95); transition: transform .08s ease-out; }
+
+    /* 手指回首頁按鈕：指向 LOGO（LOGO 在左、手指在右） */
+    #home-finger{
+      position:absolute;
+      left: calc(15px + 60px + 20px); /* LOGO left 15px + 寬60px + 間距10px */
+      top: 27px;                       /* 與 60px 高的 LOGO 垂直置中 */
+      width:36px; height:36px;
+      border-radius:999px;
+      background:#ffffff;
+      border:2px solid #1f6b4f;
+      display:flex; align-items:center; justify-content:center;
+      font-size:20px;
+      text-decoration:none;
+      box-shadow:0 4px 10px rgba(0,0,0,.15);
+      z-index:10000;
+      transition:transform .15s ease, filter .15s ease;
+      animation:homePulse 1.6s ease-in-out infinite;
+    }
+    #home-finger:hover{ filter:brightness(1.05); transform:translateY(-1px) scale(1.04); }
+    #home-finger:active{ transform:scale(.95); }
+    @keyframes homePulse{ 0%{transform:scale(1);} 50%{transform:scale(1.06);} 100%{transform:scale(1);} }
+    @media (max-width: 480px){
+      #home-finger{ left: calc(15px + 60px + 6px); width:32px; height:32px; font-size:18px; top: 29px; }
+    }
+
+    /* 跑馬燈 */
+    .marquee-container { width:100%; overflow:hidden; white-space:nowrap; font-size:18px; padding:10px 0; }
+    .marquee-text { display:inline-block; animation: marquee 15s linear infinite; white-space:nowrap; }
+    @keyframes marquee { from { transform: translateX(100%);} to { transform: translateX(-100%);} }
+
+    /* 多媒體區塊 */
+    .media-container {
+      display:flex; flex-direction:column; justify-content:center; align-items:center;
+      gap:15px; margin-top:20px;
+    }
+    .media-container iframe,
+    .media-container .image-container {
+      width:100%; max-width:600px; height:auto; aspect-ratio:16 / 9;
+    }
+    .media-container iframe { border-radius:10px; border:2px solid #333; }
+    .media-container a img {
+      width:100%; height:100%; object-fit:cover; border-radius:10px;
+    }
+    @media (min-width: 768px) { .media-container { flex-direction:row; gap:20px; } }
+
+    /* 新聞區塊 */
+    .news-container { margin-top:20px; width:100%; display:flex; justify-content:center; }
+    .news-content { max-width:800px; text-align:left; line-height:1.8; }
+    .news-content p { margin:10px 0; }
+
+    /* 圖片說明與提示 */
+    .image-container p { font-size:18px; font-weight:bold; margin-bottom:5px; }
+    .image-container .hint { font-size:16px; color:#ff0000; font-weight:bold; }
+
+    /* 合作夥伴大圖淡縮放動畫 */
+    .alliance-image { text-align:center; margin:20px 0; }
+    .alliance-image img {
+      max-width:100%; height:auto; border-radius:8px; animation:pulseZoom 3s ease-in-out infinite;
+    }
+    @keyframes pulseZoom { 0%{transform:scale(1);} 50%{transform:scale(1.05);} 100%{transform:scale(1);} }
+  </style>
 </head>
+
 <body>
-<h1><img src="https://github.com/Sethjesus/Photo/blob/main/UDM%20New%20Logo.jpg?raw=true" 
-     alt="公司Logo" class="logo">
-</h1>    
-<h1>🌱最新消息🔋</h1>
-<h2>中華民國114年8月8日</h2>
+  <!-- 左上角可點 LOGO（新分頁開啟官網） -->
+  <h1>
+    <a href="https://jpesg.netlify.app/" target="_blank" rel="noopener">
+      <img src="https://github.com/Sethjesus/Photo/blob/main/UDM%20New%20Logo.jpg?raw=true"
+           alt="公司Logo" class="logo">
+    </a>
+  </h1>
 
-<div class="marquee-container">
+  <!-- 手指回首頁按鈕（指向 LOGO） -->
+  <a id="home-finger" href="https://jpesg.netlify.app/" target="_blank" rel="noopener" title="回首頁" aria-label="回首頁">👈</a>
+
+  <h1>🌱最新消息🔋</h1>
+  <h2>中華民國114年8月8日</h2>
+
+  <div class="marquee-container">
     <span class="marquee-text">🌍 UDM景煬科技擴大合作夥伴，共同開拓淨零碳排事業！🌱</span>
-</div>
+  </div>
 
-<div class="news-container">
+  <div class="news-container">
     <div class="news-content">
-        <p><b>UDM 景煬科技擴大合作夥伴　攜手共創淨零碳排新時代！</b></p>
-        <p>作為低碳化解決方案領導者的 <b>UDM 景煬科技</b>，近日宣布擴展合作陣容，新增顧問公司、軟體公司及控股集團等多方策略夥伴。透過跨領域的資源整合與協同合作，景煬科技將加速推動淨零碳排相關事業的發展，強化創新能量與落地應用，攜手實現永續低碳的未來。</p>
+      <p><b>UDM 景煬科技擴大合作夥伴　攜手共創淨零碳排新時代！</b></p>
+      <p>作為低碳化解決方案領導者的 <b>UDM 景煬科技</b>，近日宣布擴展合作陣容，新增顧問公司、軟體公司及控股集團等多方策略夥伴。透過跨領域的資源整合與協同合作，景煬科技將加速推動淨零碳排相關事業的發展，強化創新能量與落地應用，攜手實現永續低碳的未來。</p>
 
-        <p>合作夥伴涵蓋：
-            <ul>
-                <li>儲能技術</li>
-                <li>智慧電力管理</li>
-                <li>顧問輔導</li>
-                <li>文化教育</li>
-                <li>政府交通部門</li>
-            </ul>
-        </p>
+      <p>合作夥伴涵蓋：
+        <ul>
+          <li>儲能技術</li>
+          <li>智慧電力管理</li>
+          <li>顧問輔導</li>
+          <li>文化教育</li>
+          <li>政府交通部門</li>
+        </ul>
+      </p>
 
-        <p>此次合作陣容包括：
-            <ul>
-                <li>瓦特先生 Mr.Watt</li>
-                <li>義守大學 I-Shou University</li>
-                <li>WR Consultancy 佳典管理顧問</li>
-                <li>Green Harvest</li>
-                <li>永旭國際顧問</li>
-            </ul>
-        </p>
+      <p>此次合作陣容包括：
+        <ul>
+          <li>瓦特先生 Mr.Watt</li>
+          <li>義守大學 I-Shou University</li>
+          <li>WR Consultancy 佳典管理顧問</li>
+          <li>Green Harvest</li>
+          <li>永旭國際顧問</li>
+        </ul>
+      </p>
 
-        <!-- 合作夥伴圖片 -->
-        <div class="alliance-image">
-            <img src="https://raw.githubusercontent.com/Sethjesus/Maincarbon/main/Alliance.jpg" alt="合作夥伴" />
-        </div>
+      <!-- 合作夥伴圖片 -->
+      <div class="alliance-image">
+        <img src="https://raw.githubusercontent.com/Sethjesus/Maincarbon/main/Alliance.jpg" alt="合作夥伴" />
+      </div>
 
-        <p>景煬科技表示，未來將持續與各界夥伴展開深度合作，從能源技術、數據平台到產業應用，共同打造低碳永續的全新格局，推動臺灣邁向 <b>淨零碳排</b> 目標。</p>
+      <p>景煬科技表示，未來將持續與各界夥伴展開深度合作，從能源技術、數據平台到產業應用，共同打造低碳永續的全新格局，推動臺灣邁向 <b>淨零碳排</b> 目標。</p>
     </div>
-</div>
+  </div>
 
-<!-- 動畫效果 CSS -->
-<style>
-.alliance-image {
-    text-align: center;
-    margin: 20px 0;
-}
+  <h2>中華民國114年2月19日</h2>
 
-.alliance-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    animation: pulseZoom 3s ease-in-out infinite;
-}
-
-@keyframes pulseZoom {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-</style>
-
-
-   
-    <h2>中華民國114年2月19日</h2>
-    
-
-   
-
-    <div class="news-container">
-        <div class="news-content">
-            <p><b>2月19日 UDM景煬與TUV 簽訂 ISO-14064 合作協議，深化 ESG 培訓與技術交流！</b></p>
-            <p>UDM 景煬與 TUV 於 2 月 19 日正式簽署 ISO-14064 合作協議，雙方將攜手推動 ESG 碳盤查標準化與培訓課程，並強化企業碳排放管理與永續發展能力。</p>
-            <p>合作內容包括：
-                <ul>
-                    <li>提供企業 ISO-14064 碳盤查輔導與驗證服務</li>
-                    <li>開設 ESG 永續發展與碳管理課程</li>
-                    <li>推動產業低碳轉型與國際認證標準接軌</li>
-                </ul>
-            </p>
-        </div>
+  <div class="news-container">
+    <div class="news-content">
+      <p><b>2月19日 UDM景煬與TUV 簽訂 ISO-14064 合作協議，深化 ESG 培訓與技術交流！</b></p>
+      <p>UDM 景煬與 TUV 於 2 月 19 日正式簽署 ISO-14064 合作協議，雙方將攜手推動 ESG 碳盤查標準化與培訓課程，並強化企業碳排放管理與永續發展能力。</p>
+      <p>合作內容包括：
+        <ul>
+          <li>提供企業 ISO-14064 碳盤查輔導與驗證服務</li>
+          <li>開設 ESG 永續發展與碳管理課程</li>
+          <li>推動產業低碳轉型與國際認證標準接軌</li>
+        </ul>
+      </p>
     </div>
+  </div>
 
-    <div class="media-container">
-        <div class="image-container">
-            <p>UDM景煬辦公室會談</p>
-            <a href="https://github.com/Sethjesus/Maincarbon/blob/main/TUV1.jpg" target="_blank">
-                <img src="https://github.com/Sethjesus/Maincarbon/blob/main/TUV1.jpg?raw=true" alt="UDM景煬辦公室">
-            </a>
-        </div>
-        <div class="image-container">
-            <p>簽署合作協議現場</p>
-            <a href="https://github.com/Sethjesus/Maincarbon/blob/main/TUVa.jpg" target="_blank">
-                <img src="https://github.com/Sethjesus/Maincarbon/blob/main/TUVa.jpg?raw=true" alt="TUV辦公室">
-            </a>
-        </div>
+  <div class="media-container">
+    <div class="image-container">
+      <p>UDM景煬辦公室會談</p>
+      <a href="https://github.com/Sethjesus/Maincarbon/blob/main/TUV1.jpg" target="_blank" rel="noopener">
+        <img src="https://github.com/Sethjesus/Maincarbon/blob/main/TUV1.jpg?raw=true" alt="UDM景煬辦公室">
+      </a>
     </div>
-    <br><BR>
-    <h2>中華民國114年2月19日</h2>
-    <div class="media-container">
-        <iframe src="https://www.youtube.com/embed/fTCKND7Pbxc" allowfullscreen></iframe>
+    <div class="image-container">
+      <p>簽署合作協議現場</p>
+      <a href="https://github.com/Sethjesus/Maincarbon/blob/main/TUVa.jpg" target="_blank" rel="noopener">
+        <img src="https://github.com/Sethjesus/Maincarbon/blob/main/TUVa.jpg?raw=true" alt="TUV辦公室">
+      </a>
+    </div>
+  </div>
 
-        <div class="image-container">
-            <p>基隆市工策會114年度第一次委員會</p>
-            <a href="https://www.idipckeelung.org.tw/portfolio/%e5%9f%ba%e9%9a%86%e5%b8%82%e5%b7%a5%e7%ad%96%e6%9c%83114%e5%b9%b4%e5%ba%a6%e7%ac%ac%e4%b8%80%e6%ac%a1%e5%a7%94%e5%93%a1%e6%9c%83/" target="_blank">
-                <img src="https://raw.githubusercontent.com/Sethjesus/Photo/main/Keelung.jpg" alt="基隆新聞圖片">
-            </a>
-            <p class="hint">👉 按下圖片查看新聞</p>
-        </div>
-    </div>
+  <br><br>
 
-    <div class="news-container">
-        <div class="news-content">
-            <p>基隆市工商發展投資策進會（工策會）於 2 月 17 日召開年度委員會，由市長謝國樑主持，討論招商引資與 ESG 策略。會中通過年度計畫，將重點推動投資環境優化、企業輔導、國際交流與工業區發展，以加速基隆產業升級，提升城市競爭力。</p>
-            <p><b>該小組聘請 UDM 景煬楊教授、執行長吳沛緹 擔任諮詢顧問，ESG諮詢小組成立：助力企業綠色轉型。</b></p>
-            <p>為響應全球永續發展趨勢，工策會提案成立ESG淨零低碳諮詢小組，協助基隆市企業適應中央碳費與減量政策。</p>
-            <p>該小組將由來自產、官、學界的6名專家組成，擔任無薪榮譽職務，並針對工業區與中小企業進行實務指導。此提案獲得全體委員一致通過，並隨即介紹諮詢小組的專家成員。</p>
-        </div>
+  <h2>中華民國114年2月19日</h2>
+  <div class="media-container">
+    <iframe src="https://www.youtube.com/embed/fTCKND7Pbxc" allowfullscreen></iframe>
+
+    <div class="image-container">
+      <p>基隆市工策會114年度第一次委員會</p>
+      <a href="https://www.idipckeelung.org.tw/portfolio/%e5%9f%ba%e9%9a%86%e5%b8%82%e5%b7%a5%e7%ad%96%e6%9c%83114%e5%b9%b4%e5%ba%a6%e7%ac%ac%e4%b8%80%e6%ac%a1%e5%a7%94%e5%93%a1%e6%9c%83/" target="_blank" rel="noopener">
+        <img src="https://raw.githubusercontent.com/Sethjesus/Photo/main/Keelung.jpg" alt="基隆新聞圖片">
+      </a>
+      <p class="hint">👉 按下圖片查看新聞</p>
     </div>
+  </div>
+
+  <div class="news-container">
+    <div class="news-content">
+      <p>基隆市工商發展投資策進會（工策會）於 2 月 17 日召開年度委員會，由市長謝國樑主持，討論招商引資與 ESG 策略。會中通過年度計畫，將重點推動投資環境優化、企業輔導、國際交流與工業區發展，以加速基隆產業升級，提升城市競爭力。</p>
+      <p><b>該小組聘請 UDM 景煬楊教授、執行長吳沛緹 擔任諮詢顧問，ESG諮詢小組成立：助力企業綠色轉型。</b></p>
+      <p>為響應全球永續發展趨勢，工策會提案成立ESG淨零低碳諮詢小組，協助基隆市企業適應中央碳費與減量政策。</p>
+      <p>該小組將由來自產、官、學界的6名專家組成，擔任無薪榮譽職務，並針對工業區與中小企業進行實務指導。此提案獲得全體委員一致通過，並隨即介紹諮詢小組的專家成員。</p>
+    </div>
+  </div>
 </body>
 </html>
