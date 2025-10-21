@@ -2,390 +2,211 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🌱UDM景煬ESG🌍</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>🌱UDM景煬ESG🌍（行動版優化）</title>
   <style>
-     /* 新增動畫效果 */
-    @keyframes fadeInUp {
-      0% { opacity:0; transform:translateY(40px); }
-      100% { opacity:1; transform:translateY(0); }
-    }
-    @keyframes zoomIn {
-      0% { opacity:0; transform:scale(0.9); }
-      100% { opacity:1; transform:scale(1); }
-    }
+    /* ===== Reset & base ===== */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, "Microsoft JhengHei", Arial, sans-serif; background:#f8f9fa; color:#222}
+    img{max-width:100%; height:auto; display:block}
+    a{color:inherit; text-decoration:none}
 
-    /* 滑鼠懸停圖片互動 */
-    .image-container a img:hover {
-      transform:scale(1.05);
-      box-shadow:0 12px 24px rgba(0,0,0,0.35);
+    /* ===== Layout: 用固定高度的頂部列，避免絕對定位遮擋內容 ===== */
+    .site-header{
+      position:sticky; top:0; z-index:1000;
+      background:rgba(255,255,255,.9);
+      backdrop-filter:saturate(140%) blur(8px);
+      border-bottom:1px solid #e9ecef;
     }
+    .header-inner{
+      max-width:1100px; margin:0 auto; padding:10px 14px; display:flex; align-items:center; gap:12px;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .brand img{height:40px; width:auto; border-radius:6px}
+    .brand-title{font-weight:700; font-size:clamp(16px, 2.8vw, 18px)}
 
-    /* 加上亮光閃動邊框動畫 */
-    .image-container a img {
-      position:relative;
-      border:3px solid #00c853;
-      animation:borderGlow 3s infinite alternate;
-      transition: transform .3s ease, box-shadow .3s ease;
-      border-radius:10px;
+    .header-actions{margin-left:auto; display:flex; align-items:center; gap:10px}
+    .home-finger{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:34px; height:34px; border-radius:999px; border:2px solid #1f6b4f; background:#fff;
+      box-shadow:0 2px 8px rgba(0,0,0,.08); font-size:18px;
+      transition:transform .15s ease, filter .15s ease
     }
-    @keyframes borderGlow {
-      0% { box-shadow:0 0 10px #00c853; }
-      100% { box-shadow:0 0 25px #aeea00; }
-    }
+    .home-finger:hover{filter:brightness(1.05); transform:translateY(-1px)}
+    @media (max-width:380px){ .brand-title{display:none} }
 
-    /* 全站字型與版面 */
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;               /* 已預留與左上角 LOGO 的間距 */
-      background-color: #f8f9fa;
-      max-width: 90%;
-      margin: auto;
-      box-shadow: none;
-      border: none;
-    }
-    h1 { color: #333; }
+    main{max-width:1100px; margin:0 auto; padding:18px 14px 36px}
+    h1,h2{margin:0 0 10px}
+    h1{font-size:clamp(20px, 5vw, 28px)}
+    h2{font-size:clamp(16px, 3.6vw, 20px); color:#2c3e50}
 
-    /* 連結與圖片統一用手指游標、移除底線 */
-    a, a img, .logo { cursor: pointer; }
-    a { text-decoration: none; }
-    h1 a { display: inline-block; }
+    /* ===== 動畫 ===== */
+    @keyframes fadeInUp{0%{opacity:0; transform:translateY(24px)}100%{opacity:1; transform:translateY(0)}}
+    @keyframes galleryScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-    /* 左上角 LOGO（固定位置＋浮動動畫） */
-    .logo {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      height: 60px;          /* 如需改寬度，改成 width:60px;height:auto; */
-      width: auto;
-      animation: floatLogo 3s ease-in-out infinite;
-    }
-    @keyframes floatLogo {
-      0%   { transform: scale(1) translateY(0px); }
-      50%  { transform: scale(1.1) translateY(-5px); }
-      100% { transform: scale(1) translateY(0px); }
-    }
-    .logo:active { animation: none; transform: scale(.95); transition: transform .08s ease-out; }
+    /* ===== 文字與容器 ===== */
+    .news-container{animation:fadeInUp .6s ease}
+    .news-content{line-height:1.8}
+    .prose p{margin:.6em 0}
+    .prose ul{margin:.4em 0 .8em 1.2em}
 
-    /* 手指回首頁按鈕：指向 LOGO（LOGO 在左、手指在右） */
-    #home-finger{
-      position:absolute;
-      left: calc(15px + 60px + 20px); /* LOGO left 15px + 寬60px + 間距10px */
-      top: 27px;                       /* 與 60px 高的 LOGO 垂直置中 */
-      width:36px; height:36px;
-      border-radius:999px;
-      background:#ffffff;
-      border:2px solid #1f6b4f;
-      display:flex; align-items:center; justify-content:center;
-      font-size:20px;
-      text-decoration:none;
-      box-shadow:0 4px 10px rgba(0,0,0,.15);
-      z-index:10000;
-      transition:transform .15s ease, filter .15s ease;
-      animation:homePulse 1.6s ease-in-out infinite;
-    }
-    #home-finger:hover{ filter:brightness(1.05); transform:translateY(-1px) scale(1.04); }
-    #home-finger:active{ transform:scale(.95); }
-    @keyframes homePulse{ 0%{transform:scale(1);} 50%{transform:scale(1.06);} 100%{transform:scale(1);} }
-    @media (max-width: 480px){
-      #home-finger{ left: calc(15px + 60px + 6px); width:32px; height:32px; font-size:18px; top: 29px; }
-    }
+    /* ===== 多媒體區塊：改用 CSS Grid，行動裝置一欄、桌機二欄 ===== */
+    .media-grid{display:grid; gap:12px; grid-template-columns:1fr}
+    @media (min-width:768px){ .media-grid{grid-template-columns:1fr 1fr} }
 
-    /* 跑馬燈 */
-    .marquee-container { width:100%; overflow:hidden; white-space:nowrap; font-size:18px; padding:10px 0; }
-    .marquee-text { display:inline-block; animation: marquee 15s linear infinite; white-space:nowrap; }
-    @keyframes marquee { from { transform: translateX(100%);} to { transform: translateX(-100%);} }
+    .card{background:#fff; border:1px solid #e9ecef; border-radius:12px; padding:10px; box-shadow:0 6px 16px rgba(0,0,0,.04)}
+    .card h3{margin:6px 6px 10px; font-size:16px}
 
-    /* 多媒體區塊 */
-    .media-container {
-      display:flex; flex-direction:column; justify-content:center; align-items:center;
-      gap:15px; margin-top:20px;
-    }
-    .media-container iframe,
-    .media-container .image-container {
-      width:100%; max-width:600px; height:auto; aspect-ratio:16 / 9;
-    }
-    .media-container iframe { border-radius:10px; border:2px solid #333; }
-    .media-container a img {
-      width:100%; height:100%; object-fit:cover; border-radius:10px;
-    }
-    @media (min-width: 768px) { .media-container { flex-direction:row; gap:20px; } }
+    /* ===== 圖片互動（行動友善：降低陰影強度、保留縮放） ===== */
+    .click-zoom{border-radius:10px; border:2px solid #00c853; transition:transform .25s ease, box-shadow .25s ease}
+    .click-zoom:hover{transform:scale(1.03); box-shadow:0 10px 20px rgba(0,0,0,.16)}
 
-    /* 新聞區塊 */
-    .news-container { margin-top:20px; width:100%; display:flex; justify-content:center; }
-    .news-content { max-width:800px; text-align:left; line-height:1.8; }
-    .news-content p { margin:10px 0; }
+    /* ===== 跑馬燈：在小螢幕自動換行，避免被裁切 ===== */
+    .marquee{background:#fff; border:1px solid #e9ecef; border-radius:10px; padding:8px 10px; overflow:hidden}
+    .marquee-track{display:inline-block; white-space:nowrap; animation: marquee 15s linear infinite}
+    @keyframes marquee{from{transform:translateX(100%)} to{transform:translateX(-100%)}}
+    @media (max-width:480px){ .marquee-track{white-space:normal; animation:none} }
 
-    /* 圖片說明與提示 */
-    .image-container p { font-size:18px; font-weight:bold; margin-bottom:5px; }
-    .image-container .hint { font-size:16px; color:#ff0000; font-weight:bold; }
+    /* ===== 花絮相簿：移除巢狀 .gallery-track 錯誤、支援觸控捲動 ===== */
+    .gallery{margin:10px 0}
+    .gallery-rail{position:relative; overflow:hidden; border-radius:12px; border:1px solid #e6e6e6; background:#fff; box-shadow:0 8px 18px rgba(0,0,0,.04)}
+    .gallery-track{display:flex; gap:10px; padding:10px; width:max-content; animation:galleryScroll 28s linear infinite}
+    .gallery-item{flex:0 0 auto; width:150px; height:100px; border-radius:10px; overflow:hidden; border:2px solid #00c853; box-shadow:0 6px 14px rgba(0,0,0,.06); transition:transform .25s ease, box-shadow .25s ease}
+    .gallery-item:hover{transform:translateY(-2px) scale(1.03)}
+    .gallery-rail:hover .gallery-track{animation-play-state:paused}
+    @media (max-width:768px){ .gallery-rail{overflow-x:auto; -webkit-overflow-scrolling:touch} .gallery-track{animation:none} .gallery-item{width:44vw; height:28vw} }
 
-    /* 合作夥伴大圖淡縮放動畫 */
-    .alliance-image { text-align:center; margin:20px 0; }
-    .alliance-image img {
-      max-width:100%; height:auto; border-radius:8px; animation:pulseZoom 3s ease-in-out infinite;
-    }
-    @keyframes pulseZoom { 0%{transform:scale(1);} 50%{transform:scale(1.05);} 100%{transform:scale(1);} }
+    /* ===== Lightbox：強化可點擊範圍與位置，不再被遮擋 ===== */
+    .lightbox-backdrop{position:fixed; inset:0; z-index:1200; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.86); padding:24px}
+    .lightbox-backdrop.open{display:flex}
+    .lightbox-stage{position:relative; width:min(96vw, 1100px)}
+    .lightbox-img-wrap{position:relative; border-radius:12px; overflow:hidden; background:#111; border:1px solid #2a2a2a; box-shadow:0 16px 44px rgba(0,0,0,.5)}
+    .lightbox-img{width:100%; max-height:80vh; object-fit:contain}
+    .lightbox-caption{color:#f2f2f2; font-size:14px; text-align:center; margin-top:8px; opacity:.9}
+    .lb-btn{position:absolute; top:50%; transform:translateY(-50%); width:48px; height:48px; border-radius:999px; border:1px solid rgba(255,255,255,.3); background:rgba(255,255,255,.12); color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; backdrop-filter:blur(4px)}
+    .lb-prev{left:8px} .lb-next{right:8px}
+    .lb-close{top:8px; right:8px; transform:none; width:40px; height:40px; border-radius:10px}
+    @media (max-width:480px){ .lb-btn{width:44px; height:44px} .lb-prev{left:4px} .lb-next{right:4px} }
 
-    /* ===== 花絮相簿（小圖＋動感） ===== */
-    .gallery {
-      margin: 8px auto 0;
-      max-width: 1000px;
-    }
-    .gallery-header {
-      display:flex; align-items:center; justify-content:space-between;
-      margin: 6px 4px 10px;
-    }
-    .gallery-header h3 { margin: 0; font-size: 20px; }
-    .gallery-header .hint { font-size: 14px; color:#888; }
-
-    .gallery-rail {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      border: 1px solid #e6e6e6;
-      background: #fff;
-      box-shadow: 0 8px 18px rgba(0,0,0,.04);
-    }
-    .gallery-track {
-      display: flex;
-      gap: 10px;
-      padding: 10px;
-      width: max-content;
-      animation: galleryScroll 28s linear infinite;
-    }
-    @keyframes galleryScroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); } /* 放兩份圖，滾到一半剛好無縫 */
-    }
-    .gallery-item {
-      flex: 0 0 auto;
-      width: 150px; height: 100px;
-      scroll-snap-align: start;
-      border-radius: 10px; overflow: hidden;
-      border: 2px solid #00c853;
-      box-shadow: 0 6px 14px rgba(0,0,0,.08);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .gallery-item img {
-      width: 100%; height: 100%; object-fit: cover; display:block;
-    }
-    .gallery-item:hover {
-      transform: translateY(-3px) scale(1.04);
-      box-shadow: 0 12px 24px rgba(0,0,0,.20);
-    }
-    .gallery-rail:hover .gallery-track,
-    .gallery-rail:active .gallery-track {
-      animation-play-state: paused; /* 滑入暫停 */
-    }
-    @media (max-width: 768px) {
-      .gallery-rail { overflow-x: auto; scroll-snap-type: x mandatory; }
-      .gallery-track { animation: none; padding: 12px; }
-      .gallery-item { width: 44vw; height: 28vw; }
-    }
-
-    /* ===== Lightbox：全螢幕大圖 ===== */
-    .lightbox-backdrop {
-      position: fixed; inset: 0; z-index: 9999;
-      background: rgba(0,0,0,.86);
-      display: none;
-      align-items: center; justify-content: center;
-      padding: 24px;
-      animation: fadeInUp .18s ease;
-    }
-    .lightbox-backdrop.open { display: flex; }
-    .lightbox-stage { position: relative; width: 92vw; max-width: 1200px; height: auto; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-    .lightbox-img-wrap { position: relative; width: 100%; height: auto; border-radius: 12px; overflow: hidden; background: #111; border: 1px solid #2a2a2a; box-shadow: 0 20px 50px rgba(0,0,0,.6); }
-    .lightbox-img { width: 100%; height: auto; display: block; object-fit: contain; max-height: 80vh; }
-    .lightbox-caption { color: #f2f2f2; font-size: 14px; text-align: center; max-width: 80ch; line-height: 1.6; opacity: .9; }
-    .lightbox-close, .lightbox-prev, .lightbox-next {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.25);
-      color: #fff; width: 44px; height: 44px; border-radius: 999px;
-      display:flex; align-items:center; justify-content:center;
-      cursor: pointer; user-select: none;
-      transition: transform .15s ease, background .15s ease, opacity .15s ease;
-      backdrop-filter: blur(4px);
-    }
-    .lightbox-prev { left: -16px; }
-    .lightbox-next { right: -16px; }
-    .lightbox-close {
-      top: -16px; right: -16px; transform: none;
-      width: 40px; height: 40px; border-radius: 10px;
-    }
-    .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,.22); transform: translateY(-50%) scale(1.04); }
-    .lightbox-close:hover { transform: scale(1.04); }
-    @media (max-width: 768px){
-      .lightbox-stage { width: 96vw; }
-      .lightbox-prev { left: 4px; }
-      .lightbox-next { right: 4px; }
-      .lightbox-img { max-height: 70vh; }
-    }
-    .gallery-item, .image-container a { cursor: zoom-in; }
+    /* ===== 輔助 class ===== */
+    .muted{color:#666}
+    .section{margin:16px 0 18px}
   </style>
 </head>
-
 <body>
-  <!-- 左上角可點 LOGO（新分頁開啟官網） -->
-  <h1>
-    <a href="https://jpesg.netlify.app/" target="_blank" rel="noopener">
-      <img src="https://github.com/Sethjesus/Photo/blob/main/UDM%20New%20Logo.jpg?raw=true"
-           alt="公司Logo" class="logo">
-    </a>
-  </h1>
+  <!-- ===== 頂部列（LOGO + 回首頁指示） ===== -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a class="brand" href="https://jpesg.netlify.app/" target="_blank" rel="noopener" aria-label="回首頁">
+        <img src="https://github.com/Sethjesus/Photo/blob/main/UDM%20New%20Logo.jpg?raw=true" alt="UDM 景煬 Logo" loading="eager" decoding="async">
+        <span class="brand-title">UDM 景煬 ESG 新聞</span>
+      </a>
+      <nav class="header-actions" aria-label="捷徑">
+        <a class="home-finger" href="https://jpesg.netlify.app/" target="_blank" rel="noopener" title="回首頁" aria-label="回首頁">👈</a>
+      </nav>
+    </div>
+  </header>
 
-  <!-- 手指回首頁按鈕（指向 LOGO） -->
-  <a id="home-finger" href="https://jpesg.netlify.app/" target="_blank" rel="noopener" title="回首頁" aria-label="回首頁">👈</a>
+  <main role="main">
+    <h1>🌱最新消息🔋</h1>
 
-  <h1>🌱最新消息🔋</h1>
+    <!-- 114/10/21 -->
+    <section class="section news-container" aria-labelledby="d1141021">
+      <h2 id="d1141021">中華民國114年10月21日</h2>
+      <div class="news-content prose">
+        <p><b>🌍 基北北桃淨零轉型聯合行動成果發表會｜景煬攜手產官學研，共創低碳新動能</b></p>
+        <p>【新北訊】由基隆、台北、新北、桃園四市政府共同主辦之「基北北桃淨零轉型聯合行動成果發表會」，今（21）日於新板希爾頓酒店舉行。現場雲集產官學研代表齊聚交流，展示企業減碳成果與區域協作能量；其中，新北市<b>劉和然</b>副市長到場致意，並肯定產業夥伴積極投入節能與再生能源之努力；和碩聯合董事長<b>童子賢</b>以「公私協力：能源轉型與企業發展」為題分享趨勢洞見，為台灣淨零轉型描繪務實路徑。</p>
+        <p><b>UDM 景煬科技</b>表示，將持續與四市顧問團與企業夥伴深化合作，結合智慧電力、AI 節能及 ESG 教育，協助更多中小企業完成碳盤查、導入低碳方案，為供應鏈淨零與地方繁榮創造雙贏。</p>
 
-  <!-- 🔹 新增：新聞稿模式（最新一則）114/10/21 🔹 -->
-  <h2>中華民國114年10月21日</h2>
-  <div class="news-container" style="animation:fadeInUp 1.2s ease;">
-    <div class="news-content">
-      <p><b>🌍 基北北桃淨零轉型聯合行動成果發表會｜景煬攜手產官學研，共創低碳新動能</b></p>
-      <p>【新北訊】由基隆、台北、新北、桃園四市政府共同主辦之「基北北桃淨零轉型聯合行動成果發表會」，今（21）日於新板希爾頓酒店舉行。現場雲集產官學研代表齊聚交流，展示企業減碳成果與區域協作能量；其中，新北市<b>劉和然</b>副市長到場致意，並肯定產業夥伴積極投入節能與再生能源之努力；和碩聯合董事長<b>童子賢</b>以「公私協力：能源轉型與企業發展」為題分享趨勢洞見，為台灣淨零轉型描繪務實路徑。</p>
-      <p><b>UDM 景煬科技</b>表示，將持續與四市顧問團與企業夥伴深化合作，結合智慧電力、AI 節能及ESG教育，協助更多中小企業完成碳盤查、導入低碳方案，為供應鏈淨零與地方繁榮創造雙贏。</p>
-
-      <!-- 四張主圖（請換成你的 GitHub 圖片連結） -->
-      <div class="media-container">
-        <div class="image-container">
-          <p>新北市劉和然副市長</p>
-          <a href="images/news/20251021/liu_heran.jpg" target="_blank" rel="noopener">
-            <img src="https://github.com/Sethjesus/Photo/blob/main/K1.jpg?raw=true" alt="新北市劉和然副市長">
-          </a>
+        <!-- 主圖區：行動裝置一欄，桌機二欄 -->
+        <div class="media-grid">
+          <div class="card">
+            <h3>新北市劉和然副市長</h3>
+            <a href="images/news/20251021/liu_heran.jpg" target="_blank" rel="noopener" class="click-zoom">
+              <img src="https://github.com/Sethjesus/Photo/blob/main/K1.jpg?raw=true" alt="新北市劉和然副市長" loading="lazy">
+            </a>
+          </div>
+          <div class="card">
+            <h3>和碩董事長童子賢演講</h3>
+            <a href="images/news/20251021/tung_chihsien.jpg" target="_blank" rel="noopener" class="click-zoom">
+              <img src="https://github.com/Sethjesus/Photo/blob/main/K2.jpg?raw=true" alt="童子賢董事長演講" loading="lazy">
+            </a>
+          </div>
+          <div class="card">
+            <h3>UDM景煬團隊現場</h3>
+            <a href="images/news/20251021/jingyang_team.jpg" target="_blank" rel="noopener" class="click-zoom">
+              <img src="https://github.com/Sethjesus/Photo/blob/main/K3.jpg?raw=true" alt="UDM景煬團隊" loading="lazy">
+            </a>
+          </div>
+          <div class="card">
+            <h3>活動合影<sub>和碩董事長童子賢與景煬執行長吳沛緹</sub></h3>
+            <a href="images/news/20251021/scene1.jpg" target="_blank" rel="noopener" class="click-zoom">
+              <img src="https://github.com/Sethjesus/Photo/blob/main/K4.jpg?raw=true" alt="活動大合影" loading="lazy">
+            </a>
+          </div>
         </div>
-        <div class="image-container">
-          <p>和碩董事長童子賢演講</p>
-          <a href="images/news/20251021/tung_chihsien.jpg" target="_blank" rel="noopener">
-            <img src="https://github.com/Sethjesus/Photo/blob/main/K2.jpg?raw=true" alt="童子賢董事長演講">
-          </a>
-        </div>
-      </div>
-      <div class="media-container">
-        <div class="image-container">
-          <p>UDM景煬團隊現場</p>
-          <a href="images/news/20251021/jingyang_team.jpg" target="_blank" rel="noopener">
-            <img src="https://github.com/Sethjesus/Photo/blob/main/K3.jpg?raw=true" alt="UDM景煬團隊">
-          </a>
-        </div>
-        <div class="image-container">
-          <p>活動合影<sub>和碩董事長童子賢與景煬執行長吳沛緹</sub></p>
-          <a href="images/news/20251021/scene1.jpg" target="_blank" rel="noopener">
-            <img src="https://github.com/Sethjesus/Photo/blob/main/K4.jpg?raw=true" alt="活動大合影">
-          </a>
-        </div>
-      </div>
 
-      <!-- 花絮相簿（小圖＋動感，貼你實際多張圖片） -->
-      <div class="gallery" style="animation:fadeInUp 1s ease;">
-        <div class="gallery-header">
-          <h3>📸 活動花絮</h3>
-          <div class="hint">滑動 / 滑鼠移上會暫停｜點圖看原始大圖</div>
-        </div>
-        <div class="gallery-rail">
-          <div class="gallery-track">
-            <!-- 第一份（自行增刪張數；href 建議放原圖；可加 ?raw=true） -->
-           <div class="gallery-track">
-  <!-- 第一份（請逐張換成你的 GitHub 原圖，重點：網址結尾加 ?raw=true） -->
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K5.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K5.jpg?raw=true" alt="花絮01" loading="lazy">
-  </a>
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K6.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K6.jpg?raw=true" alt="花絮02" loading="lazy">
-  </a>
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K7.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K7.jpg?raw=true" alt="花絮03" loading="lazy">
-  </a>
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K8.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K8.jpg?raw=true" alt="花絮04" loading="lazy">
-  </a>
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K9.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K9.jpg?raw=true" alt="花絮05" loading="lazy">
-  </a>
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K10.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K10.jpg?raw=true" alt="花絮06" loading="lazy">
-  </a>
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K11.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K11.jpg?raw=true" alt="花絮07" loading="lazy">
-  </a>
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K12.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K12.jpg?raw=true" alt="花絮08" loading="lazy">
-  </a>
-
-  <!-- 第二份（與上面一模一樣，做無縫循環用；也可以直接複製第一份） -->
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K5.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K5.jpg?raw=true" alt="花絮01" loading="lazy">
-  </a>
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K6.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K6.jpg?raw=true" alt="花絮02" loading="lazy">
-  </a>
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K7.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K7.jpg?raw=true" alt="花絮03" loading="lazy">
-  </a>
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K8.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K8.jpg?raw=true" alt="花絮04" loading="lazy">
-  </a>
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K9.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K9.jpg?raw=true" alt="花絮05" loading="lazy">
-  </a>
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K10.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K10.jpg?raw=true" alt="花絮06" loading="lazy">
-  </a>
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K11.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K11.jpg?raw=true" alt="花絮07" loading="lazy">
-  </a>
-  <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K12.jpg?raw=true" target="_blank" rel="noopener">
-    <img src="https://github.com/Sethjesus/Photo/blob/main/K12.jpg?raw=true" alt="花絮08" loading="lazy">
-  </a>
-</div>
-
+        <!-- 花絮相簿：修正重覆巢狀 .gallery-track 的問題 & 行動裝置橫向滑動 -->
+        <div class="gallery">
+          <div class="card" style="padding:8px 8px 2px">
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:0 6px 6px">
+              <h3 style="margin:0; font-size:18px">📸 活動花絮</h3>
+              <div class="muted" style="font-size:14px">滑動 / 滑鼠移上會暫停｜點圖看原圖</div>
+            </div>
+            <div class="gallery-rail" aria-label="花絮相簿">
+              <div class="gallery-track">
+                <!-- 份1 -->
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K5.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K5.jpg?raw=true" alt="花絮01" loading="lazy"></a>
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K6.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K6.jpg?raw=true" alt="花絮02" loading="lazy"></a>
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K7.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K7.jpg?raw=true" alt="花絮03" loading="lazy"></a>
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K8.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K8.jpg?raw=true" alt="花絮04" loading="lazy"></a>
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K9.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K9.jpg?raw=true" alt="花絮05" loading="lazy"></a>
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K10.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K10.jpg?raw=true" alt="花絮06" loading="lazy"></a>
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K11.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K11.jpg?raw=true" alt="花絮07" loading="lazy"></a>
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K12.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K12.jpg?raw=true" alt="花絮08" loading="lazy"></a>
+                <!-- 份2（無縫循環） -->
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K5.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K5.jpg?raw=true" alt="花絮01" loading="lazy"></a>
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K6.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K6.jpg?raw=true" alt="花絮02" loading="lazy"></a>
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K7.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K7.jpg?raw=true" alt="花絮03" loading="lazy"></a>
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K8.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K8.jpg?raw=true" alt="花絮04" loading="lazy"></a>
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K9.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K9.jpg?raw=true" alt="花絮05" loading="lazy"></a>
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K10.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K10.jpg?raw=true" alt="花絮06" loading="lazy"></a>
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K11.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K11.jpg?raw=true" alt="花絮07" loading="lazy"></a>
+                <a class="gallery-item" href="https://github.com/Sethjesus/Photo/blob/main/K12.jpg?raw=true" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Photo/blob/main/K12.jpg?raw=true" alt="花絮08" loading="lazy"></a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <!-- 花絮相簿結束 -->
+    </section>
 
-    </div>
-  </div>
-  <!-- 🔹 新增區塊結束 🔹 -->
+    <!-- 114/10/08 -->
+    <section class="section news-container" aria-labelledby="d1141008">
+      <h2 id="d1141008">中華民國114年10月8日</h2>
+      <div class="news-content prose">
+        <p><b>🌿 基隆市工策會公告：2025 ESG「16+4碳盤查補助」申請日期延長至12月31日！</b></p>
+        <p>為因應中小企業永續轉型與碳盤查需求，<b>基隆市工商發展投資策進會</b> 宣布，<b>2025ESG公協會社企型中小企業碳盤查補助計畫</b> 申請期限延長至 <b>114年12月31日</b>。本次補助由政府出資16萬、企業自籌4萬，協助企業取得 <b>ISO 14064-1 碳盤查報告書</b>，並提供 ESG 課程與碳管理輔導。</p>
+        <ul>
+          <li>💰 <b>補助對象：</b> 資本額1億以下或員工數未滿200人之中小企業</li>
+          <li>📘 <b>補助內容：</b> 公協會補助16萬元，企業自籌4萬元（另有1.5萬元代辦費，未通過可退）</li>
+          <li>🌍 <b>成果：</b> 取得國際認證的 ISO 14064-1 碳盤查報告與清冊</li>
+          <li>🎓 <b>其他服務：</b> ESG 課程培訓、低碳化與智慧化輔導建議</li>
+          <li>🕓 <b>申請期限：</b> 即日起至 114年12月31日 或名額（300家）額滿為止</li>
+        </ul>
+        <p>📞 聯絡窗口：李秘書 02-7730-8836　｜　溫經理 02-3234-7916</p>
+        <p>📍 <a href="https://www.idipckeelung.org.tw/%E3%80%90%E8%A3%9C%E5%8A%A9%E8%B3%87%E8%A8%8A%E3%80%91%E5%9B%A0%E6%87%89%E4%B8%AD%E5%B0%8F%E4%BC%81%E6%A5%AD%E9%9C%80%E6%B1%82%EF%BC%8C%E7%94%B3%E8%AB%8B%E6%97%A5%E6%9C%9F%E6%8B%89%E9%95%B7%E8%87%B312/" target="_blank" rel="noopener"><b>👉 點我前往申請 16+4 碳盤查補助計畫</b></a></p>
+      </div>
+    </section>
 
-  <!-- －－－－以下為你原本的內容，未改動－－－－ -->
+    <!-- 114/08/08 -->
+    <section class="section">
+      <h2>中華民國114年8月8日</h2>
+      <div class="marquee" aria-live="polite"><span class="marquee-track">🌍 UDM景煬科技擴大合作夥伴，共同開拓淨零碳排事業！🌱</span></div>
 
-  <h2>中華民國114年10月8日</h2>
-
-  <div class="news-container" style="animation:fadeInUp 1.5s ease;">
-    <div class="news-content">
-      <p><b>🌿 基隆市工策會公告：2025 ESG「16+4碳盤查補助」申請日期延長至12月31日！</b></p>
-      <p>為因應中小企業永續轉型與碳盤查需求，<b>基隆市工商發展投資策進會</b> 宣布，<b>2025ESG公協會社企型中小企業碳盤查補助計畫</b> 申請期限延長至 <b>114年12月31日</b>。本次補助由政府出資16萬、企業自籌4萬，協助企業取得 <b>ISO 14064-1 碳盤查報告書</b>，並提供 ESG 課程與碳管理輔導。</p>
-
-      <ul>
-        <li>💰 <b>補助對象：</b> 資本額1億以下或員工數未滿200人之中小企業</li>
-        <li>📘 <b>補助內容：</b> 公協會補助16萬元，企業自籌4萬元（另有1.5萬元代辦費，未通過可退）</li>
-        <li>🌍 <b>成果：</b> 取得國際認證的 ISO 14064-1 碳盤查報告與清冊</li>
-        <li>🎓 <b>其他服務：</b> ESG 課程培訓、低碳化與智慧化輔導建議</li>
-        <li>🕓 <b>申請期限：</b> 即日起至 114年12月31日 或名額（300家）額滿為止</li>
-      </ul>
-
-      <p>📞 聯絡窗口：李秘書 02-7730-8836　｜　溫經理 02-3234-7916</p>
-      <p>📍 <a href="https://www.idipckeelung.org.tw/%E3%80%90%E8%A3%9C%E5%8A%A9%E8%B3%87%E8%A8%8A%E3%80%91%E5%9B%A0%E6%87%89%E4%B8%AD%E5%B0%8F%E4%BC%81%E6%A5%AD%E9%9C%80%E6%B1%82%EF%BC%8C%E7%94%B3%E8%AB%8B%E6%97%A5%E6%9C%9F%E6%8B%89%E9%95%B7%E8%87%B312/" target="_blank" rel="noopener"><b>👉 點我前往申請 16+4 碳盤查補助計畫</b></a></p>
-    </div>
-  </div>
-
-  <h2>中華民國114年8月8日</h2>
-
-  <div class="marquee-container">
-    <span class="marquee-text">🌍 UDM景煬科技擴大合作夥伴，共同開拓淨零碳排事業！🌱</span>
-  </div>
-
-  <div class="news-container">
-    <div class="news-content">
-      <p><b>UDM 景煬科技擴大合作夥伴　攜手共創淨零碳排新時代！</b></p>
-      <p>作為低碳化解決方案領導者的 <b>UDM 景煬科技</b>，近日宣布擴展合作陣容，新增顧問公司、軟體公司及控股集團等多方策略夥伴。透過跨領域的資源整合與協同合作，景煬科技將加速推動淨零碳排相關事業的發展，強化創新能量與落地應用，攜手實現永續低碳的未來。</p>
-
-      <p>合作夥伴涵蓋：
+      <div class="news-content prose" style="margin-top:10px">
+        <p><b>UDM 景煬科技擴大合作夥伴　攜手共創淨零碳排新時代！</b></p>
+        <p>作為低碳化解決方案領導者的 <b>UDM 景煬科技</b>，近日宣布擴展合作陣容，新增顧問公司、軟體公司及控股集團等多方策略夥伴。透過跨領域的資源整合與協同合作，景煬科技將加速推動淨零碳排相關事業的發展，強化創新能量與落地應用，攜手實現永續低碳的未來。</p>
         <ul>
           <li>儲能技術</li>
           <li>智慧電力管理</li>
@@ -393,9 +214,7 @@
           <li>文化教育</li>
           <li>政府交通部門</li>
         </ul>
-      </p>
-
-      <p>此次合作陣容包括：
+        <p>此次合作陣容包括：</p>
         <ul>
           <li>瓦特先生 Mr.Watt</li>
           <li>義守大學 I-Shou University</li>
@@ -403,90 +222,73 @@
           <li>Green Harvest</li>
           <li>永旭國際顧問</li>
         </ul>
-      </p>
-
-      <!-- 合作夥伴圖片 -->
-      <div class="alliance-image">
-        <img src="https://raw.githubusercontent.com/Sethjesus/Maincarbon/main/Alliance.jpg" alt="合作夥伴" />
+        <div class="card" style="margin:12px 0">
+          <img src="https://raw.githubusercontent.com/Sethjesus/Maincarbon/main/Alliance.jpg" alt="合作夥伴">
+        </div>
+        <p>景煬科技表示，未來將持續與各界夥伴展開深度合作，從能源技術、數據平台到產業應用，共同打造低碳永續的全新格局，推動臺灣邁向 <b>淨零碳排</b> 目標。</p>
       </div>
+    </section>
 
-      <p>景煬科技表示，未來將持續與各界夥伴展開深度合作，從能源技術、數據平台到產業應用，共同打造低碳永續的全新格局，推動臺灣邁向 <b>淨零碳排</b> 目標。</p>
-    </div>
-  </div>
-
-  <h2>中華民國114年2月19日</h2>
-
-  <div class="news-container">
-    <div class="news-content">
-      <p><b>2月19日 UDM景煬與TUV 簽訂 ISO-14064 合作協議，深化 ESG 培訓與技術交流！</b></p>
-      <p>UDM 景煬與 TUV 於 2 月 19 日正式簽署 ISO-14064 合作協議，雙方將攜手推動 ESG 碳盤查標準化與培訓課程，並強化企業碳排放管理與永續發展能力。</p>
-      <p>合作內容包括：
+    <!-- 114/02/19 (1) -->
+    <section class="section news-container" aria-labelledby="d1140219a">
+      <h2 id="d1140219a">中華民國114年2月19日</h2>
+      <div class="news-content prose">
+        <p><b>2月19日 UDM景煬與TUV 簽訂 ISO-14064 合作協議，深化 ESG 培訓與技術交流！</b></p>
+        <p>UDM 景煬與 TUV 於 2 月 19 日正式簽署 ISO-14064 合作協議，雙方將攜手推動 ESG 碳盤查標準化與培訓課程，並強化企業碳排放管理與永續發展能力。</p>
         <ul>
           <li>提供企業 ISO-14064 碳盤查輔導與驗證服務</li>
           <li>開設 ESG 永續發展與碳管理課程</li>
           <li>推動產業低碳轉型與國際認證標準接軌</li>
         </ul>
-      </p>
-    </div>
-  </div>
+      </div>
+      <div class="media-grid" style="margin-top:8px">
+        <a class="card click-zoom" href="https://github.com/Sethjesus/Maincarbon/blob/main/TUV1.jpg" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Maincarbon/blob/main/TUV1.jpg?raw=true" alt="UDM景煬辦公室"></a>
+        <a class="card click-zoom" href="https://github.com/Sethjesus/Maincarbon/blob/main/TUVa.jpg" target="_blank" rel="noopener"><img src="https://github.com/Sethjesus/Maincarbon/blob/main/TUVa.jpg?raw=true" alt="簽署合作協議現場"></a>
+      </div>
+    </section>
 
-  <div class="media-container">
-    <div class="image-container">
-      <p>UDM景煬辦公室會談</p>
-      <a href="https://github.com/Sethjesus/Maincarbon/blob/main/TUV1.jpg" target="_blank" rel="noopener">
-        <img src="https://github.com/Sethjesus/Maincarbon/blob/main/TUV1.jpg?raw=true" alt="UDM景煬辦公室">
-      </a>
-    </div>
-    <div class="image-container">
-      <p>簽署合作協議現場</p>
-      <a href="https://github.com/Sethjesus/Maincarbon/blob/main/TUVa.jpg" target="_blank" rel="noopener">
-        <img src="https://github.com/Sethjesus/Maincarbon/blob/main/TUVa.jpg?raw=true" alt="TUV辦公室">
-      </a>
-    </div>
-  </div>
+    <!-- 114/02/19 (2) -->
+    <section class="section">
+      <h2>中華民國114年2月19日</h2>
+      <div class="media-grid">
+        <div class="card" style="padding:0">
+          <iframe src="https://www.youtube.com/embed/fTCKND7Pbxc" title="YouTube" allowfullscreen style="width:100%; aspect-ratio:16/9; border:0; border-radius:12px"></iframe>
+        </div>
+        <div class="card">
+          <h3>基隆市工策會114年度第一次委員會</h3>
+          <a href="https://www.idipckeelung.org.tw/portfolio/%e5%9f%ba%e9%9a%86%e5%b8%82%e5%b7%a5%e7%ad%96%e6%9c%83114%e5%b9%b4%e5%ba%a6%e7%ac%ac%e4%b8%80%e6%ac%a1%e5%a7%94%e5%93%a1%e6%9c%83/" target="_blank" rel="noopener" class="click-zoom">
+            <img src="https://raw.githubusercontent.com/Sethjesus/Photo/main/Keelung.jpg" alt="基隆新聞圖片">
+          </a>
+          <p class="muted" style="margin:.6em 0 0">👉 按下圖片查看新聞</p>
+        </div>
+      </div>
+      <div class="news-content prose" style="margin-top:8px">
+        <p>基隆市工商發展投資策進會（工策會）於 2 月 17 日召開年度委員會，由市長謝國樑主持，討論招商引資與 ESG 策略。會中通過年度計畫，將重點推動投資環境優化、企業輔導、國際交流與工業區發展，以加速基隆產業升級，提升城市競爭力。</p>
+        <p><b>該小組聘請 UDM 景煬楊教授、執行長吳沛緹 擔任諮詢顧問，ESG諮詢小組成立：助力企業綠色轉型。</b></p>
+        <p>為響應全球永續發展趨勢，工策會提案成立ESG淨零低碳諮詢小組，協助基隆市企業適應中央碳費與減量政策。</p>
+        <p>該小組將由來自產、官、學界的6名專家組成，擔任無薪榮譽職務，並針對工業區與中小企業進行實務指導。此提案獲得全體委員一致通過，並隨即介紹諮詢小組的專家成員。</p>
+      </div>
+    </section>
+  </main>
 
-  <br><br>
-
-  <h2>中華民國114年2月19日</h2>
-  <div class="media-container">
-    <iframe src="https://www.youtube.com/embed/fTCKND7Pbxc" allowfullscreen></iframe>
-
-    <div class="image-container">
-      <p>基隆市工策會114年度第一次委員會</p>
-      <a href="https://www.idipckeelung.org.tw/portfolio/%e5%9f%ba%e9%9a%86%e5%b8%82%e5%b7%a5%e7%ad%96%e6%9c%83114%e5%b9%b4%e5%ba%a6%e7%ac%ac%e4%b8%80%e6%ac%a1%e5%a7%94%e5%93%a1%e6%9c%83/" target="_blank" rel="noopener">
-        <img src="https://raw.githubusercontent.com/Sethjesus/Photo/main/Keelung.jpg" alt="基隆新聞圖片">
-      </a>
-      <p class="hint">👉 按下圖片查看新聞</p>
-    </div>
-  </div>
-
-  <div class="news-container">
-    <div class="news-content">
-      <p>基隆市工商發展投資策進會（工策會）於 2 月 17 日召開年度委員會，由市長謝國樑主持，討論招商引資與 ESG 策略。會中通過年度計畫，將重點推動投資環境優化、企業輔導、國際交流與工業區發展，以加速基隆產業升級，提升城市競爭力。</p>
-      <p><b>該小組聘請 UDM 景煬楊教授、執行長吳沛緹 擔任諮詢顧問，ESG諮詢小組成立：助力企業綠色轉型。</b></p>
-      <p>為響應全球永續發展趨勢，工策會提案成立ESG淨零低碳諮詢小組，協助基隆市企業適應中央碳費與減量政策。</p>
-      <p>該小組將由來自產、官、學界的6名專家組成，擔任無薪榮譽職務，並針對工業區與中小企業進行實務指導。此提案獲得全體委員一致通過，並隨即介紹諮詢小組的專家成員。</p>
-    </div>
-  </div>
-
-  <!-- ===== 共用 Lightbox（整頁只要一個） ===== -->
+  <!-- ===== Lightbox（全站共用） ===== -->
   <div class="lightbox-backdrop" id="lightbox" aria-hidden="true" role="dialog" aria-label="圖片檢視">
     <div class="lightbox-stage" role="document">
       <div class="lightbox-img-wrap">
         <img class="lightbox-img" id="lightbox-img" src="" alt="">
-        <button class="lightbox-prev" id="lightbox-prev" aria-label="上一張">❮</button>
-        <button class="lightbox-next" id="lightbox-next" aria-label="下一張">❯</button>
-        <button class="lightbox-close" id="lightbox-close" aria-label="關閉">✕</button>
+        <button class="lb-btn lb-prev" id="lightbox-prev" aria-label="上一張">❮</button>
+        <button class="lb-btn lb-next" id="lightbox-next" aria-label="下一張">❯</button>
+        <button class="lb-btn lb-close" id="lightbox-close" aria-label="關閉">✕</button>
       </div>
       <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
   </div>
 
-  <!-- 啟用 Lightbox：四張主圖 + 花絮縮圖都會自動納入 -->
   <script>
   (function(){
+    // 1) 可點擊清單：主圖 + 花絮
     const clickableAnchors = [
-      ...document.querySelectorAll('.image-container a'),
+      ...document.querySelectorAll('.media-grid a'),
       ...document.querySelectorAll('.gallery-item')
     ];
     const slides = clickableAnchors.map(a => {
@@ -494,76 +296,52 @@
       return {
         src: img ? img.getAttribute('src') : a.getAttribute('href'),
         href: a.getAttribute('href') || (img ? img.getAttribute('src') : ''),
-        caption: (a.previousElementSibling && a.previousElementSibling.tagName.toLowerCase() !== 'img')
-                 ? a.previousElementSibling.textContent.trim()
-                 : (img ? (img.getAttribute('alt') || '') : '')
+        caption: (a.closest('.card') && a.closest('.card').querySelector('h3'))
+                 ? a.closest('.card').querySelector('h3').textContent.trim()
+                 : (img ? (img.getAttribute('alt')||'') : '')
       };
     });
 
     clickableAnchors.forEach((a, idx) => {
-      a.addEventListener('click', (e) => {
-        e.preventDefault();
-        openLightbox(idx);
-      });
+      a.addEventListener('click', e => { e.preventDefault(); openLightbox(idx); });
     });
 
-    const lb       = document.getElementById('lightbox');
-    const lbImg    = document.getElementById('lightbox-img');
-    const lbCap    = document.getElementById('lightbox-caption');
-    const btnPrev  = document.getElementById('lightbox-prev');
-    const btnNext  = document.getElementById('lightbox-next');
-    const btnClose = document.getElementById('lightbox-close');
+    // 2) Lightbox 控制
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbCap = document.getElementById('lightbox-caption');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+    const closeBtn = document.getElementById('lightbox-close');
 
-    let current = 0;
-    let lock = false;
+    let current = 0; let lock = false;
 
-    function openLightbox(idx){
-      current = idx;
-      render();
-      lb.classList.add('open');
-      lb.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox(){
-      lb.classList.remove('open');
-      lb.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
     function render(){
-      const s = slides[current];
-      if (!s) return;
-      lbImg.src = s.href || s.src;
-      lbImg.alt = s.caption || '圖片';
-      lbCap.textContent = s.caption || '';
+      const s = slides[current]; if(!s) return;
+      lbImg.src = s.href || s.src; lbImg.alt = s.caption || '圖片'; lbCap.textContent = s.caption || '';
     }
-    function prev(){
-      if (lock) return; lock = true;
-      current = (current - 1 + slides.length) % slides.length;
-      render(); setTimeout(()=>lock=false, 120);
-    }
-    function next(){
-      if (lock) return; lock = true;
-      current = (current + 1) % slides.length;
-      render(); setTimeout(()=>lock=false, 120);
-    }
+    function openLightbox(i){ current = i; render(); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+    function closeLightbox(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+    function prev(){ if(lock) return; lock=true; current=(current-1+slides.length)%slides.length; render(); setTimeout(()=>lock=false, 120); }
+    function next(){ if(lock) return; lock=true; current=(current+1)%slides.length; render(); setTimeout(()=>lock=false, 120); }
 
-    btnPrev.addEventListener('click', prev);
-    btnNext.addEventListener('click', next);
-    btnClose.addEventListener('click', closeLightbox);
-    lb.addEventListener('click', (e)=>{ if (e.target === lb) closeLightbox(); });
+    prevBtn.addEventListener('click', prev);
+    nextBtn.addEventListener('click', next);
+    closeBtn.addEventListener('click', closeLightbox);
+    lb.addEventListener('click', e => { if(e.target === lb) closeLightbox(); });
 
-    document.addEventListener('keydown', (e)=>{
-      if (!lb.classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') prev();
-      if (e.key === 'ArrowRight') next();
+    document.addEventListener('keydown', e => {
+      if(!lb.classList.contains('open')) return;
+      if(e.key==='Escape') closeLightbox();
+      if(e.key==='ArrowLeft') prev();
+      if(e.key==='ArrowRight') next();
     });
 
+    // 3) 觸控滑動（行動）
     let touchStartX = 0;
-    lbImg.addEventListener('touchstart', (e)=>{ touchStartX = e.touches[0].clientX; }, {passive:true});
-    lbImg.addEventListener('touchend', (e)=>{
-      const dx = e.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(dx) > 40){ dx > 0 ? prev() : next(); }
+    lbImg.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
+    lbImg.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX; if(Math.abs(dx) > 40){ dx > 0 ? prev() : next(); }
     }, {passive:true});
   })();
   </script>
