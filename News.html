@@ -75,7 +75,12 @@
     .gallery-item{flex:0 0 auto; width:150px; height:100px; border-radius:10px; overflow:hidden; border:2px solid #00c853; box-shadow:0 6px 14px rgba(0,0,0,.06); transition:transform .25s ease, box-shadow .25s ease}
     .gallery-item:hover{transform:translateY(-2px) scale(1.03)}
     .gallery-rail:hover .gallery-track{animation-play-state:paused}
-    @media (max-width:768px){ .gallery-rail{overflow-x:auto; -webkit-overflow-scrolling:touch} .gallery-track{animation:none} .gallery-item{width:44vw; height:28vw} }
+    @media (max-width:768px){
+      .gallery-rail{overflow-x:auto; -webkit-overflow-scrolling:touch}
+      /* 行動裝置也啟用自動滾動（較慢速），同時保留手動滑動 */
+      .gallery-track{animation:galleryScroll 32s linear infinite}
+      .gallery-item{width:44vw; height:28vw}
+    }
 
     /* ===== Lightbox：強化可點擊範圍與位置，不再被遮擋 ===== */
     .lightbox-backdrop{position:fixed; inset:0; z-index:1200; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.86); padding:24px}
@@ -152,7 +157,7 @@
           <div class="card" style="padding:8px 8px 2px">
             <div style="display:flex; align-items:center; justify-content:space-between; padding:0 6px 6px">
               <h3 style="margin:0; font-size:18px">📸 活動花絮</h3>
-              <div class="muted" style="font-size:14px">滑動 / 滑鼠移上會暫停｜點圖看原圖</div>
+              <div class="muted" style="font-size:14px">點圖看原圖</div>
             </div>
             <div class="gallery-rail" aria-label="花絮相簿">
               <div class="gallery-track">
