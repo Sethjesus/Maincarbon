@@ -348,11 +348,18 @@ td{
 }
 /* ===== 跑馬燈容器 ===== */
 .marquee-wrap{
+  position:relative;
+  z-index:0;   /* ❗從 1 改成 0 */
   width:100%;
   overflow:hidden;
   margin-bottom:10px;
-  pointer-events:none; /* 不影響點擊下面五張圖 */
+  pointer-events:none;
 }
+
+.nav-card.show-click::after{
+  z-index:9999;   /* ← 確保一定在最上層 */
+}
+
 
 /* ===== 跑馬燈移動動畫 ===== */
 @keyframes marqueeRun{
@@ -363,6 +370,78 @@ td{
     transform:translateX(-100%);
   }
 }
+/* ===== 請點我提示 ===== */
+/* ===== 只指定一張顯示「請點我」 ===== */
+
+
+.nav-card.show-click::after{
+  display:block;   /* ✅ 關鍵這一行 */
+  content:"請點我";
+  position:absolute;
+  top:-16px;
+  left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(135deg,#1d9bf0,#00e0ff);
+  color:#fff;
+  font-size:14px;
+  font-weight:900;
+  padding:6px 14px;
+  border-radius:999px;
+  box-shadow:0 8px 20px rgba(0,0,0,.35);
+  animation:floatHint 2.4s ease-in-out infinite;
+  z-index:9999;
+}
+
+
+/* 浮動動畫 */
+@keyframes floatHint{
+  0%{ transform:translateX(-50%) translateY(0); opacity:.85; }
+  50%{ transform:translateX(-50%) translateY(-8px); opacity:1; }
+  100%{ transform:translateX(-50%) translateY(0); opacity:.85; }
+}
+/* ===== 五張圖柔和呼吸（自動） ===== */
+.nav-card{
+  animation: cardBreathing 5.2s ease-in-out infinite;
+}
+
+/* 每張錯開一點時間，更自然 */
+.nav-card:nth-of-type(1){ animation-delay:0s; }
+.nav-card:nth-of-type(2){ animation-delay:.4s; }
+.nav-card:nth-of-type(3){ animation-delay:.8s; }
+.nav-card:nth-of-type(4){ animation-delay:1.2s; }
+.nav-card:nth-of-type(5){ animation-delay:1.6s; }
+
+@keyframes cardBreathing{
+  0%{
+    transform:scale(1);
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+  }
+  50%{
+    transform:scale(1.045);
+    box-shadow:0 18px 36px rgba(11,107,255,.35);
+  }
+  100%{
+    transform:scale(1);
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+  }
+}
+nav{
+  position:relative;
+}
+.nav-card{
+  position:relative;
+  z-index:5;
+}
+/* ===== 修正「請點我」被 transform 吃掉 ===== */
+nav{
+  position:relative;
+}
+
+.nav-card{
+  position:relative;
+  z-index:5;
+}
+
 
 </style>
 </head>
@@ -385,11 +464,12 @@ td{
     🐎 2026馬到成功・馬年行大運 🐎 2026馬到成功・馬年行大運 🐎 2026馬到成功・馬年行大運 🐎
   </div>
 </div>
-
-  <a href="https://sethjesus.github.io/Consult/Consult.html" class="nav-card nav-primary">
-  <img src="https://i.imgur.com/3qy7Huz.jpg">
-  <span class="nav-hint nav-cta">免費顧問諮詢｜低碳可行性評估</span>
+<a href="https://sethjesus.github.io/Carbon/Carbon.html"
+   class="nav-card nav-primary show-click">
+  <img src="https://i.imgur.com/o0zrVfS.jpg">
+  <span class="nav-hint nav-cta">快速碳盤查｜支援政府補助</span>
 </a>
+
 
 
   <a href="https://sethjesus.github.io/Carbon/Carbon.html" class="nav-card nav-primary">
