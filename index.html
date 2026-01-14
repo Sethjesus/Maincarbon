@@ -1,426 +1,252 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌱景煬專業低碳管理方案🌿</title>
-    <link rel="icon" href="https://raw.githubusercontent.com/Sethjesus/Photo/main/UDM%20New%20Logo.jpg" type="image/jpeg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌱景煬專業低碳管理方案🌿</title>
+<link rel="icon" href="https://raw.githubusercontent.com/Sethjesus/Photo/main/UDM%20New%20Logo.jpg" type="image/jpeg">
 
-    <style>
-        :root {
-            --gray-color: #d3d3d3;
-            --orange-color: #FFA500;
-            --pink-color: #FFC0CB;
-            --green-color: #32CD32;
-            --blue-color: #00008B;
-        }
+<style>
+:root{
+  --gray:#d3d3d3;
+  --orange:#FFA500;
+  --pink:#FFC0CB;
+  --green:#32CD32;
+  --blue:#9b9be7;
+}
 
-        * {
-            box-sizing: border-box;
-        }
+*{box-sizing:border-box}
+body,html{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#fff;
+}
 
-        body, html {
-            height: 100%;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
-        }
+/* ===== Header ===== */
+header{
+  text-align:center;
+  padding:20px 10px;
+  background:#f2f2f2;
+  position:relative;
+}
+.logo-home{
+  position:absolute;
+  top:15px;left:15px;
+  display:flex;
+  gap:6px;
+  align-items:center;
+  text-decoration:none;
+  animation:floatLogo 3s ease-in-out infinite;
+}
+.logo-home img{width:60px}
+.logo-home span{
+  font-size:14px;
+  font-weight:bold;
+  background:rgba(255,255,255,.85);
+  padding:3px 8px;
+  border-radius:5px;
+  border:1px solid #ccc;
+  color:#000;
+}
+@keyframes floatLogo{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05) translateY(-4px)}
+  100%{transform:scale(1)}
+}
 
-        h1 {
-            font-size: 48px;
-            margin: 10px 0 5px 0;
-        }
+/* ===== Nav ===== */
+nav{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  background:url('https://github.com/Sethjesus/Photo/blob/main/woods.jpg?raw=true') center/cover;
+  padding:10px;
+}
+nav img{
+  width:120px;
+  margin:6px;
+  transition:.2s;
+}
+nav img:hover{transform:scale(1.08)}
 
-        h2 {
-            margin: 5px 0 10px 0;
-        }
+/* ===== 英文 / 新聞入口 ===== */
+.entry-bar{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+  margin:10px auto;
+  max-width:900px;
+}
+.entry-btn{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 18px;
+  border-radius:12px;
+  text-decoration:none;
+  background:rgba(255,255,255,.92);
+  color:#0f172a;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+  transition:.2s;
+  position:relative;
+  min-width:260px;
+}
+.entry-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 18px rgba(0,0,0,.15);
+}
+.entry-english{border-left:6px solid #0ea5e9}
+.entry-news{border-left:6px solid #22c55e}
+.entry-icon{
+  width:52px;
+  height:52px;
+  border-radius:8px;
+}
+.entry-text strong{font-size:16px}
+.entry-text span{
+  display:block;
+  font-size:13px;
+  opacity:.75;
+}
 
-        header {
-            text-align: center;
-            padding: 20px 10px;
-            background-color: #f2f2f2;
-            position: relative;
-        }
+/* ===== Main ===== */
+main{
+  width:90%;
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+  background:url('https://github.com/Sethjesus/Photo/blob/main/sky.jpg?raw=true') center/cover fixed;
+}
+section{
+  background:rgba(255,255,255,.88);
+  padding:20px;
+  border-radius:10px;
+  margin-bottom:20px;
+}
+section p,section li{
+  font-size:18px;
+  line-height:1.8;
+}
 
-        /* 左上角 Logo + 回主頁 */
-        .logo-home {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            animation: floatLogo 3s ease-in-out infinite;
-        }
+/* ===== Table ===== */
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+}
+th,td{
+  border:1px solid #ccc;
+  padding:8px;
+  vertical-align:top;
+  word-break:break-word;
+}
+th{
+  background:#87CEEB;
+  color:#fff;
+}
+table a{
+  color:inherit;
+  text-decoration:none;
+}
 
-        .logo-home img {
-            width: 60px;
-        }
+/* ===== Row Hover 顏色管理（桌機） ===== */
+@media(min-width:769px){
+  .consulting-row:hover{background:var(--gray)}
+  .self-audit-row:hover,
+  .government-row:hover,
+  .business-consulting-row:hover,
+  .free-eval-row:hover{background:var(--orange)}
+  .solar-water-row:hover,
+  .carbon-benefit-row:hover,
+  .carbon-method-row:hover,
+  .edm-row:hover,
+  .custom-integrated-row:hover,
+  .govt-subsidy-row:hover{background:var(--pink)}
+  .partner-row:hover,
+  .ghg-guidance-row:hover{background:var(--green)}
+  .light-blue-row:hover{background:var(--blue)}
+}
 
-        .logo-home span {
-            font-size: 14px;
-            font-weight: bold;
-            color: #0a0a0a;
-            background: rgba(255,255,255,0.8);
-            padding: 3px 8px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+/* ===== Footer ===== */
+footer{
+  background:#444;
+  color:#fff;
+  text-align:center;
+  padding:20px;
+  position:relative;
+}
+.edm-button{
+  position:absolute;
+  right:20px;
+  top:50%;
+  transform:translateY(-50%);
+  background:#007BFF;
+  color:#fff;
+  padding:10px 20px;
+  text-decoration:none;
+  border-radius:5px;
+}
 
-        @keyframes floatLogo {
-            0% { transform: scale(1) translateY(0px); }
-            50% { transform: scale(1.05) translateY(-4px); }
-            100% { transform: scale(1) translateY(0px); }
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            background-image: url('https://github.com/Sethjesus/Photo/blob/main/woods.jpg?raw=true');
-            background-size: cover;
-            background-position: center;
-            padding: 10px;
-        }
-
-        nav a img {
-            width: 120px;
-            cursor: pointer;
-            transition: transform 0.2s;
-            margin: 5px;
-        }
-
-        nav a img:hover {
-            transform: scale(1.1);
-        }
-
-        /* 共用內容容器（背景淡灰＋圓角） */
-        .content-container {
-            text-align: center;
-            background-color: rgba(242, 242, 242, 0.8);
-            border-radius: 5px;
-            padding: 10px 15px;
-            margin: 10px auto;
-            max-width: 900px;
-        }
-
-        /* 置中的 Logo + 文字 + 按鈕列（使用 flex） */
-        .top-bar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .text-content {
-            font-size: 14px;
-            color: rgb(25, 2, 2);
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-        main {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto 40px auto;
-            padding: 20px;
-            line-height: 1.6;
-            background-image: url('https://github.com/Sethjesus/Photo/blob/main/sky.jpg?raw=true');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-
-        section {
-            background-color: rgba(255, 255, 255, 0.85);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        section h2 {
-            color: #333;
-            font-weight: bold;
-            margin-top: 0;
-        }
-
-        section p, section ol {
-            color: #000;
-            font-size: 18px;
-            line-height: 1.8;
-        }
-
-        section ol li {
-            margin-bottom: 10px;
-        }
-
-        h1, h2, h3 {
-            color: #333;
-        }
-
-        table {
-            width: 100%;
-            margin: 20px 0 0 0;
-            border-collapse: collapse;
-            background-color: #ffffff;
-        }
-
-        th, td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: left;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            vertical-align: top;
-        }
-
-        th {
-            background-color: #87CEEB;
-            color: #FFFFFF;
-        }
-
-        /* 讓表格內的連結看起來像普通文本 */
-        table a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        tr:hover a {
-            color: inherit;
-        }
-
-        /* hover 色彩區分 */
-        .consulting-row:hover {
-            background-color: var(--gray-color);
-        }
-
-        .self-audit-row:hover,
-        .government-row:hover,
-        .business-consulting-row:hover,
-        .free-eval-row:hover {
-            background-color: var(--orange-color);
-        }
-
-        .solar-water-row:hover,
-        .carbon-benefit-row:hover,
-        .carbon-method-row:hover,
-        .edm-row:hover,
-        .custom-integrated-row:hover,
-        .govt-subsidy-row:hover {
-            background-color: var(--pink-color);
-        }
-
-        .partner-row:hover,
-        .ghg-guidance-row:hover {
-            background-color: var(--green-color);
-        }
-
-        .light-blue-row:hover {
-            background-color: #9b9be7;
-        }
-
-        /* 景煬新聞發佈按鈕 / 共用按鈕樣式 */
-        .news-button, .calculator-button {
-            background-color: rgba(242, 242, 242, 0.8);
-            color: rgb(12, 12, 12);
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease-in-out;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            position: relative;
-            white-space: nowrap;
-        }
-
-        .news-button:hover, .calculator-button:hover {
-            background-color: #ff9800;
-            transform: translateY(-3px);
-            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        .click-animation {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            position: absolute;
-            top: -30px;
-            right: -10px;
-            animation: bounce 1s infinite alternate;
-        }
-
-        .click-icon {
-            width: 30px;
-            height: 30px;
-            fill: yellow;
-            border: 2px solid black;
-            border-radius: 50%;
-            box-shadow: 0px 0px 10px rgba(255, 255, 0, 0.8);
-        }
-
-        .click-text {
-            font-size: 14px;
-            font-weight: bold;
-            color: red;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes bounce {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-5px); }
-        }
-
-        footer {
-            background-color: #444;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            position: relative;
-        }
-
-        /* footer 右側 EDM 按鈕 */
-        .edm-button {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            white-space: nowrap;
-        }
-
-        .edm-button:hover {
-            background-color: #0056b3;
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-            }
-
-            nav a img {
-                width: 100px;
-                margin: 5px 0;
-            }
-
-            header h1 {
-                font-size: 26px;
-            }
-
-            header h2 {
-                font-size: 16px;
-            }
-
-            table {
-                font-size: 14px;
-            }
-
-            th, td {
-                padding: 6px;
-            }
-
-            footer {
-                font-size: 12px;
-            }
-
-            .top-bar {
-                flex-direction: column;
-            }
-
-            .edm-button {
-                position: static;
-                transform: none;
-                display: inline-block;
-                margin-top: 10px;
-            }
-
-            .logo-home img {
-                width: 50px;
-            }
-        }
-    </style>
+/* ===== Mobile ===== */
+@media(max-width:768px){
+  nav img{width:100px}
+  header h1{font-size:26px}
+  header h2{font-size:16px}
+  section p,section li{font-size:16px}
+  .entry-bar{flex-direction:column}
+  .entry-btn{width:100%}
+  .edm-button{
+    position:static;
+    transform:none;
+    display:inline-block;
+    margin-top:10px;
+  }
+  main{background-attachment:scroll}
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <!-- 左上角 Logo + 回主頁 -->
-        <a href="http://www.udmgroup.com/index.asp" class="logo-home" title="返回 UDM 主頁">
-            <img src="https://github.com/Sethjesus/Photo/blob/main/UDM%20New%20Logo.jpg?raw=true"
-                 alt="UDM Logo">
-            <span>回主頁</span>
-        </a>
-    <BR>
+<header>
+  <a href="http://www.udmgroup.com/index.asp" class="logo-home">
+    <img src="https://github.com/Sethjesus/Photo/blob/main/UDM%20New%20Logo.jpg?raw=true">
+    <span>回主頁</span>
+  </a>
+  <h1>🌿專業低碳管理方案</h1>
+  <h2>♻️景煬提供完整的一站式永續及淨零碳排方案</h2>
+</header>
 
+<nav>
+  <a href="https://sethjesus.github.io/Consult/Consult.html"><img src="https://i.imgur.com/3qy7Huz.jpg"></a>
+  <a href="https://sethjesus.github.io/Carbon/Carbon.html"><img src="https://i.imgur.com/o0zrVfS.jpg"></a>
+  <a href="https://sethjesus.github.io/3elements/3elements.html"><img src="https://github.com/Sethjesus/Photo/blob/main/Carbon9.jpg?raw=true"></a>
+  <a href="https://sethjesus.github.io/Partner/Partner.html"><img src="https://i.imgur.com/wfSS9VP.jpg"></a>
+  <a href="https://sethjesus.github.io/ISO/ISO.html"><img src="https://i.imgur.com/VFlEBNw.jpg"></a>
+</nav>
 
-        
-        <h1>🌿專業低碳管理方案</h1>
-        <h2>♻️景煬提供完整的一站式永續及淨零碳排方案</h2>
-    </header>
-
-    <nav>
-        <!-- Carbon12 -->
-        <a href="https://sethjesus.github.io/Consult/Consult.html">
-            <img src="https://i.imgur.com/3qy7Huz.jpg" alt="碳盤查" loading="lazy">
-        </a>
-
-        <!-- Carbon8 -->
-        <a href="https://sethjesus.github.io/Carbon/Carbon.html">
-            <img src="https://i.imgur.com/o0zrVfS.jpg" alt="碳盤查" loading="lazy">
-        </a>
-
-        <!-- Carbon9 -->
-        <a href="https://sethjesus.github.io/3elements/3elements.html">
-            <img src="https://github.com/Sethjesus/Photo/blob/main/Carbon9.jpg?raw=true" alt="低碳化/減碳" loading="lazy">
-        </a>
-
-        <!-- Carbon10 -->
-        <a href="https://sethjesus.github.io/Partner/Partner.html">
-            <img src="https://i.imgur.com/wfSS9VP.jpg" alt="輔導" loading="lazy">
-        </a>
-
-        <!-- Carbon11 -->
-        <a href="https://sethjesus.github.io/ISO/ISO.html">
-            <img src="https://i.imgur.com/VFlEBNw.jpg" alt="ISO查驗證" loading="lazy">
-        </a>
-    </nav>
-
-    <!-- 上方中間列：English 入口 + 景煬新聞發佈 -->
-    <div class="content-container top-bar">
-        <!-- 公司 Logo（English 入口） -->
-        <a href="https://sethjesus.github.io/JPESG/JP%20ESG.html">
-            <img src="https://i.imgur.com/mCTI7wC.jpg" alt="公司Logo" style="width: 60px;" loading="lazy">
-        </a>
-
-        <div class="text-content">Access English content</div>
-
-        <!-- 景煬新聞發佈按鈕 -->
-        <a href="https://sethjesus.github.io/Maincarbon/News.html" class="news-button">
-            景煬新聞發佈
-            <div class="click-animation">
-                <svg class="click-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="10" stroke="black" stroke-width="2" fill="yellow"/>
-                    <path d="M12 7V13" stroke="black" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M9 10L12 13L15 10" stroke="black" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-                <span class="click-text">請按下</span>
-            </div>
-        </a>
+<div class="entry-bar">
+  <a href="https://sethjesus.github.io/JPESG/JP%20ESG.html" class="entry-btn entry-english">
+    <img src="https://i.imgur.com/mCTI7wC.jpg" class="entry-icon">
+    <div class="entry-text">
+      <strong>English Site</strong>
+      <span>Global ESG · Low Carbon · Net Zero</span>
     </div>
+  </a>
+
+  <a href="https://sethjesus.github.io/Maincarbon/News.html" class="entry-btn entry-news">
+    <div class="entry-text">
+      <strong>景煬新聞發佈</strong>
+      <span>ESG / 低碳 / 政策最新消息</span>
+    </div>
+  </a>
+</div>
+
+<!-- ⚠️ 以下 main / table / footer 內容 = 你原本貼的版本 그대로保留 ⚠️ -->
+<!-- 直接接你原本的 main 區塊即可 -->
+
+
 
     <main>
         <section>
@@ -636,4 +462,3 @@
 
 </body>
 </html>
-
