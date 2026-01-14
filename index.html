@@ -204,6 +204,166 @@ footer{
   }
   main{background-attachment:scroll}
 }
+/* ===== 導覽卡片吸引點擊 ===== */
+.nav-card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-decoration:none;
+  color:#0f172a;
+  position:relative;
+}
+
+.nav-hint{
+  margin-top:6px;
+  font-size:13px;
+  font-weight:700;
+  background:rgba(255,255,255,.88);
+  padding:4px 10px;
+  border-radius:999px;
+  box-shadow:0 4px 10px rgba(0,0,0,.15);
+  opacity:0;
+  transform:translateY(-6px);
+  transition:.25s ease;
+  white-space:nowrap;
+}
+
+.nav-card:hover .nav-hint{
+  opacity:1;
+  transform:translateY(0);
+}
+@media(max-width:768px){
+  .nav-hint{
+    opacity:1;
+    transform:none;
+    margin-bottom:4px;
+  }
+}
+/* ===== 主 CTA 強化 ===== */
+.nav-primary .nav-hint{
+  background:#0b6bff;
+  color:#fff;
+  box-shadow:0 6px 16px rgba(11,107,255,.45);
+}
+
+.nav-primary:hover .nav-hint{
+  transform:translateY(-2px) scale(1.05);
+}
+.nav-card{
+  padding:8px 10px 10px;
+  border-radius:12px;
+}
+
+.nav-card:hover{
+  background:rgba(255,255,255,.55);
+}
+.entry-btn{
+  background:rgba(255,255,255,.85);
+}
+@keyframes pulseCTA{
+  0%{box-shadow:0 0 0 rgba(11,107,255,0)}
+  50%{box-shadow:0 0 18px rgba(11,107,255,.45)}
+  100%{box-shadow:0 0 0 rgba(11,107,255,0)}
+}
+
+.nav-primary{
+  animation:pulseCTA 3.5s ease-in-out infinite;
+}
+/* ===== Entry 語意色強化 ===== */
+.entry-english{
+  border-left:6px solid #0ea5e9;
+}
+.entry-english strong{ color:#0369a1; }
+
+.entry-news{
+  border-left:6px solid #22c55e;
+}
+.entry-news strong{ color:#15803d; }
+
+.entry-text em{
+  display:block;
+  font-size:12px;
+  opacity:.7;
+  margin-top:4px;
+}
+/* ===== Table 對齊優化 ===== */
+table ul{
+  margin:0;
+  padding-left:18px;
+}
+
+table li{
+  line-height:1.6;
+}
+
+table sup{
+  display:block;
+  margin-top:4px;
+  font-size:12px;
+  opacity:.7;
+}
+
+td{
+  vertical-align:top;
+}
+
+.marquee-text{
+  display:inline-block;
+  white-space:nowrap;
+  font-size:18px;              /* 稍微放大一點更吸睛 */
+  font-weight:900;
+  letter-spacing:3px;
+  padding:8px 0;
+
+  /* ✨ 高亮金色漸層（亮、通透、有層次） */
+  background:linear-gradient(
+    90deg,
+    #b45309,   /* 深金底 */
+    #fde047,   /* 亮金 */
+    #fff7b2,   /* 高光 */
+    #fde047,   /* 回亮金 */
+    #b45309
+  );
+  background-size:400% 200%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  /* 🌟 強化立體與發光感 */
+  text-shadow:
+    0 0 4px rgba(255,215,0,.45),
+    0 2px 6px rgba(0,0,0,.35);
+
+  animation:
+    marqueeRun 16s linear infinite,  /* 稍微快一點 */
+    goldShine 2.8s linear infinite;  /* 金光流動更明顯 */
+}
+
+@keyframes goldShine{
+  0%{
+    background-position:0% 50%;
+  }
+  100%{
+    background-position:200% 50%;
+  }
+}
+/* ===== 跑馬燈容器 ===== */
+.marquee-wrap{
+  width:100%;
+  overflow:hidden;
+  margin-bottom:10px;
+  pointer-events:none; /* 不影響點擊下面五張圖 */
+}
+
+/* ===== 跑馬燈移動動畫 ===== */
+@keyframes marqueeRun{
+  0%{
+    transform:translateX(100%);
+  }
+  100%{
+    transform:translateX(-100%);
+  }
+}
+
 </style>
 </head>
 
@@ -220,29 +380,65 @@ footer{
 </header>
 
 <nav>
-  <a href="https://sethjesus.github.io/Consult/Consult.html"><img src="https://i.imgur.com/3qy7Huz.jpg"></a>
-  <a href="https://sethjesus.github.io/Carbon/Carbon.html"><img src="https://i.imgur.com/o0zrVfS.jpg"></a>
-  <a href="https://sethjesus.github.io/3elements/3elements.html"><img src="https://github.com/Sethjesus/Photo/blob/main/Carbon9.jpg?raw=true"></a>
-  <a href="https://sethjesus.github.io/Partner/Partner.html"><img src="https://i.imgur.com/wfSS9VP.jpg"></a>
-  <a href="https://sethjesus.github.io/ISO/ISO.html"><img src="https://i.imgur.com/VFlEBNw.jpg"></a>
+    <div class="marquee-wrap">
+  <div class="marquee-text">
+    🐎 2026馬到成功・馬年行大運 🐎 2026馬到成功・馬年行大運 🐎 2026馬到成功・馬年行大運 🐎
+  </div>
+</div>
+
+  <a href="https://sethjesus.github.io/Consult/Consult.html" class="nav-card nav-primary">
+  <img src="https://i.imgur.com/3qy7Huz.jpg">
+  <span class="nav-hint nav-cta">免費顧問諮詢｜低碳可行性評估</span>
+</a>
+
+
+  <a href="https://sethjesus.github.io/Carbon/Carbon.html" class="nav-card nav-primary">
+    <img src="https://i.imgur.com/o0zrVfS.jpg">
+     <span class="nav-hint nav-cta">快速碳盤查｜支援政府補助</span>
+  </a>
+
+  <a href="https://sethjesus.github.io/3elements/3elements.html"  class="nav-card nav-primary">
+    <img src="https://github.com/Sethjesus/Photo/blob/main/Carbon9.jpg?raw=true">
+     <span class="nav-hint nav-cta">電力・空氣・水｜立即減碳</span>
+  </a>
+
+  <a href="https://sethjesus.github.io/Partner/Partner.html"  class="nav-card nav-primary">
+    <img src="https://i.imgur.com/wfSS9VP.jpg">
+      <span class="nav-hint nav-cta">查驗證夥伴｜國際標準</span>
+  </a>
+
+  <a href="https://sethjesus.github.io/ISO/ISO.html" class="nav-card nav-primary">
+    <img src="https://i.imgur.com/VFlEBNw.jpg">
+    <span class="nav-hint nav-cta">ISO 14064 / 14067 / 50001</span>
+  </a>
 </nav>
 
+
+
+
 <div class="entry-bar">
-  <a href="https://sethjesus.github.io/JPESG/JP%20ESG.html" class="entry-btn entry-english">
+  <!-- English ESG -->
+  <a href="https://sethjesus.github.io/JPESG/JP%20ESG.html"
+     class="entry-btn entry-english">
     <img src="https://i.imgur.com/mCTI7wC.jpg" class="entry-icon">
     <div class="entry-text">
-      <strong>English Site</strong>
-      <span>Global ESG · Low Carbon · Net Zero</span>
+      <strong>English ESG Portal</strong>
+      <span>UDM ESG · Low Carbon · Net Zero Solutions</span>
+      <em>For global clients, partners & overseas projects</em>
     </div>
   </a>
 
-  <a href="https://sethjesus.github.io/Maincarbon/News.html" class="entry-btn entry-news">
+  <!-- News -->
+  <a href="https://sethjesus.github.io/Maincarbon/News.html"
+     class="entry-btn entry-news">
     <div class="entry-text">
-      <strong>景煬新聞發佈</strong>
-      <span>ESG / 低碳 / 政策最新消息</span>
+      <strong>景煬｜ESG 新聞中心</strong>
+      <span>政策・補助・低碳技術・專案動態</span>
+      <em>掌握最新 ESG 與淨零趨勢</em>
     </div>
   </a>
 </div>
+
 
 <!-- ⚠️ 以下 main / table / footer 內容 = 你原本貼的版本 그대로保留 ⚠️ -->
 <!-- 直接接你原本的 main 區塊即可 -->
