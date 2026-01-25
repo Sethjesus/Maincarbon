@@ -44,7 +44,101 @@
     /* ===== 動畫 ===== */
     @keyframes fadeInUp{0%{opacity:0; transform:translateY(24px)}100%{opacity:1; transform:translateY(0)}}
     @keyframes galleryScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
+    
+    /* ===== 底部可愛連結區 ===== */
+    .esg-edu-link {
+      margin: 40px auto 20px;
+      max-width: 1100px;
+      padding: 0 14px;
+      text-align: center;
+    }
+    
+    .edu-card {
+      background: linear-gradient(135deg, #a8e6cf, #dcedc1, #ffd3b6);
+      border: 3px solid #4CAF50;
+      border-radius: 20px;
+      padding: 25px 20px;
+      text-decoration: none;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
+    }
+    
+    .edu-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(76, 175, 80, 0.3);
+      border-color: #2E7D32;
+    }
+    
+    .edu-card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: rotate(45deg);
+      animation: eduCardShine 3s infinite linear;
+    }
+    
+    @keyframes eduCardShine {
+      0% { transform: rotate(45deg) translateX(-100%); }
+      100% { transform: rotate(45deg) translateX(100%); }
+    }
+    
+    .edu-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .edu-icon {
+      font-size: 3.5rem;
+      animation: eduIconFloat 2s infinite ease-in-out;
+    }
+    
+    @keyframes eduIconFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-10px) rotate(5deg); }
+      75% { transform: translateY(-10px) rotate(-5deg); }
+    }
+    
+    .edu-text {
+      text-align: left;
+    }
+    
+    .edu-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #1B5E20;
+      margin-bottom: 8px;
+      text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+    }
+    
+    .edu-subtitle {
+      font-size: 1.2rem;
+      color: #388E3C;
+      opacity: 0.9;
+    }
+    
+    .edu-hint {
+      margin-top: 15px;
+      font-size: 1rem;
+      color: #2E7D32;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
     /* ===== 文字與容器 ===== */
     .news-container{animation:fadeInUp .6s ease}
     .news-content{line-height:1.8}
@@ -387,6 +481,23 @@
         <p>該小組將由來自產、官、學界的6名專家組成，擔任無薪榮譽職務，並針對工業區與中小企業進行實務指導。此提案獲得全體委員一致通過，並隨即介紹諮詢小組的專家成員。</p>
       </div>
     </section>
+    
+    <!-- ===== ESG 教育網可愛連結 ===== -->
+    <div class="esg-edu-link">
+      <a href="https://jpesgdownload.netlify.app/" target="_blank" rel="noopener" class="edu-card" aria-label="前往ESG教育網">
+        <div class="edu-content">
+          <div class="edu-icon">📚🎨🎮</div>
+          <div class="edu-text">
+            <div class="edu-title">🎯 點我探索 ESG 教育網 🎯</div>
+            <div class="edu-subtitle">✨ 遊戲化學習 ✨ 環保小教室 ✨ 互動教材下載 ✨</div>
+          </div>
+        </div>
+        <div class="edu-hint">
+          <span>👉 點擊卡片進入教育資源網 👈</span>
+        </div>
+      </a>
+    </div>
+    
   </main>
 
   <!-- ===== Lightbox（全站共用） ===== -->
