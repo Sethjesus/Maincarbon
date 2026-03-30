@@ -12,7 +12,6 @@
 <meta name="geo.position" content="25.003;121.495">
 <meta name="ICBM" content="25.003, 121.495">
 <link rel="canonical" href="https://sethjesus.github.io/Maincarbon/">
-<!-- 結構化資料 Schema.org -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -58,33 +57,65 @@ header{
   background:#f2f2f2;
   position:relative;
 }
+/* 修復手機板：logo區塊不擋文字，改用相對定位且不影響標題區域 */
 .logo-home{
   position:absolute;
-  top:12px;left:12px;
+  top:12px;
+  left:12px;
   display:flex;
   gap:6px;
   align-items:center;
   text-decoration:none;
-  animation:floatLogo 3s ease-in-out infinite;
-  z-index:2;
+  z-index:10;
+  background:rgba(255,255,255,0.75);
+  padding:4px 8px 4px 6px;
+  border-radius:40px;
+  backdrop-filter: blur(4px);
+  border:1px solid rgba(0,0,0,0.05);
 }
-.logo-home img{width:48px; border-radius:12px;}
-.logo-home span{
-  font-size:12px;
-  font-weight:bold;
-  background:rgba(255,255,255,.9);
-  padding:4px 8px;
+.logo-home img{
+  width:36px;
   border-radius:30px;
-  border:1px solid #ccc;
+}
+.logo-home span{
+  font-size:11px;
+  font-weight:bold;
+  background:transparent;
+  color:#1a3b2e;
+}
+/* 手機板時將標題區域的 padding-top 加大避免遮擋，同時確保logo不會覆蓋主標題 */
+@media (max-width:768px){
+  .logo-home{
+    top:8px;
+    left:8px;
+    padding:3px 6px;
+  }
+  .logo-home img{ width:30px; }
+  .logo-home span{ font-size:9px; }
+  header{
+    padding-top: 48px;  /* 騰出空間讓logo不壓到文字 */
+    padding-bottom: 12px;
+  }
+  header h1{
+    font-size:1.6rem;
+    margin-top:0;
+  }
+}
+/* 桌機維持美觀 */
+@media (min-width:769px){
+  .logo-home img{ width:48px; }
+  .logo-home span{ font-size:12px; }
+  header{
+    padding-top:20px;
+  }
 }
 @keyframes floatLogo{
   0%{transform:scale(1)}
-  50%{transform:scale(1.05) translateY(-3px)}
+  50%{transform:scale(1.03) translateY(-2px)}
   100%{transform:scale(1)}
 }
-header h1{font-size:clamp(1.5rem, 6vw, 2.2rem); margin-top:8px; color:#1a4d1a;}
-header h2{font-size:clamp(0.9rem, 4vw, 1.2rem); color:#2c5e2c;}
-/* 信賴標章 */
+header h1{font-size:clamp(1.4rem, 6vw, 2.2rem); margin-top:8px; color:#1a4d1a; line-height:1.3;}
+header h2{font-size:clamp(0.85rem, 4vw, 1.2rem); color:#2c5e2c; margin-top:4px;}
 .trust-badge{
   display:flex;
   justify-content:center;
@@ -143,7 +174,6 @@ nav{
 .nav-primary .nav-hint{ background:#0b6bff; }
 .nav-card:hover{ transform:scale(1.02); background:white;}
 
-/* 移動端調整導覽卡片 */
 @media(max-width:640px){
   nav{ gap:6px; }
   .nav-card{ width:calc(20% - 8px); min-width:70px; padding:6px 4px; }
@@ -252,7 +282,7 @@ section p, section li{ font-size:1rem; line-height:1.5; }
 }
 table {
   width: 100%;
-  min-width: 680px;  /* 保持可讀性，小屏強制滑動 */
+  min-width: 680px;
   border-collapse: collapse;
   background: #fff;
   border-radius: 20px;
@@ -305,7 +335,6 @@ table sup { font-size: 0.7rem; opacity: 0.7; display: inline-block;}
   }
   .local-business-highlight{ margin: 8px 8px; }
 }
-/* 補助標籤美觀 */
 .grant-note{
   background:#eef2dd; 
   padding:12px 16px; 
@@ -472,7 +501,6 @@ footer{
 
   <section>
     <h2>低碳化/減碳方案｜AI碳管理｜政府補助專區</h2>
-    <!-- 可手動左右滑動的表格區塊 -->
     <div class="table-wrapper" id="scrollableTable">
       <table>
         <thead>
@@ -510,13 +538,11 @@ footer{
 </footer>
 
 <script>
-// 提升觸控滑動體驗：讓表格區塊用手拖移更直覺（滑鼠+觸控）
 const scrollArea = document.querySelector('.table-wrapper');
 if(scrollArea) {
   let isDown = false;
   let startX;
   let scrollLeft;
-  
   scrollArea.addEventListener('mousedown', (e) => {
     isDown = true;
     scrollArea.style.cursor = 'grabbing';
@@ -534,7 +560,6 @@ if(scrollArea) {
     const walk = (x - startX) * 1.2;
     scrollArea.scrollLeft = scrollLeft - walk;
   });
-  // 避免觸控時頁面大幅跳動，原生觸控滑動保留，並增加平滑感
   scrollArea.style.touchAction = 'pan-x pan-y';
   scrollArea.style.cursor = 'grab';
 }
