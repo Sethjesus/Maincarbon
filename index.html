@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
 <title>🌱景煬專業低碳管理方案｜ESG淨零碳排｜ISO輔導認證｜政府補助申請</title>
 <meta name="description" content="景煬UDM ESG提供一站式低碳管理方案：AI碳盤查、ISO 14064/14067/50001輔導、政府補助申請(16+4)、陽光空氣水節能減碳、EMS能耗管理。協助中小企業通過國際查驗證，取得碳足跡與能源管理認證。">
 <meta name="keywords" content="低碳管理, ESG, 淨零碳排, 碳盤查, ISO 14064, ISO 50001, 政府補助, 碳足跡, CBAM, 節能減碳, AIOT能耗管理, 永續發展, 台灣">
@@ -12,7 +12,7 @@
 <meta name="geo.position" content="25.003;121.495">
 <meta name="ICBM" content="25.003, 121.495">
 <link rel="canonical" href="https://sethjesus.github.io/Maincarbon/">
-<!-- 結構化資料 / Schema.org for SEO / GEO -->
+<!-- 結構化資料 Schema.org -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -32,13 +32,7 @@
     "addressCountry": "台灣"
   },
   "telephone": "+886-2-66202388",
-  "email": "service@udmgroup.com",
-  "priceRange": "$$",
-  "sameAs": [
-    "https://sethjesus.github.io/Consult/Consult.html",
-    "https://sethjesus.github.io/Carbon/Carbon.html",
-    "https://sethjesus.github.io/ISO/ISO.html"
-  ]
+  "priceRange": "$$"
 }
 </script>
 <link rel="icon" href="https://raw.githubusercontent.com/Sethjesus/Photo/main/UDM%20New%20Logo.jpg" type="image/jpeg">
@@ -50,756 +44,500 @@
   --green:#32CD32;
   --blue:#9b9be7;
 }
-
-*{box-sizing:border-box}
+*{box-sizing:border-box; margin:0; padding:0;}
 body,html{
   margin:0;
-  font-family:Arial, sans-serif;
-  background:#fff;
+  font-family:'Segoe UI', Roboto, Arial, sans-serif;
+  background:#f5fbf5;
   scroll-behavior:smooth;
 }
-
 /* ===== Header ===== */
 header{
   text-align:center;
-  padding:20px 10px;
+  padding:20px 10px 16px;
   background:#f2f2f2;
   position:relative;
 }
 .logo-home{
   position:absolute;
-  top:15px;left:15px;
+  top:12px;left:12px;
   display:flex;
   gap:6px;
   align-items:center;
   text-decoration:none;
   animation:floatLogo 3s ease-in-out infinite;
+  z-index:2;
 }
-.logo-home img{width:60px}
+.logo-home img{width:48px; border-radius:12px;}
 .logo-home span{
-  font-size:14px;
+  font-size:12px;
   font-weight:bold;
-  background:rgba(255,255,255,.85);
-  padding:3px 8px;
-  border-radius:5px;
+  background:rgba(255,255,255,.9);
+  padding:4px 8px;
+  border-radius:30px;
   border:1px solid #ccc;
-  color:#000;
 }
 @keyframes floatLogo{
   0%{transform:scale(1)}
-  50%{transform:scale(1.05) translateY(-4px)}
+  50%{transform:scale(1.05) translateY(-3px)}
   100%{transform:scale(1)}
 }
-
-/* ===== Nav ===== */
+header h1{font-size:clamp(1.5rem, 6vw, 2.2rem); margin-top:8px; color:#1a4d1a;}
+header h2{font-size:clamp(0.9rem, 4vw, 1.2rem); color:#2c5e2c;}
+/* 信賴標章 */
+.trust-badge{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+.trust-badge span{
+  background:#fff;
+  padding:5px 12px;
+  border-radius:40px;
+  font-size:12px;
+  font-weight:600;
+  box-shadow:0 1px 4px rgba(0,0,0,.08);
+}
+/* ===== Nav 五卡 呼吸+RWD ===== */
 nav{
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
   background:url('https://github.com/Sethjesus/Photo/blob/main/woods.jpg?raw=true') center/cover;
-  padding:10px;
+  padding:16px 8px;
+  gap:8px;
 }
-nav img{
-  width:120px;
-  margin:6px;
-  transition:.2s;
-}
-nav img:hover{transform:scale(1.08)}
-
-/* ===== 英文 / 新聞入口 ===== */
-.entry-bar{
-  display:flex;
-  justify-content:center;
-  gap:18px;
-  flex-wrap:wrap;
-  margin:10px auto;
-  max-width:900px;
-}
-.entry-btn{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  padding:14px 18px;
-  border-radius:12px;
-  text-decoration:none;
-  background:rgba(255,255,255,.92);
-  color:#0f172a;
-  box-shadow:0 4px 10px rgba(0,0,0,.08);
-  transition:.2s;
-  position:relative;
-  min-width:260px;
-}
-.entry-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 8px 18px rgba(0,0,0,.15);
-}
-.entry-english{border-left:6px solid #0ea5e9}
-.entry-news{border-left:6px solid #22c55e}
-.entry-icon{
-  width:52px;
-  height:52px;
-  border-radius:8px;
-}
-.entry-text strong{font-size:16px}
-.entry-text span{
-  display:block;
-  font-size:13px;
-  opacity:.75;
-}
-
-/* ===== Main ===== */
-main{
-  width:90%;
-  max-width:1200px;
-  margin:auto;
-  padding:20px;
-  background:url('https://github.com/Sethjesus/Photo/blob/main/sky.jpg?raw=true') center/cover fixed;
-}
-section{
-  background:rgba(255,255,255,.88);
-  padding:20px;
-  border-radius:10px;
-  margin-bottom:20px;
-}
-section p,section li{
-  font-size:18px;
-  line-height:1.8;
-}
-
-/* ===== Table ===== */
-table{
-  width:100%;
-  border-collapse:collapse;
-  background:#fff;
-}
-th,td{
-  border:1px solid #ccc;
-  padding:8px;
-  vertical-align:top;
-  word-break:break-word;
-}
-th{
-  background:#87CEEB;
-  color:#fff;
-}
-table a{
-  color:inherit;
-  text-decoration:none;
-}
-
-/* ===== Row Hover 顏色管理（桌機） ===== */
-@media(min-width:769px){
-  .consulting-row:hover{background:var(--gray)}
-  .self-audit-row:hover,
-  .government-row:hover,
-  .business-consulting-row:hover,
-  .free-eval-row:hover{background:var(--orange)}
-  .solar-water-row:hover,
-  .carbon-benefit-row:hover,
-  .carbon-method-row:hover,
-  .edm-row:hover,
-  .custom-integrated-row:hover,
-  .govt-subsidy-row:hover{background:var(--pink)}
-  .partner-row:hover,
-  .ghg-guidance-row:hover{background:var(--green)}
-  .light-blue-row:hover{background:var(--blue)}
-}
-
-/* ===== Footer ===== */
-footer{
-  background:#444;
-  color:#fff;
-  text-align:center;
-  padding:20px;
-  position:relative;
-}
-.edm-button{
-  position:absolute;
-  right:20px;
-  top:50%;
-  transform:translateY(-50%);
-  background:#007BFF;
-  color:#fff;
-  padding:10px 20px;
-  text-decoration:none;
-  border-radius:5px;
-}
-
-/* ===== Mobile (RWD) ===== */
-@media(max-width:768px){
-  nav img{width:100px}
-  header h1{font-size:26px}
-  header h2{font-size:16px}
-  section p,section li{font-size:16px}
-  .entry-bar{flex-direction:column}
-  .entry-btn{width:100%}
-  .edm-button{
-    position:static;
-    transform:none;
-    display:inline-block;
-    margin-top:10px;
-  }
-  main{background-attachment:scroll}
-}
-/* ===== 導覽卡片吸引點擊 ===== */
 .nav-card{
   display:flex;
   flex-direction:column;
   align-items:center;
   text-decoration:none;
   color:#0f172a;
-  position:relative;
+  background:rgba(255,255,245,0.92);
+  border-radius:20px;
+  padding:10px 8px 8px;
+  transition:all 0.2s ease;
+  width:110px;
+  backdrop-filter: blur(2px);
+  box-shadow:0 4px 8px rgba(0,0,0,0.05);
 }
-
+.nav-card img{
+  width:80px;
+  border-radius:16px;
+  margin-bottom:6px;
+}
 .nav-hint{
-  margin-top:6px;
-  font-size:13px;
-  font-weight:700;
-  background:rgba(255,255,255,.88);
-  padding:4px 10px;
-  border-radius:999px;
-  box-shadow:0 4px 10px rgba(0,0,0,.15);
-  opacity:0;
-  transform:translateY(-6px);
-  transition:.25s ease;
-  white-space:nowrap;
+  font-size:10px;
+  font-weight:800;
+  text-align:center;
+  background:rgba(0,0,0,.7);
+  color:white;
+  padding:4px 8px;
+  border-radius:30px;
+  width:100%;
+  white-space:normal;
+  line-height:1.3;
+}
+.nav-primary .nav-hint{ background:#0b6bff; }
+.nav-card:hover{ transform:scale(1.02); background:white;}
+
+/* 移動端調整導覽卡片 */
+@media(max-width:640px){
+  nav{ gap:6px; }
+  .nav-card{ width:calc(20% - 8px); min-width:70px; padding:6px 4px; }
+  .nav-card img{ width:55px; }
+  .nav-hint{ font-size:8px; padding:3px 4px; }
 }
 
-.nav-card:hover .nav-hint{
-  opacity:1;
-  transform:translateY(0);
+/* 跑馬燈 */
+.marquee-wrap{
+  width:100%;
+  overflow:hidden;
+  margin-bottom:12px;
+  background:rgba(0,0,0,0.2);
+  border-radius:40px;
+  padding:4px 0;
 }
-@media(max-width:768px){
-  .nav-hint{
-    opacity:1;
-    transform:none;
-    margin-bottom:4px;
-  }
-}
-/* ===== 主 CTA 強化 ===== */
-.nav-primary .nav-hint{
-  background:#0b6bff;
-  color:#fff;
-  box-shadow:0 6px 16px rgba(11,107,255,.45);
-}
-
-.nav-primary:hover .nav-hint{
-  transform:translateY(-2px) scale(1.05);
-}
-.nav-card{
-  padding:8px 10px 10px;
-  border-radius:12px;
-}
-
-.nav-card:hover{
-  background:rgba(255,255,255,.55);
-}
-.entry-btn{
-  background:rgba(255,255,255,.85);
-}
-@keyframes pulseCTA{
-  0%{box-shadow:0 0 0 rgba(11,107,255,0)}
-  50%{box-shadow:0 0 18px rgba(11,107,255,.45)}
-  100%{box-shadow:0 0 0 rgba(11,107,255,0)}
-}
-
-.nav-primary{
-  animation:pulseCTA 3.5s ease-in-out infinite;
-}
-/* ===== Entry 語意色強化 ===== */
-.entry-english{
-  border-left:6px solid #0ea5e9;
-}
-.entry-english strong{ color:#0369a1; }
-
-.entry-news{
-  border-left:6px solid #22c55e;
-}
-.entry-news strong{ color:#15803d; }
-
-.entry-text em{
-  display:block;
-  font-size:12px;
-  opacity:.7;
-  margin-top:4px;
-}
-/* ===== Table 對齊優化 ===== */
-table ul{
-  margin:0;
-  padding-left:18px;
-}
-
-table li{
-  line-height:1.6;
-}
-
-table sup{
-  display:block;
-  margin-top:4px;
-  font-size:12px;
-  opacity:.7;
-}
-
-td{
-  vertical-align:top;
-}
-
 .marquee-text{
   display:inline-block;
   white-space:nowrap;
-  font-size:18px;              
+  font-size:clamp(14px, 5vw, 18px);
   font-weight:900;
-  letter-spacing:3px;
-  padding:8px 0;
-  background:linear-gradient(
-    90deg,
-    #b45309,   
-    #fde047,   
-    #fff7b2,   
-    #fde047,   
-    #b45309
-  );
+  background:linear-gradient(90deg,#b45309,#fde047,#fff7b2,#fde047,#b45309);
   background-size:400% 200%;
   -webkit-background-clip:text;
+  background-clip:text;
   -webkit-text-fill-color:transparent;
-  text-shadow:
-    0 0 4px rgba(255,215,0,.45),
-    0 2px 6px rgba(0,0,0,.35);
-  animation:
-    marqueeRun 16s linear infinite,  
-    goldShine 2.8s linear infinite;  
+  animation: marqueeRun 20s linear infinite, goldShine 2.8s infinite;
 }
-
-@keyframes goldShine{
-  0%{
-    background-position:0% 50%;
-  }
-  100%{
-    background-position:200% 50%;
-  }
-}
-/* ===== 跑馬燈容器 ===== */
-.marquee-wrap{
-  position:relative;
-  z-index:0;   
-  width:100%;
-  overflow:hidden;
-  margin-bottom:10px;
-  pointer-events:none;
-}
-
-.nav-card.show-click::after{
-  z-index:9999;   
-}
-
-
-/* ===== 跑馬燈移動動畫 ===== */
 @keyframes marqueeRun{
-  0%{
-    transform:translateX(100%);
-  }
-  100%{
-    transform:translateX(-100%);
-  }
+  0%{ transform:translateX(100%); }
+  100%{ transform:translateX(-100%); }
+}
+@keyframes goldShine{
+  0%{ background-position:0% 50%; }
+  100%{ background-position:200% 50%; }
 }
 
-.nav-card.show-click::after{
-  display:block;   
-  content:"請點我";
-  position:absolute;
-  top:-16px;
-  left:50%;
-  transform:translateX(-50%);
-  background:linear-gradient(135deg,#1d9bf0,#00e0ff);
-  color:#fff;
-  font-size:14px;
-  font-weight:900;
-  padding:6px 14px;
-  border-radius:999px;
-  box-shadow:0 8px 20px rgba(0,0,0,.35);
-  animation:floatHint 2.4s ease-in-out infinite;
-  z-index:9999;
-}
-
-
-/* 浮動動畫 */
-@keyframes floatHint{
-  0%{ transform:translateX(-50%) translateY(0); opacity:.85; }
-  50%{ transform:translateX(-50%) translateY(-8px); opacity:1; }
-  100%{ transform:translateX(-50%) translateY(0); opacity:.85; }
-}
-/* ===== 五張圖柔和呼吸（自動） ===== */
-.nav-card{
-  animation: cardBreathing 5.2s ease-in-out infinite;
-}
-
-/* 每張錯開一點時間，更自然 */
-.nav-card:nth-of-type(1){ animation-delay:0s; }
-.nav-card:nth-of-type(2){ animation-delay:.4s; }
-.nav-card:nth-of-type(3){ animation-delay:.8s; }
-.nav-card:nth-of-type(4){ animation-delay:1.2s; }
-.nav-card:nth-of-type(5){ animation-delay:1.6s; }
-
-@keyframes cardBreathing{
-  0%{
-    transform:scale(1);
-    box-shadow:0 8px 18px rgba(0,0,0,.18);
-  }
-  50%{
-    transform:scale(1.045);
-    box-shadow:0 18px 36px rgba(11,107,255,.35);
-  }
-  100%{
-    transform:scale(1);
-    box-shadow:0 8px 18px rgba(0,0,0,.18);
-  }
-}
-nav{
-  position:relative;
-}
-.nav-card{
-  position:relative;
-  z-index:5;
-}
-/* ===== 修正「請點我」被 transform 吃掉 ===== */
-nav{
-  position:relative;
-}
-
-.nav-card{
-  position:relative;
-  z-index:5;
-}
-
-/* AEO 信賴強化: 額外強調公正第三方 & 專業服務 */
-.trust-badge{
+/* entry-bar RWD 改善 */
+.entry-bar{
   display:flex;
   justify-content:center;
-  gap:20px;
+  gap:16px;
   flex-wrap:wrap;
-  margin-top:15px;
-  font-size:14px;
+  margin:16px auto;
+  max-width:960px;
+  padding:0 12px;
 }
-.trust-badge span{
-  background:#f5f5f5;
-  padding:6px 12px;
-  border-radius:40px;
-  box-shadow:0 1px 4px rgba(0,0,0,.1);
+.entry-btn{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex:1 1 280px;
+  background:rgba(255,255,255,.96);
+  border-radius:28px;
+  padding:12px 18px;
+  text-decoration:none;
+  color:#0f172a;
+  box-shadow:0 5px 12px rgba(0,0,0,.08);
+  transition:0.2s;
 }
-/* RWD 增強：手機表格水平滾動 */
-@media (max-width:640px){
-  section{
-    overflow-x:auto;
+.entry-icon{ width:48px; border-radius:12px;}
+.entry-text strong{font-size:1rem;}
+.entry-text span{font-size:0.75rem; opacity:0.7;}
+.entry-text em{font-size:0.7rem;}
+
+/* 本地GEO區塊 */
+.local-business-highlight{
+  background:#eef2ff;
+  border-left:6px solid #0b6bff;
+  padding:12px 18px;
+  border-radius:20px;
+  margin:8px 20px;
+  font-size:0.85rem;
+  font-weight:500;
+}
+
+/* main RWD 核心改善 */
+main{
+  width:96%;
+  max-width:1300px;
+  margin:0 auto;
+  padding:12px 0 20px;
+}
+section{
+  background:rgba(255,255,255,.94);
+  padding:18px 16px;
+  border-radius:28px;
+  margin-bottom:24px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+}
+section p, section li{ font-size:1rem; line-height:1.5; }
+
+/* ===== 表格區域：觸控滑動優化 (手移動) ===== */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  border-radius: 20px;
+  margin: 12px 0;
+  cursor: grab;
+  touch-action: pan-x pan-y;
+}
+.table-wrapper:active {
+  cursor: grabbing;
+}
+table {
+  width: 100%;
+  min-width: 680px;  /* 保持可讀性，小屏強制滑動 */
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 10px;
+  vertical-align: top;
+  font-size: 0.9rem;
+}
+th {
+  background: #2c6e2f;
+  color: white;
+  font-weight: 700;
+}
+table a { text-decoration: none; font-weight: 600; color: #1e4a76; }
+table a:hover{ text-decoration: underline; }
+table ul { margin: 0 0 0 18px; padding: 0; }
+table li { margin: 4px 0; font-size: 0.85rem; }
+table sup { font-size: 0.7rem; opacity: 0.7; display: inline-block;}
+
+/* hover row 保留增強 */
+@media (min-width:769px){
+  .consulting-row:hover{background:var(--gray)}
+  .self-audit-row:hover, .government-row:hover, .business-consulting-row:hover, .free-eval-row:hover{background:var(--orange)}
+  .solar-water-row:hover, .carbon-benefit-row:hover, .carbon-method-row:hover, .edm-row:hover, .custom-integrated-row:hover, .govt-subsidy-row:hover{background:var(--pink)}
+  .partner-row:hover, .ghg-guidance-row:hover{background:var(--green)}
+  .light-blue-row:hover{background:var(--blue)}
+}
+
+/* 手機額外優化排版 + 手勢提示 */
+@media (max-width:768px){
+  main{ width:98%; padding:8px 0; }
+  section{ padding:14px; }
+  th, td{ padding:10px 8px; font-size:0.8rem; }
+  table{ min-width: 600px; } 
+  .table-wrapper::after {
+    content: "👆 滑動查看更多表格內容 👉";
+    display: block;
+    text-align: center;
+    font-size: 11px;
+    color: #2c6e2f;
+    background: #f0f9f0;
+    padding: 6px;
+    border-radius: 30px;
+    margin-top: 6px;
+    font-weight: 500;
   }
-  table{
-    min-width:600px;
+  .local-business-highlight{ margin: 8px 8px; }
+}
+/* 補助標籤美觀 */
+.grant-note{
+  background:#eef2dd; 
+  padding:12px 16px; 
+  border-radius:20px; 
+  margin-top:20px;
+  font-size:0.85rem;
+  text-align:center;
+}
+
+/* Footer RWD */
+footer{
+  background:#2d3e2b;
+  color:#f0f0f0;
+  text-align:center;
+  padding:20px 16px;
+  position:relative;
+  margin-top:20px;
+}
+.edm-button{
+  display:inline-block;
+  background:#007BFF;
+  color:#fff;
+  padding:8px 20px;
+  border-radius:40px;
+  text-decoration:none;
+  margin-top:12px;
+}
+@media(min-width:769px){
+  .edm-button{
+    position:absolute;
+    right:30px;
+    top:50%;
+    transform:translateY(-50%);
+    margin-top:0;
   }
 }
 
-/* GEO & 本地商家微標記 */
-.local-business-highlight{
-  background:#eef2ff;
-  border-left:5px solid #0b6bff;
-  padding:10px 15px;
-  border-radius:12px;
-  margin-top:12px;
-  font-size:14px;
+/* 呼吸動畫與點擊提示保留 */
+.nav-card{
+  animation: cardBreathing 5s infinite;
+}
+.nav-card:nth-child(2){ animation-delay:0s; }
+.nav-card:nth-child(3){ animation-delay:.4s; }
+.nav-card:nth-child(4){ animation-delay:.8s; }
+.nav-card:nth-child(5){ animation-delay:1.2s; }
+.nav-card:nth-child(6){ animation-delay:1.6s; }
+
+@keyframes cardBreathing{
+  0%{ transform:scale(1); box-shadow:0 4px 12px rgba(0,0,0,.1);}
+  50%{ transform:scale(1.02); box-shadow:0 12px 22px rgba(11,107,255,.2);}
+  100%{ transform:scale(1); box-shadow:0 4px 12px rgba(0,0,0,.1);}
+}
+.show-click::after{
+  content:"請點我";
+  position:absolute;
+  top:-18px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#ff7b2c;
+  color:white;
+  font-size:10px;
+  font-weight:bold;
+  padding:4px 10px;
+  border-radius:30px;
+  white-space:nowrap;
+  animation: floatHint 1.8s infinite;
+  z-index:20;
+}
+@keyframes floatHint{
+  0%{ opacity:0.8; transform:translateX(-50%) translateY(0);}
+  100%{ opacity:1; transform:translateX(-50%) translateY(-6px);}
+}
+@media(max-width:640px){
+  .show-click::after{ font-size:8px; top:-14px; padding:2px 8px; }
 }
 </style>
 </head>
-
 <body>
 
 <header>
   <a href="http://www.udmgroup.com/index.asp" class="logo-home">
-    <img src="https://pub-531c96b02ed745e0bbfd0e96bfde8518.r2.dev/UDM%20New%20Logo.jpg" alt="UDM Group 首頁">
+    <img src="https://pub-531c96b02ed745e0bbfd0e96bfde8518.r2.dev/UDM%20New%20Logo.jpg" alt="UDM首頁">
     <span>回主頁</span>
   </a>
-  <br>
   <h1>🌿專業低碳管理方案｜ISO認證・政府補助</h1>
   <h2>♻️景煬提供完整的一站式永續及淨零碳排方案｜碳盤查・節能減碳・CBAM因應</h2>
-  <!-- AEO 強化: 信賴標章區塊 -->
   <div class="trust-badge">
-    <span>✅ 德國TUV萊茵合作夥伴</span>
-    <span>✅ SGS台灣檢驗科技認證輔導</span>
-    <span>✅ 產發署低碳化補助指定服務</span>
-    <span>✅ ISO 14064/14067/50001 專業團隊</span>
+    <span>✅ 德國TUV萊茵夥伴</span>
+    <span>✅ SGS認證輔導</span>
+    <span>✅ 產發署補助指定</span>
+    <span>✅ ISO 14064/50001</span>
   </div>
 </header>
 
 <nav>
-    <div class="marquee-wrap">
-  <div class="marquee-text">
-    🐎 2026馬到成功・馬年行大運 🐎 2026馬到成功・馬年行大運 🐎 2026馬到成功・馬年行大運 🐎
+  <div class="marquee-wrap">
+    <div class="marquee-text">
+      🐎 2026馬到成功・馬年行大運 🐎 2026馬到成功・馬年行大運 🐎
+    </div>
   </div>
-</div>
-<a href="https://sethjesus.github.io/Consult/Consult.html"
-   class="nav-card nav-primary show-click">
-  <img src="https://i.imgur.com/3qy7Huz.jpg" alt="免費顧問諮詢">
-  <span class="nav-hint nav-cta">免費顧問諮詢｜低碳可行性評估</span>
-</a>
-    
-<a href="https://sethjesus.github.io/Carbon/Carbon.html" class="nav-card nav-primary"> 
-    <img src="https://i.imgur.com/o0zrVfS.jpg" alt="快速碳盤查支援補助"> <span class="nav-hint nav-cta">快速碳盤查｜支援政府補助</span> </a> 
-    
-<a href="https://sethjesus.github.io/3elements/3elements.html" class="nav-card nav-primary"> 
-    <img src="https://pub-531c96b02ed745e0bbfd0e96bfde8518.r2.dev/Carbon9.jpg" alt="電力空氣水減碳"> <span class="nav-hint nav-cta">電力・空氣・水｜立即減碳</span> </a> 
-    
-<a href="https://sethjesus.github.io/Partner/Partner.html" class="nav-card nav-primary"> 
-    <img src="https://i.imgur.com/wfSS9VP.jpg" alt="查驗證夥伴國際標準"> <span class="nav-hint nav-cta">查驗證夥伴｜國際標準</span> </a> 
-    
-<a href="https://sethjesus.github.io/ISO/ISO.html" class="nav-card nav-primary"> 
-    <img src="https://i.imgur.com/VFlEBNw.jpg" alt="ISO 14064/14067/50001輔導"> <span class="nav-hint nav-cta">ISO 14064 / 14067 / 50001</span> </a> 
+  <a href="https://sethjesus.github.io/Consult/Consult.html" class="nav-card nav-primary show-click">
+    <img src="https://i.imgur.com/3qy7Huz.jpg" alt="免費顧問">
+    <span class="nav-hint">免費顧問諮詢<br>低碳可行性評估</span>
+  </a>
+  <a href="https://sethjesus.github.io/Carbon/Carbon.html" class="nav-card nav-primary">
+    <img src="https://i.imgur.com/o0zrVfS.jpg" alt="碳盤查">
+    <span class="nav-hint">快速碳盤查<br>支援政府補助</span>
+  </a>
+  <a href="https://sethjesus.github.io/3elements/3elements.html" class="nav-card nav-primary">
+    <img src="https://pub-531c96b02ed745e0bbfd0e96bfde8518.r2.dev/Carbon9.jpg" alt="三元素減碳">
+    <span class="nav-hint">電力・空氣・水<br>立即減碳</span>
+  </a>
+  <a href="https://sethjesus.github.io/Partner/Partner.html" class="nav-card nav-primary">
+    <img src="https://i.imgur.com/wfSS9VP.jpg" alt="查驗證夥伴">
+    <span class="nav-hint">查驗證夥伴<br>國際標準</span>
+  </a>
+  <a href="https://sethjesus.github.io/ISO/ISO.html" class="nav-card nav-primary">
+    <img src="https://i.imgur.com/VFlEBNw.jpg" alt="ISO輔導">
+    <span class="nav-hint">ISO 14064/14067<br>/50001</span>
+  </a>
 </nav>
 
-
 <div class="entry-bar">
-  <!-- English ESG -->
-  <a href="https://sethjesus.github.io/JPESG/JP%20ESG.html"
-     class="entry-btn entry-english">
-    <img src="https://i.imgur.com/mCTI7wC.jpg" class="entry-icon" alt="English ESG">
+  <a href="https://sethjesus.github.io/JPESG/JP%20ESG.html" class="entry-btn entry-english">
+    <img src="https://i.imgur.com/mCTI7wC.jpg" class="entry-icon" alt="EN">
     <div class="entry-text">
       <strong>English ESG Portal</strong>
-      <span>UDM ESG · Low Carbon · Net Zero Solutions</span>
-      <em>For global clients, partners & overseas projects</em>
+      <span>UDM ESG · Low Carbon · Net Zero</span>
+      <em>Global projects & overseas partners</em>
     </div>
   </a>
-
-  <!-- News -->
-  <a href="https://sethjesus.github.io/Maincarbon/News.html"
-     class="entry-btn entry-news">
+  <a href="https://sethjesus.github.io/Maincarbon/News.html" class="entry-btn entry-news">
     <div class="entry-text">
       <strong>景煬｜ESG 新聞中心</strong>
       <span>政策・補助・低碳技術・專案動態</span>
-      <em>掌握最新 ESG 與淨零趨勢</em>
+      <em>最新 ESG 與淨零趨勢</em>
     </div>
   </a>
 </div>
 
-<!-- 本地GEO 強化顯示 -->
-<div style="max-width:1200px; margin:0 auto 10px auto; padding:0 20px;">
-  <div class="local-business-highlight">
-    📍 服務據點：新北市中和區中正路872號12樓之1｜在地輔導中小企業碳管理，全台到場評估。<br>
-    🌏 國際布局：亞洲／美洲／歐洲，提供多語言ESG報告及碳邊境調整機制(CBAM)因應。
-  </div>
+<div class="local-business-highlight">
+  📍 服務據點：新北市中和區中正路872號12樓之1｜在地輔導中小企業碳管理，全台到場評估。<br>
+  🌏 國際布局：亞洲／美洲／歐洲，提供CBAM因應與多語言ESG報告。
 </div>
 
-    <main>
-        <section>
-            <h2>關於UDM ESG 景煬低碳淨能事業群</h2>
-            <p>
-                「UDM ESG 景煬低碳淨能事業群」為『 ESG 減碳/低碳管理方案提供商』，致力於解決中小企業碳排放、碳減量、碳費/碳稅/碳邊境稅 （CBAM、CCA)問題。專注於低碳化創新方案產品開發、系統整合及國際市場行銷。
-            </p>
-            <p>
-                此「低碳管理方案」結合人工智慧物聯網 AIOT 感測器及大數據碳足跡能耗管理系統 EMS，包含有線/無線的智慧鉤錶、閘道器 gateway、雲端 cloud 及軟體工程。鏈結溫室氣體盤查及減碳/低碳方案，搭配電力能耗(陽光）、空氣品質（空氣）及水資源（水）管理系統，協助、輔導中小企業通過國際查驗證 : ISO-14064/14067/50001 及碳盤查/碳足跡/能源管理之專業系統服務。
-            </p>
-            <p>
-                主要產業應用於：半導體產業、製造業、資通產業、飯店業、餐飲業、醫院及校園。市場主要佈局在亞洲、美洲、歐洲等。公司秉持 ESG 淨零碳排/低碳化的原則，歡迎有經驗的專家及積極主動的青年人才參與，成為我們國際合作夥伴。
-            </p>
-        </section>
+<main>
+  <section>
+    <h2>關於UDM ESG 景煬低碳淨能事業群</h2>
+    <p>「UDM ESG 景煬低碳淨能事業群」為『 ESG 減碳/低碳管理方案提供商』，致力於解決中小企業碳排放、碳減量、碳費/碳稅/碳邊境稅 （CBAM、CCA)問題。專注於低碳化創新方案產品開發、系統整合及國際市場行銷。</p>
+    <p>結合人工智慧物聯網 AIOT 感測器及大數據碳足跡能耗管理系統 EMS，包含智慧鉤錶、閘道器、雲端及軟體工程。鏈結溫室氣體盤查及減碳/低碳方案，搭配電力能耗(陽光）、空氣品質（空氣）及水資源（水）管理系統，輔導中小企業通過國際查驗證 : ISO-14064/14067/50001 及碳盤查/碳足跡專業服務。</p>
+    <p>主要應用產業：半導體、製造業、資通產業、飯店業、餐飲業、醫院及校園。市場布局亞洲、美洲、歐洲。</p>
+  </section>
 
-        <section>
-            <h2>企業識別與核心理念</h2>
-            <ol>
-                <li>企業識別 : UDM ESG Low Carbon, EMS and Net Zero。</li>
-                <li>企業理念 : 『ESG 永續發展，淨零碳排，創新發展，淨化地球』。</li>
-                <li>企業定位 : 『ESG 減碳/低碳管理方案提供商』。</li>
-                <li>產品定位 : 『ESG 低碳管理方案』。</li>
-                <li>企業核心 : 『PSM 專業團隊及 ESG創新系統整合』。</li>
-            </ol>
-        </section>
+  <section>
+    <h2>企業識別與核心理念</h2>
+    <ol style="padding-left: 1.6rem;">
+      <li>企業識別 : UDM ESG Low Carbon, EMS and Net Zero。</li>
+      <li>企業理念 : 『ESG 永續發展，淨零碳排，創新發展，淨化地球』。</li>
+      <li>企業定位 : 『ESG 減碳/低碳管理方案提供商』。</li>
+      <li>產品定位 : 『ESG 低碳管理方案』。</li>
+      <li>企業核心 : 『PSM 專業團隊及 ESG創新系統整合』。</li>
+    </ol>
+  </section>
 
-        <section>
-            <h2>低碳化/減碳方案｜AI碳管理｜政府補助專區</h2>
+  <section>
+    <h2>低碳化/減碳方案｜AI碳管理｜政府補助專區</h2>
+    <!-- 可手動左右滑動的表格區塊 -->
+    <div class="table-wrapper" id="scrollableTable">
+      <table>
+        <thead>
+          <tr><th>項目</th><th>內容／服務說明</th></tr>
+        </thead>
+        <tbody>
+          <tr class="consulting-row"><td><a href="https://sethjesus.github.io/Consult/Consult.html">諮詢輔導</a></a></td><td><ul><li>企業ESG永續發展先期輔導諮詢</li><li>低碳化輔導評估</li></ul></td></tr>
+          <tr class="self-audit-row"><td><a href="https://sethjesus.github.io/Carbon/Carbon.html">企業自主碳盤查</a></a></td><td><ul><li>線上免費碳估算工具</li><li>AI碳盤查管理平台</li><li>AI碳盤查管理平台+輔導</li></ul><sup>※提供無線能耗足跡管理工具</sup></td></tr>
+          <tr class="government-row"><td><a href="https://sethjesus.github.io/Carbon/Carbon.html">政府補助碳盤查(16+4)</a></a></td><td><ul><li>113年經濟部製造業低碳化及智慧化升級轉型診斷輔導</li></ul><sup>政府補助16萬元，廠商自籌4萬元，可作為產發署補助申請使用。</sup></td></tr>
+          <tr class="business-consulting-row"><td><a href="https://sethjesus.github.io/Carbon/Carbon.html">企業諮詢輔導</a></a></td><td><ul><li>企業自主碳盤查諮詢輔導</li><li>低碳化/減碳方案規劃建議</li></ul></td></tr>
+          <tr class="free-eval-row"><td><a href="https://sethjesus.github.io/Carbon/Carbon.html">免費可行性評估</a></a></td><td><ul><li>企業低碳化可行性評估 (Google表單)</li><li>產發署低碳化補助申請可行性評估</li></ul></td></tr>
+          <tr class="solar-water-row"><td><a href="https://sethjesus.github.io/3elements/3elements.html">陽光空氣水減碳方案</a></a></td><td><ul><li>無線/有線能耗足跡管理</li><li>冰水主機節能管理(變頻/類變頻)</li><li>空氣偵測改善管理、智慧水表</li></ul></td></tr>
+          <tr class="carbon-benefit-row"><td><a href="https://sethjesus.github.io/3elements/3elements.html">減碳效益 30% (3年)</a></a></td><td><ul><li>政策文件與績效報告</li></ul></td></tr>
+          <tr class="carbon-method-row"><td><a href="https://sethjesus.github.io/3elements/3elements.html">減碳方法 - 智慧化應用</a></a></td><td><ul><li>EMS、AI大數據應用、3+3減碳</li></ul></td></tr>
+          <tr class="edm-row"><td><a href="https://sethjesus.github.io/3elements/3elements.html">應用方案EDM</a></a></td><td><ul><li>製造業/學校/飯店等案例</li></ul></td></tr>
+          <tr class="custom-integrated-row"><td><a href="https://sethjesus.github.io/3elements/3elements.html">低碳化管理工具/客製化整合</a></a></td><td><ul><li>EMS電力能耗/水量/空氣品質數據平台</li><li>大數據整合客製化</li></ul></td></tr>
+          <tr class="govt-subsidy-row"><td><a href="https://sethjesus.github.io/3elements/3elements.html">政府低碳化補助申請</a></a></td><td><ul><li>產發署低碳化補助</li><li>商業發展署商業服務業智慧減碳補助</li><li>環境部、教育部智慧化氣候友善校園</li></ul></td></tr>
+          <tr class="partner-row"><td><a href="https://sethjesus.github.io/ISO/ISO.html">合作夥伴</a></a></td><td><ul><li>低碳化方案合作夥伴、P-Trade周邊設備服務</li></ul></td></tr>
+          <tr class="ghg-guidance-row"><td><a href="https://sethjesus.github.io/Partner/Partner.html">溫室氣體盤查輔導<br>流程文件產出</a></a></td><td><ul><li>TUV、SGS、Afnor、bsi、ARES、Deloitte</li><li>協助取得第三方查證聲明</li></ul></td></tr>
+          <tr class="light-blue-row"><td><a href="https://sethjesus.github.io/ISO/ISO.html">ISO 14064-1<br>ISO 14067<br>ISO 50001</a></a></td><td><ul><li>TUV 德國萊茵、SGS、Afnor、bsi、ARES</li><li>完整輔導+文件產出+內部稽核</li></ul></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grant-note">
+      🌟 通過我們輔導取得ISO認證與政府補助，提升綠色競爭力。立即諮詢專線：02-66202388
+    </div>
+  </section>
+</main>
 
-            <table id="data-table">
-                <thead>
-                    <tr>
-                        <th class="item-col">項目</th>
-                        <th class="content-col">內容</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- 1. 諮詢輔導 -->
-                    <tr class="consulting-row">
-                        <td><a href="https://sethjesus.github.io/Consult/Consult.html">諮詢輔導</a></td>
-                        <td>
-                            <ul>
-                                <li>企業ESG永續發展先期輔導諮詢</li>
-                                <li>低碳化輔導評估</li>
-                            </ul>
-                        </td>
-                    </tr>
+<footer>
+  © 2026 景煬低碳管理方案團隊製作 – 低碳轉型・永續領航<br>
+  <sub>地址: 235 新北市中和區中正路872號12樓之1 ｜ 電話: 02-66202388 ｜ esg@udmgroup.com</sub><br>
+  <sub>服務範圍：全台灣、亞太區、歐洲及美洲｜ISO輔導・碳盤查・政府補助申請</sub><br>
+  <a href="https://sethjesus.github.io/EDM/EDM.html" class="edm-button">按此詳閱 EDM</a>
+</footer>
 
-                    <!-- 2. 企業自主碳盤查 -->
-                    <tr class="self-audit-row">
-                        <td><a href="https://sethjesus.github.io/Carbon/Carbon.html">企業自主碳盤查</a></td>
-                        <td>
-                            <ul>
-                                <li>線上免費碳估算工具</li>
-                                <li>AI碳盤查管理平台</li>
-                                <li>AI碳盤查管理平台+輔導</li>
-                                <br><sup>以上方案均提供一套無線能耗足跡管理工具</sup>
-                            </ul>
-                        </td>
-                    </tr>
-
-                    <!-- 政府補助碳盤查 -->
-                    <tr class="government-row">
-                        <td><a href="https://sethjesus.github.io/Carbon/Carbon.html">政府補助碳盤查(16+4)</a></td>
-                        <td>
-                            <ul>
-                                <li>113年經濟部製造業低碳化及智慧化升級轉型診斷輔導</li>
-                                <br><sup>(含政府補助16萬元，廠商自籌款四萬元。)</sup>
-                                <br><sup>(可作為產發署低碳化補助申請計畫使用。)</sup>
-                            </ul>
-                        </td>
-                    </tr>
-
-                    <!-- 企業諮詢輔導 -->
-                    <tr class="business-consulting-row">
-                        <td><a href="https://sethjesus.github.io/Carbon/Carbon.html">企業諮詢輔導</a></td>
-                        <td>
-                            <ul>
-                                <li>企業自主碳盤查諮詢輔導</li>
-                                <li>低碳化/減碳方案規劃建議</li>
-                            </ul>
-                        </td>
-                    </tr>
-
-                    <!-- 免費可行性評估 -->
-                    <tr class="free-eval-row">
-                        <td><a href="https://sethjesus.github.io/Carbon/Carbon.html">免費可行性評估</a></td>
-                        <td>
-                            <ul>
-                                <li>企業低碳化可行性評估<sub>google表單</sub></li>
-                                <li>產發署低碳化補助申請可行性評估</li>
-                            </ul>
-                        </td>
-                    </tr>
-
-                    <!-- 陽光空氣水減碳方案 -->
-                    <tr class="solar-water-row">
-                        <td><a href="https://sethjesus.github.io/3elements/3elements.html">陽光空氣水減碳方案</a></td>
-                        <td>
-                            <ul>
-                                <li>無線能耗足跡管理</li>
-                                <li>有線能耗足跡管理</li>
-                                <li>冰水主機節能管理(變頻)</li>
-                                <li>冰水主機節能管理(類變頻)</li>
-                                <li>空氣偵測與改善管理</li>
-                                <li>智慧水表</li>
-                            </ul>
-                        </td>
-                    </tr>
-
-                    <!-- 減碳效益 30% (3年) -->
-                    <tr class="carbon-benefit-row">
-                        <td><a href="https://sethjesus.github.io/3elements/3elements.html">減碳效益 30% (3年)</a></td>
-                        <td>
-                            <ul>
-                                <li>政策文件</li>
-                            </ul>
-                        </td>
-                    </tr>
-
-                    <!-- 減碳方法 - 智慧化應用 -->
-                    <tr class="carbon-method-row">
-                        <td><a href="https://sethjesus.github.io/3elements/3elements.html">減碳方法 - 智慧化應用</a></td>
-                        <td>
-                            <ul>
-                                <li>EMS</li>
-                                <li>AI 大數據應用</li>
-                                <li>3+3減碳</li>
-                            </ul>
-                        </td>
-                    </tr>
-
-                    <!-- 應用方案EDM -->
-                    <tr class="edm-row">
-                        <td><a href="https://sethjesus.github.io/3elements/3elements.html">應用方案EDM</a></td>
-                        <td>
-                            <ul>
-                                <li>製造業/學校/飯店等</li>
-                            </ul>
-                        </td>
-                    </tr>
-
-                    <!-- 低碳化管理工具/客製化整合 -->
-                    <tr class="custom-integrated-row">
-                        <td><a href="https://sethjesus.github.io/3elements/3elements.html">低碳化管理工具/客製化整合</a></td>
-                        <td>
-                            <ul>
-                                <li>EMS 電力能耗/水量/空氣品質數據管理平台</li>
-                                <li>大數據整合平台客製化</li>
-                            </ul>
-                        </td>
-                    </tr>
-
-                    <!-- 政府低碳化補助申請 -->
-                    <tr class="govt-subsidy-row">
-                        <td><a href="https://sethjesus.github.io/3elements/3elements.html">政府低碳化補助申請</a></td>
-                        <td>
-                            <ul>
-                                <li>產發署低碳化補助</li>
-                                <li>商業發展署商業服務業智慧減碳補助</li>
-                                <li>環境部</li>
-                                <li>教育部智慧化氣候友善校園</li>
-                            </ul>
-                        </td>
-                    </tr>
-
-                    <!-- 合作夥伴 -->
-                    <tr class="partner-row">
-                        <td><a href="https://sethjesus.github.io/ISO/ISO.html">合作夥伴</a></td>
-                        <td>
-                            <ul>
-                                <li>低碳化方案合作夥伴</li>
-                                <li>其他周邊設備服務(P-Trade)</li>
-                            </ul>
-                        </td>
-                    </tr>
-
-                    <!-- 溫室氣體盤查輔導 -->
-                    <tr class="ghg-guidance-row">
-                        <td><a href="https://sethjesus.github.io/Partner/Partner.html">溫室氣體盤查輔導<br>溫室氣體盤查流程文件產出</a></a></td>
-                        <td>
-                            <ul>
-                                <li>TUV <sub>德國萊茵</sub>&ensp;SGS<sub>台灣檢驗科技</sub>&ensp; Afnor<sub>法國標準協會集團</sub></li>
-                                <li>bsi <sub>英國標準協會</sub>&ensp; ARES<sub>亞瑞士國際驗證</sub> &ensp;Deloitte <sub>勤業會計師事務所</sub></li>
-                            </ul>
-                        </td>
-                    </tr>
-
-                    <!-- ISO 系列 -->
-                    <tr class="light-blue-row">
-                        <td><a href="https://sethjesus.github.io/ISO/ISO.html">ISO&nbsp;14064-1<br>ISO&nbsp;14067<br>ISO&nbsp;50001</a></td>
-                        <td>
-                            <ul>
-                                <li>TUV <sub>德國萊茵</sub>&ensp;SGS<sub>台灣檢驗科技</sub>&ensp; Afnor<sub>法國標準協會集團</sub></li>
-                                <li>bsi <sub>英國標準協會</sub>&ensp; ARES<sub>亞瑞士國際驗證</sub></li>
-                            </ul>
-                         </a></td>
-                     </tr>
-
-                </tbody>
-             </table>
-             <div style="margin-top:16px; font-size:14px; background:#eef2dd; padding:12px; border-radius:12px;">
-                🌟 通過我們輔導取得ISO認證與政府補助，提升企業綠色競爭力。立即諮詢專線：02-66202388
-             </div>
-        </section>
-    </main>
-
-    <footer>
-        © 2026 景煬低碳管理方案團隊製作 – 低碳轉型・永續領航<br>
-        <sub>地址: 235 新北市中和區中正路872號12樓之1  <br>電話: 02-66202388 ｜ 信箱: esg@udmgroup.com</sub><br>
-        <!-- GEO 與 本地結構化再次強化 -->
-        <sub>服務範圍：全台灣、亞太區、歐洲及美洲｜ISO輔導・碳盤查・政府補助申請</sub><br>
-
-        <a href="https://sethjesus.github.io/EDM/EDM.html" class="edm-button">
-            按此詳閱 EDM
-        </a>
-    </footer>
-
+<script>
+// 提升觸控滑動體驗：讓表格區塊用手拖移更直覺（滑鼠+觸控）
+const scrollArea = document.querySelector('.table-wrapper');
+if(scrollArea) {
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+  
+  scrollArea.addEventListener('mousedown', (e) => {
+    isDown = true;
+    scrollArea.style.cursor = 'grabbing';
+    startX = e.pageX - scrollArea.offsetLeft;
+    scrollLeft = scrollArea.scrollLeft;
+  });
+  window.addEventListener('mouseup', () => {
+    isDown = false;
+    if(scrollArea) scrollArea.style.cursor = 'grab';
+  });
+  window.addEventListener('mousemove', (e) => {
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - scrollArea.offsetLeft;
+    const walk = (x - startX) * 1.2;
+    scrollArea.scrollLeft = scrollLeft - walk;
+  });
+  // 避免觸控時頁面大幅跳動，原生觸控滑動保留，並增加平滑感
+  scrollArea.style.touchAction = 'pan-x pan-y';
+  scrollArea.style.cursor = 'grab';
+}
+</script>
 </body>
 </html>
