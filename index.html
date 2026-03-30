@@ -2,10 +2,46 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌱景煬專業低碳管理方案🌿</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>🌱景煬專業低碳管理方案｜ESG淨零碳排｜ISO輔導認證｜政府補助申請</title>
+<meta name="description" content="景煬UDM ESG提供一站式低碳管理方案：AI碳盤查、ISO 14064/14067/50001輔導、政府補助申請(16+4)、陽光空氣水節能減碳、EMS能耗管理。協助中小企業通過國際查驗證，取得碳足跡與能源管理認證。">
+<meta name="keywords" content="低碳管理, ESG, 淨零碳排, 碳盤查, ISO 14064, ISO 50001, 政府補助, 碳足跡, CBAM, 節能減碳, AIOT能耗管理, 永續發展, 台灣">
+<meta name="author" content="景煬低碳管理方案團隊">
+<meta name="geo.region" content="TW-NWT">
+<meta name="geo.placename" content="新北市中和區">
+<meta name="geo.position" content="25.003;121.495">
+<meta name="ICBM" content="25.003, 121.495">
+<link rel="canonical" href="https://sethjesus.github.io/Maincarbon/">
+<!-- 結構化資料 / Schema.org for SEO / GEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "景煬低碳管理方案",
+  "alternateName": "UDM ESG 景煬低碳淨能事業群",
+  "url": "https://sethjesus.github.io/Maincarbon/",
+  "logo": "https://pub-531c96b02ed745e0bbfd0e96bfde8518.r2.dev/UDM%20New%20Logo.jpg",
+  "image": "https://i.imgur.com/3qy7Huz.jpg",
+  "description": "專注於AIOT碳盤查、ISO認證輔導、政府補助申請及節能減碳方案，協助企業達成ESG永續目標。",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "中正路872號12樓之1",
+    "addressLocality": "新北市中和區",
+    "addressRegion": "TW",
+    "postalCode": "235",
+    "addressCountry": "台灣"
+  },
+  "telephone": "+886-2-66202388",
+  "email": "service@udmgroup.com",
+  "priceRange": "$$",
+  "sameAs": [
+    "https://sethjesus.github.io/Consult/Consult.html",
+    "https://sethjesus.github.io/Carbon/Carbon.html",
+    "https://sethjesus.github.io/ISO/ISO.html"
+  ]
+}
+</script>
 <link rel="icon" href="https://raw.githubusercontent.com/Sethjesus/Photo/main/UDM%20New%20Logo.jpg" type="image/jpeg">
-
 <style>
 :root{
   --gray:#d3d3d3;
@@ -20,6 +56,7 @@ body,html{
   margin:0;
   font-family:Arial, sans-serif;
   background:#fff;
+  scroll-behavior:smooth;
 }
 
 /* ===== Header ===== */
@@ -188,7 +225,7 @@ footer{
   border-radius:5px;
 }
 
-/* ===== Mobile ===== */
+/* ===== Mobile (RWD) ===== */
 @media(max-width:768px){
   nav img{width:100px}
   header h1{font-size:26px}
@@ -310,32 +347,27 @@ td{
 .marquee-text{
   display:inline-block;
   white-space:nowrap;
-  font-size:18px;              /* 稍微放大一點更吸睛 */
+  font-size:18px;              
   font-weight:900;
   letter-spacing:3px;
   padding:8px 0;
-
-  /* ✨ 高亮金色漸層（亮、通透、有層次） */
   background:linear-gradient(
     90deg,
-    #b45309,   /* 深金底 */
-    #fde047,   /* 亮金 */
-    #fff7b2,   /* 高光 */
-    #fde047,   /* 回亮金 */
+    #b45309,   
+    #fde047,   
+    #fff7b2,   
+    #fde047,   
     #b45309
   );
   background-size:400% 200%;
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-
-  /* 🌟 強化立體與發光感 */
   text-shadow:
     0 0 4px rgba(255,215,0,.45),
     0 2px 6px rgba(0,0,0,.35);
-
   animation:
-    marqueeRun 16s linear infinite,  /* 稍微快一點 */
-    goldShine 2.8s linear infinite;  /* 金光流動更明顯 */
+    marqueeRun 16s linear infinite,  
+    goldShine 2.8s linear infinite;  
 }
 
 @keyframes goldShine{
@@ -349,7 +381,7 @@ td{
 /* ===== 跑馬燈容器 ===== */
 .marquee-wrap{
   position:relative;
-  z-index:0;   /* ❗從 1 改成 0 */
+  z-index:0;   
   width:100%;
   overflow:hidden;
   margin-bottom:10px;
@@ -357,7 +389,7 @@ td{
 }
 
 .nav-card.show-click::after{
-  z-index:9999;   /* ← 確保一定在最上層 */
+  z-index:9999;   
 }
 
 
@@ -370,12 +402,9 @@ td{
     transform:translateX(-100%);
   }
 }
-/* ===== 請點我提示 ===== */
-/* ===== 只指定一張顯示「請點我」 ===== */
-
 
 .nav-card.show-click::after{
-  display:block;   /* ✅ 關鍵這一行 */
+  display:block;   
   content:"請點我";
   position:absolute;
   top:-16px;
@@ -442,7 +471,40 @@ nav{
   z-index:5;
 }
 
+/* AEO 信賴強化: 額外強調公正第三方 & 專業服務 */
+.trust-badge{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:15px;
+  font-size:14px;
+}
+.trust-badge span{
+  background:#f5f5f5;
+  padding:6px 12px;
+  border-radius:40px;
+  box-shadow:0 1px 4px rgba(0,0,0,.1);
+}
+/* RWD 增強：手機表格水平滾動 */
+@media (max-width:640px){
+  section{
+    overflow-x:auto;
+  }
+  table{
+    min-width:600px;
+  }
+}
 
+/* GEO & 本地商家微標記 */
+.local-business-highlight{
+  background:#eef2ff;
+  border-left:5px solid #0b6bff;
+  padding:10px 15px;
+  border-radius:12px;
+  margin-top:12px;
+  font-size:14px;
+}
 </style>
 </head>
 
@@ -450,12 +512,19 @@ nav{
 
 <header>
   <a href="http://www.udmgroup.com/index.asp" class="logo-home">
-    <img src="https://pub-531c96b02ed745e0bbfd0e96bfde8518.r2.dev/UDM%20New%20Logo.jpg">
+    <img src="https://pub-531c96b02ed745e0bbfd0e96bfde8518.r2.dev/UDM%20New%20Logo.jpg" alt="UDM Group 首頁">
     <span>回主頁</span>
   </a>
   <br>
-  <h1>🌿專業低碳管理方案</h1>
-  <h2>♻️景煬提供完整的一站式永續及淨零碳排方案</h2>
+  <h1>🌿專業低碳管理方案｜ISO認證・政府補助</h1>
+  <h2>♻️景煬提供完整的一站式永續及淨零碳排方案｜碳盤查・節能減碳・CBAM因應</h2>
+  <!-- AEO 強化: 信賴標章區塊 -->
+  <div class="trust-badge">
+    <span>✅ 德國TUV萊茵合作夥伴</span>
+    <span>✅ SGS台灣檢驗科技認證輔導</span>
+    <span>✅ 產發署低碳化補助指定服務</span>
+    <span>✅ ISO 14064/14067/50001 專業團隊</span>
+  </div>
 </header>
 
 <nav>
@@ -466,28 +535,29 @@ nav{
 </div>
 <a href="https://sethjesus.github.io/Consult/Consult.html"
    class="nav-card nav-primary show-click">
-  <img src="https://i.imgur.com/3qy7Huz.jpg">
+  <img src="https://i.imgur.com/3qy7Huz.jpg" alt="免費顧問諮詢">
   <span class="nav-hint nav-cta">免費顧問諮詢｜低碳可行性評估</span>
 </a>
     
 <a href="https://sethjesus.github.io/Carbon/Carbon.html" class="nav-card nav-primary"> 
-    <img src="https://i.imgur.com/o0zrVfS.jpg"> <span class="nav-hint nav-cta">快速碳盤查｜支援政府補助</span> </a> 
+    <img src="https://i.imgur.com/o0zrVfS.jpg" alt="快速碳盤查支援補助"> <span class="nav-hint nav-cta">快速碳盤查｜支援政府補助</span> </a> 
     
 <a href="https://sethjesus.github.io/3elements/3elements.html" class="nav-card nav-primary"> 
-    <img src="https://pub-531c96b02ed745e0bbfd0e96bfde8518.r2.dev/Carbon9.jpg"> <span class="nav-hint nav-cta">電力・空氣・水｜立即減碳</span> </a> 
+    <img src="https://pub-531c96b02ed745e0bbfd0e96bfde8518.r2.dev/Carbon9.jpg" alt="電力空氣水減碳"> <span class="nav-hint nav-cta">電力・空氣・水｜立即減碳</span> </a> 
     
 <a href="https://sethjesus.github.io/Partner/Partner.html" class="nav-card nav-primary"> 
-    <img src="https://i.imgur.com/wfSS9VP.jpg"> <span class="nav-hint nav-cta">查驗證夥伴｜國際標準</span> </a> 
+    <img src="https://i.imgur.com/wfSS9VP.jpg" alt="查驗證夥伴國際標準"> <span class="nav-hint nav-cta">查驗證夥伴｜國際標準</span> </a> 
     
 <a href="https://sethjesus.github.io/ISO/ISO.html" class="nav-card nav-primary"> 
-    <img src="https://i.imgur.com/VFlEBNw.jpg"> <span class="nav-hint nav-cta">ISO 14064 / 14067 / 50001</span> </a> </nav>
+    <img src="https://i.imgur.com/VFlEBNw.jpg" alt="ISO 14064/14067/50001輔導"> <span class="nav-hint nav-cta">ISO 14064 / 14067 / 50001</span> </a> 
+</nav>
 
 
 <div class="entry-bar">
   <!-- English ESG -->
   <a href="https://sethjesus.github.io/JPESG/JP%20ESG.html"
      class="entry-btn entry-english">
-    <img src="https://i.imgur.com/mCTI7wC.jpg" class="entry-icon">
+    <img src="https://i.imgur.com/mCTI7wC.jpg" class="entry-icon" alt="English ESG">
     <div class="entry-text">
       <strong>English ESG Portal</strong>
       <span>UDM ESG · Low Carbon · Net Zero Solutions</span>
@@ -506,11 +576,13 @@ nav{
   </a>
 </div>
 
-
-<!-- ⚠️ 以下 main / table / footer 內容 = 你原本貼的版本 그대로保留 ⚠️ -->
-<!-- 直接接你原本的 main 區塊即可 -->
-
-
+<!-- 本地GEO 強化顯示 -->
+<div style="max-width:1200px; margin:0 auto 10px auto; padding:0 20px;">
+  <div class="local-business-highlight">
+    📍 服務據點：新北市中和區中正路872號12樓之1｜在地輔導中小企業碳管理，全台到場評估。<br>
+    🌏 國際布局：亞洲／美洲／歐洲，提供多語言ESG報告及碳邊境調整機制(CBAM)因應。
+  </div>
+</div>
 
     <main>
         <section>
@@ -538,7 +610,7 @@ nav{
         </section>
 
         <section>
-            <h2>低碳化/減碳方案</h2>
+            <h2>低碳化/減碳方案｜AI碳管理｜政府補助專區</h2>
 
             <table id="data-table">
                 <thead>
@@ -690,7 +762,7 @@ nav{
 
                     <!-- 溫室氣體盤查輔導 -->
                     <tr class="ghg-guidance-row">
-                        <td><a href="https://sethjesus.github.io/Partner/Partner.html">溫室氣體盤查輔導<br>溫室氣體盤查流程文件產出</a></td>
+                        <td><a href="https://sethjesus.github.io/Partner/Partner.html">溫室氣體盤查輔導<br>溫室氣體盤查流程文件產出</a></a></td>
                         <td>
                             <ul>
                                 <li>TUV <sub>德國萊茵</sub>&ensp;SGS<sub>台灣檢驗科技</sub>&ensp; Afnor<sub>法國標準協會集團</sub></li>
@@ -707,17 +779,22 @@ nav{
                                 <li>TUV <sub>德國萊茵</sub>&ensp;SGS<sub>台灣檢驗科技</sub>&ensp; Afnor<sub>法國標準協會集團</sub></li>
                                 <li>bsi <sub>英國標準協會</sub>&ensp; ARES<sub>亞瑞士國際驗證</sub></li>
                             </ul>
-                        </td>
-                    </tr>
+                         </a></td>
+                     </tr>
 
                 </tbody>
-            </table>
+             </table>
+             <div style="margin-top:16px; font-size:14px; background:#eef2dd; padding:12px; border-radius:12px;">
+                🌟 通過我們輔導取得ISO認證與政府補助，提升企業綠色競爭力。立即諮詢專線：02-66202388
+             </div>
         </section>
     </main>
 
     <footer>
-        © 2026 景煬低碳管理方案團隊製作 <br>
-        <sub>地址: 235 新北市中和區中正路872號12樓之1  <br>電話: 02-66202388</sub><br>
+        © 2026 景煬低碳管理方案團隊製作 – 低碳轉型・永續領航<br>
+        <sub>地址: 235 新北市中和區中正路872號12樓之1  <br>電話: 02-66202388 ｜ 信箱: esg@udmgroup.com</sub><br>
+        <!-- GEO 與 本地結構化再次強化 -->
+        <sub>服務範圍：全台灣、亞太區、歐洲及美洲｜ISO輔導・碳盤查・政府補助申請</sub><br>
 
         <a href="https://sethjesus.github.io/EDM/EDM.html" class="edm-button">
             按此詳閱 EDM
