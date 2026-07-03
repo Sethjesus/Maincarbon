@@ -489,6 +489,37 @@ footer{
 </div>
 
 <main>
+<section id="policy-rag-section">
+  <h2>政府 AI × 淨零減碳政策查詢助理</h2>
+  <p>
+    可查詢政府 AI 政策、AI 新十大建設、主權 AI、2050 淨零、碳費、低碳化補助、碳盤查與 ISO 14064 相關問題。
+  </p>
+
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;">
+    <input
+      id="policyQuestion"
+      type="text"
+      placeholder="例如：政府AI政策跟企業有什麼關係？或 碳費對中小企業有什麼影響？"
+      style="flex:1;min-width:240px;padding:12px;border-radius:14px;border:1px solid #ccc;font-size:15px;"
+    >
+    <button
+      id="policyAskBtn"
+      style="padding:12px 20px;border:none;border-radius:14px;background:#2c6e2f;color:white;font-weight:700;cursor:pointer;"
+    >
+      查詢政策
+    </button>
+  </div>
+
+  <div
+    id="policyAnswer"
+    style="margin-top:16px;padding:16px;background:#f7faf7;border-radius:18px;min-height:90px;line-height:1.6;"
+  >
+    請輸入政策問題。
+  </div>
+
+  <div id="policyRelated" style="margin-top:12px;"></div>
+</section>
+
   <section>
     <h2>關於UDM ESG 景煬低碳淨能事業群</h2>
     <p>「UDM ESG 景煬低碳淨能事業群」為『 ESG 減碳/低碳管理方案提供商』，致力於解決中小企業碳排放、碳減量、碳費/碳稅/碳邊境稅 （CBAM、CCA)問題。專注於低碳化創新方案產品開發、系統整合及國際市場行銷。</p>
@@ -572,5 +603,6 @@ if(scrollArea) {
   scrollArea.style.cursor = 'grab';
 }
 </script>
+<script src="./Maincarbon/js/policy-rag.js"></script>
 </body>
 </html>
